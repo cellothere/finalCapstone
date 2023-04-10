@@ -1,5 +1,5 @@
 <template>
-  <div id="login">
+  <div id="login" >
   
     <form @submit.prevent="login" id="login">
       <h1 class="welcome"> Welcome To Cleveland!</h1>
@@ -22,9 +22,7 @@
       <p>
       <router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
     </form>
-    <div class="welcome-img">
-      <img class="login-img" src="../../assets/login.jpg" alt="Login Cleveland">
-    </div>
+
   </div>
 </template>
 
@@ -70,6 +68,8 @@ export default {
 
 <style scoped>
 
+
+
 .welcome-img {
   display: flex;
   flex-direction: column;
@@ -94,7 +94,14 @@ button {
   margin-bottom: 1rem;
 }
 #login {
-  text-align: center;
+  display: flex;
+  background-image: url(../../assets/login.jpg) ;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
 }
 label {
   margin-right: 0.5rem;
