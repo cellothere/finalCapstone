@@ -1,7 +1,9 @@
 <template>
   <div id="login">
-    <form @submit.prevent="login">
-      <h1 >Please Sign In</h1>
+  
+    <form @submit.prevent="login" id="login">
+      <h1 class="welcome"> Welcome To Cleveland!</h1>
+      <h2 >Please sign in to build your adventure</h2>
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
@@ -20,6 +22,9 @@
       <p>
       <router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
     </form>
+    <div class="welcome-img">
+      <img class="login-img" src="../../assets/login.jpg" alt="Login Cleveland">
+    </div>
   </div>
 </template>
 
@@ -61,11 +66,41 @@ export default {
 };
 </script>
 
+
+
 <style scoped>
+
+.welcome-img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+}
+
+form {
+  display: flex;
+  min-width: 100vh;
+  flex-direction: column;
+  align-items: center;
+
+}
+button {
+  width: 60px;
+  
+}
 .form-input-group {
   margin-bottom: 1rem;
+}
+#login {
+  text-align: center;
 }
 label {
   margin-right: 0.5rem;
 }
+.welcome {
+  text-align: center;
+}
+
 </style>
