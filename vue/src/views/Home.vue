@@ -5,7 +5,7 @@
     <div class="banner">
       <img class="banner-image" src="https://images.rawpixel.com/image_1000/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGQxOS0zLTEyODE2dS5qcGc.jpg" alt="Downtown Cleveland">
       <h1>City Explorer:</h1>
-      <img class="cleveland-logo" src="../../assets\Destination_Cleveland_logo.svg" />
+      <img class="cleveland-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Destination_Cleveland_logo.svg/512px-Destination_Cleveland_logo.svg.png?20211216160402" />
     </div>
       <div class='suggestions'>
         <destination-list />
