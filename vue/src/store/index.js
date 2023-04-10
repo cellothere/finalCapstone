@@ -19,7 +19,9 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
-    user: currentUser || {}
+    user: currentUser || {},
+    currentLatitude: 41.5038033,
+    currentLongitude: -81.6419466
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
