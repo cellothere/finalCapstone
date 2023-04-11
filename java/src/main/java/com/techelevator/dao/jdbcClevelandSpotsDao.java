@@ -20,7 +20,7 @@ public class JdbcClevelandSpotsDao implements ClevelandSpotsDao {
     public List<ThingToDo> findAll(){
 
         List<ThingToDo> thingsToDo = new ArrayList<>();
-        String sql = "select * from landmark";
+        String sql = "select * from landmark;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
@@ -30,6 +30,20 @@ public class JdbcClevelandSpotsDao implements ClevelandSpotsDao {
 
         return thingsToDo;
 
+    }
+
+    public List<ThingToDo> findFreeActivities(){
+        List<ThingToDo> thingsToDo = new ArrayList<>();
+        String sql = "select * from landmark WHERE admission = true;";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+
+        while (results.next()) {
+            ThingToDo thingToDo = mapRowToThingToDo(results);
+            thingsToDo.add(thingToDo);
+        }
+
+        return thingsToDo;
     }
 
     private ThingToDo mapRowToThingToDo(SqlRowSet rs) {

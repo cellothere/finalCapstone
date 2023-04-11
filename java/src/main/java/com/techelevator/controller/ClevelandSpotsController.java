@@ -33,7 +33,10 @@ public class ClevelandSpotsController {
         return clevelandSpotsDao.findAll();
     }
 
-
+    @RequestMapping(value ="/thingsToDo/freeAdmission", method = RequestMethod.GET)
+    public List<ThingToDo> findFreeActivities(){
+            return clevelandSpotsDao.findFreeActivities();
+    }
 }
 
 
