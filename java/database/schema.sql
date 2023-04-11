@@ -272,3 +272,5 @@ VALUES ('https://lh3.googleusercontent.com/p/AF1QipM-oxDGrnLet9C6TgJ10H5s8tcxESx
 
 INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
 VALUES ('https://lh3.googleusercontent.com/p/AF1QipNvNs2Ht3vMGOX2VRE04zXxEPyzqcSfKKq9v5yE=s680-w680-h510','Quirky tea shop with beverages such as smoothies & shakes, plus Mediterranean-inspired nibbles.','Algebra Tea House','Restaurant',41.50591026976114, -81.59983844602397,'10AM - 9PM', 'true','false','Mediterranean Restaurant','false', 4.6);
+
+COMMIT
