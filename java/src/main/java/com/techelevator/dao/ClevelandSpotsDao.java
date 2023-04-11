@@ -9,4 +9,6 @@ public interface ClevelandSpotsDao {
 
     List<ThingToDo> findAll();
 
+    List<ThingToDo> findFreeActivities();
+
 }
