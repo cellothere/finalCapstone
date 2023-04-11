@@ -66,5 +66,4 @@ public class JdbcClevelandSpotsDao implements ClevelandSpotsDao {
         return thingToDo;
     }
 
-
 }
