@@ -2,8 +2,6 @@
     <div class="list">
         <!-- This will be a v-for once we have connected to the database. -->
         <destination-card />
-        <destination-card />
-        <destination-card />
     </div>
 </template>
 
