@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class JdbcClevelandSpotsDao implements ClevelandSpotsDao {
+public class JdbcClevelandSpotsDaoTemporary implements ClevelandSpotsDao {
 
     private final JdbcTemplate jdbcTemplate;
 
-    public JdbcClevelandSpotsDao(JdbcTemplate jdbcTemplate) {
+    public JdbcClevelandSpotsDaoTemporary(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
