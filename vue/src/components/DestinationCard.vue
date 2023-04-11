@@ -19,6 +19,7 @@
 
 <script>
 export default {
+    props: ['review'],
     data() {
         return {
             showDetail: false,
