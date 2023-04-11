@@ -193,4 +193,82 @@ VALUES ('https://lh3.googleusercontent.com/p/AF1QipNyn88VznEXrEtOfDLNK_YhX_HaW6u
 INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
 VALUES ('https://lh3.googleusercontent.com/p/AF1QipNe975Q08bgvZ6G6KkXBL4pVcKeRcKJtl2Y1NHn=s680-w680-h510','31-acre lakefront park featuring a seasonal pool, bandshell, skatepark, plus sport courts & fields.','Lakewood Park','Park',41.49549989808099, -81.79724143068263,'6AM - 11PM', 'true','false','','true', 4.8);
 
-COMMIT
+
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipODUzkhOXfdTQa_WX2JEbJBktSMYjOs-X4tD93i=s680-w680-h510','Fine Dining · Cuisines. Contemporary Italian, Seafood, Mediterranean','Acqua Di Luca','Restaurant',41.500479861381834, -81.69815119261078,'5PM - 10PM', 'true','false','Seafood','false', 4.3);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipNMJQ3GlGgipcguALfbiHt42k7duoDVFnboy5ii=s680-w680-h510','Sleek Mediterranean market/eatery for gourmet meats & cheeses, plus tapas, wine & cocktails.','Astoria Cafe and Market','Restaurant',41.485755960751725, -81.72495220738922,'11AM - 9PM', 'true','false','Mediterranean','false', 4.7);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipNNemLedWSk9d2WBe4HvLuJ2nEVZaGDqVnptGj-=s680-w680-h510','Cleveland Bagel Co. bagels are chewy, delicious, Cleveland-style bagels. Pair them with one of our schmears for the perfect breakfast, lunch or snack.','Cleveland Bagel Co.','Restaurant',41.502340580135446, -81.63527486931737,'6AM - 1PM', 'true','false','Bagel Shop','false', 4.6);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipP81ywuqpI74y6me5rtyfMSe5EtTMWypWMaoHDK=s680-w680-h510','Buzzy, gothic bar filled with antiques & books, offering ambitious cocktails & vegan bites.','Cloak & Dagger','Restaurant',41.47997780783351, -81.68907091534132,'4PM - 12AM', 'false','false','Cocktail Bar','false', 4.8);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipOysT_1LfvcDUFknSh2X4UCfCUiBRVyThFGW38i=s680-w680-h510','High-end French plates including meat & seafood options with upscale drinks served amid luxe decor.','Edwins Restaurant and Leadership Institute','Restaurant',41.484877361877444, -81.59179003807186,'5PM - 9PM', 'false','false','French Cuisine','false', 4.7);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipNHRTz7EbYY2jaMs-DK3CgigBQCC6l7cFZXmcya=s680-w680-h510','Funky hangout serving global small & large plates plus weekend brunch in a converted house.','Fat Cats','Restaurant',41.48437531773824, -81.68762236136527,'11AM - 9PM', 'true','false','Bar and Eatery','false', 4.6);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipNXe___phS8apLFf048wnbbPp3m2Q2x1V7Q9zOb=s680-w680-h510','Modern spot with colorful mosaic wall for specialty sushi & shabu-shabu, plus cocktails & beer.','Ginko','Restaurant',41.48234494004621, -81.68652703068263,'4PM - 10PM', 'true','false','Japanese Cuisine','false', 4.6);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipP_gjHogxgphF5OhnWexDL-ImOt6_gzKQMCytnO=s680-w680-h510','Authentic Ethiopian and Eritrean cuisine made fresh and enhanced with seasonings native to Africa, using homemade recipes passed down for generations.','Habesha Ethiopian and Eritrean Restaurant','Restaurant',41.45154289745254, -81.8150753767066, '11AM - 8:30PM', 'true','false','East African Cuisine','false', 4.8);
+		
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipNY06t14kNu8TT8ziAgSVW-J587Bq_U6a9VloBy=s680-w680-h510','Rustic-chic pizzeria serving NYC-style pies with inventive toppings in a renovated 1917 pub space.','II Rione','Restaurant',41.48745948041153, -81.73002483068264, '4PM - 10PM', 'true','false','Pizzaria','false', 4.8);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipNY06t14kNu8TT8ziAgSVW-J587Bq_U6a9VloBy=s680-w680-h510','Rustic-chic pizzeria serving NYC-style pies with inventive toppings in a renovated 1917 pub space.','II Rione','Restaurant',41.48745948041153, -81.73002483068264, '4PM - 10PM', 'true','false','Pizzaria','false', 4.8);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipP27FrDa0H0XsBl79n5AcRdbOVt51Mp4pz_fhEI=s680-w680-h510','Upscale, contemporary French destination with patio seating, cheese courses & wine.','L''Albatros Brasserie & Bar','Restaurant',41.512140032944565, -81.60631536931736, '4PM - 10PM', 'true','false','French Cuisine','true', 4.7);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipNFR-qa_uAXLAPcnj2WY_-fZ1r7_Y1mlhEFz6VK=s680-w680-h510','La Plaza Taqueria, is your place to gather with your friends and enjoy some of the best Mexican Food around.','La Plaza Taqueria','Restaurant',41.47091354744581, -81.78581909261078, '8AM - 9PM', 'true','false','Supermarket Bakery','false', 4.5);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipOjlQzExPnffGq81CabVNUSRfgjqddCvf-tVeHZ=s680-w680-h510','We are an Eastern European delicatessen and bakery located in the Ohio City Firehouse in Cleveland''s Hingetown neighborhood.','Larder Delicatessen and Bakery','Restaurant',41.48997144523936, -81.71031348465866, '11AM - 6PM', 'true','false','Deli','false', 4.7);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipP5ykBNvEqQgHnBvxHN_6ojoy5hcVEvKBB0y5mq=s680-w680-h510','Straightforward restaurant preparing handmade dumplings, classic soups & meatballs.','LJ Shanghai','Restaurant',41.512074172543485, -81.66898123068263, '11:15AM - 8PM', 'true','false','Chinese Cuisine','false', 4.6);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipOutgHrneBFqO5s3Ln8BHRcYzWKeFlvvKK1In8K=s680-w680-h510','Cool, bi-level, industrial-chic BBQ spot with communal tables & a long bar with many bourbons.','Mabel''s BBQ','Restaurant',41.49965525374262, -81.69037568465868, '11:30AM - 9PM', 'false','false','BBQ Restaurant','true', 4.4);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipPp8afZ21rUVdZD5AkG2Mg8SkVnbhKIdSVItn1m=s680-w680-h510', 'Upscale chophouse for steaks, seafood & cocktails in an opulent historic bank building.','Marble Room Steaks and Raw Bar','Restaurant',41.500912623521394, -81.68876026931737, '5PM - 11PM', 'false','false','Steak house','false', 4.7);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipPZc0cDZdpYTWxeYNXL7fwZV_C4fNRhaXxCEW4j=s680-w680-h510','Housemade ice cream in classic & unique flavors served in snug digs with counter & patio seats.','Mason''s Creamery','Restaurant',41.48095529601906, -81.71696937670659, '4PM - 9PM', 'true','false','Ice Cream','true', 4.7);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipNquIpgpw1K9pCTQGdns-eakuVYTbRPBGAgD2gR=s680-w680-h510','Italian fare & some Mediterranean dishes are presented in a quaint, muraled space with a full bar.','Mia Bella','Restaurant',41.509232788994936, -81.59788553068263, '4:30PM - 9:30PM', 'true','false','Italian Cuisine','false', 4.5);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipPug7jKpjk-PPg7MbaH7AzstSKPDO7AXqIDmpw_=s680-w680-h510','Hip, dimly lit cantina with wrestler decor, patio seating & creative, modern Mexican dishes.','Momocho','Restaurant',41.48461896523441, -81.70993114602395, '4PM - 9PM', 'true','false','Mexixan Cuisine','false', 4.6);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipMTzZchjYcmiB9WWEmK5hcSgCTBYQArx2IlL0Eu=s680-w680-h510','Welcome to The Pompadour, a small plates restaurant and cocktail bar located two blocks from the beach in historic downtown Fairport Harbor','The Pompadour','Restaurant',41.75579083234098, -81.27689181534133, '5PM - 10PM', 'true','false','Small Plate Restaurant','false', 4.6);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipML_aqMIIlKqLuoYWYX0zS-t8E-G89dqwR-hbel=s680-w680-h510','Sabor Miami Café. Caribbean, Mayan, Garifuna and Latin Eats! Cafe and Art Gallery Home of the TropChop and Cuban Colada. Find your flavor!','Sabor Miami Cafe and Gallery','Restaurant',41.424853730642724, -81.69753677670658, '11:30AM - 6PM', 'true','false','Cafe and Galleria','false', 4.7);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipMl7ZEkkDcqbfFMxmj9EwP0cblkIxkUgfB3RomD=s680-w680-h510','A casual, rustic-chic destination for globally inspired small plates plus cocktails, beer & wine.','Salt','Restaurant',41.48530615892665, -81.81963359204791,'5PM - 10PM', 'true','false','Small Plates Restaurant','false', 4.6);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipPcnXlPY90EbzjElZ6EwIFbRxR-Jk2YZSSW0K4T=s680-w680-h510','Low-key spot specializing in pho noodle soups & other traditional Vietnamese fare, plus bubble tea.','Superior Pho','Restaurant',41.51100783259005, -81.66975673068264,'10:30AM - 8PM', 'true','false','Vietnamese Cuisine','false', 4.8);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipPiZ6BjievFpjszr_P1lqfZ38B0WLm4CADB3pzr=s680-w680-h510','We''re Thyme X Table. A sweet little spot tucked away in Bay Village. Our motto is simple: Good food. Good drinks. Good friends','Thyme Table','Restaurant',41.47994981999478, -81.92057095397604,'5PM - 9PM', 'true','false','Fine Cuisine','false', 4.8);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipM-oxDGrnLet9C6TgJ10H5s8tcxESxQwiL_Hl_8=s680-w680-h510','Bi-level, contemporary eatery serving inventive pizzas made with seasonal ingredients.','Vero Pizza Napoletana','Restaurant',41.5016933440239, -81.59380566136527,'5PM - 9PM', 'true','false','Pizzaria','false', 4.6);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipNvNs2Ht3vMGOX2VRE04zXxEPyzqcSfKKq9v5yE=s680-w680-h510','Quirky tea shop with beverages such as smoothies & shakes, plus Mediterranean-inspired nibbles.','Algebra Tea House','Restaurant',41.50591026976114, -81.59983844602397,'10AM - 9PM', 'true','false','Mediterranean Restaurant','false', 4.6);
