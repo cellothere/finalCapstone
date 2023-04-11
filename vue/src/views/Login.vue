@@ -1,5 +1,5 @@
 <template>
-  <div id="login" >
+  <div id="login">
   
     <form @submit.prevent="login" id="login">
       <h1 class="welcome"> Welcome To Cleveland!</h1>
@@ -11,18 +11,15 @@
         Thank you for registering, please sign in.
       </div>
       <div class="form-input-group">
-        <label for="username">Username</label>
+        <label for="username" class="usernamePassword">Username</label>
         <input type="text" id="username" v-model="user.username" required autofocus />
       </div>
       <div class="form-input-group">
-        <label for="password">Password</label>
+        <label for="password" class="usernamePassword">Password</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
       <input type="submit" value="Sign in" class="button" id="done" :style="inputStyle" v-on:keyup.enter="login"/>
-      <input type="submit" value="Need an account? Sign up" class="button" id="done" :style="inputStyle"/>
-      <p>
-        <router-link :to="{ name: 'register' }" tag="button" type="submit" class="button" id="register">Need an account? Sign up.</router-link>
-      </p>
+      <input type="submit" value="Need an account? Sign up" class="button" id="done" :style="inputStyle" v-on:click="register"/>
     </form>
 
   </div>
@@ -61,6 +58,9 @@ export default {
             this.invalidCredentials = true;
           }
         });
+    },
+    register() {
+      this.$router.push('/register')
     }
   }
 };
@@ -95,7 +95,9 @@ form {
   align-items: center;
 }
 
-
+.usernamePassword {
+  font-family: Poppins;
+}
 input {
   border-radius: 3rem;
   border: none;
