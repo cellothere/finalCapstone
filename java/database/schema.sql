@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS itinerary;
 
 CREATE TABLE landmark (
 landmark_id serial,
-landmark_img_url varchar (10000)
+landmark_img_url varchar (10000),
 landmark_description varchar (100000) NOT NULL,
 landmark_name varchar (1000) NOT NULL,
 landmark_type varchar (1000) NOT NULL,
@@ -40,7 +40,7 @@ CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users (user_id),
 CONSTRAINT FK_landmark_id FOREIGN KEY (landmark_id) REFERENCES landmark (landmark_id)
 );
 
-COMMIT;
+
 
 
 INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
@@ -119,4 +119,4 @@ INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, lan
 VALUES ('https://lh5.googleusercontent.com/p/AF1QipP5mID8GHQ250_Swvqy9KuEnuRjKsSLEdlNf1ys=w408-h271-k-no','Old-school ballroom, live music destination & American restaurant emphasizing locally sourced fare.','Beachland Ballroom & Tavern','Music Venue',41.5719009759708, -81.57027223863474, '7PM - 12AM','false','true','','false', 4.6);
 
 
-
+COMMIT;

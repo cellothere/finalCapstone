@@ -17,8 +17,8 @@
         <label for="confirmPassword">Confirm Password</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
-      <button type="submit">Create Account</button>
-      <p><router-link :to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
+      <input type="submit" value="Create Account" class="button" id="done" :style="inputStyle" v-on:keyup.enter="register" style="width: 50%"/>
+      <input type="submit" value="Already have an account? Log in." class="button" id="done" :style="inputStyle" v-on:click="alreadyHaveAccount" style="width: 50%"/>
     </form>
   </div>
 </template>
@@ -65,6 +65,9 @@ export default {
           });
       }
     },
+    alreadyHaveAccount(){
+      this.$router.push('/login')
+    },
     clearErrors() {
       this.registrationErrors = false;
       this.registrationErrorMsg = 'There were problems registering this user.';
@@ -80,4 +83,78 @@ export default {
 label {
   margin-right: 0.5rem;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+
+#register {
+  display: flex;
+  background-image: url(../../assets/clevelandmap.jpg) ;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+h1 {
+  cursor: default;
+  user-select: none;
+}
+form {
+  display: flex;
+  min-width: 100vh;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+input {
+  border-radius: 3rem;
+  border: none;
+  padding: 10px;
+  text-align: center;
+  outline: none;
+  margin: 10px;
+  width: 50%;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+input:hover {
+  box-shadow: 0px 0px 8px -5px #000000;
+}
+input:active {
+  box-shadow: 0px 0px 8px -5px #000000;
+}
+
+
+button {
+  width: 60px;
+  cursor: pointer;
+  user-select: none;
+}
+
+#done {
+  width: 20%;
+}
+.form-input-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  margin-right: 0.5rem;
+}
+.welcome {
+  text-align: center;
+}
+p {
+  font-family: Poppins;
+  background-color: white;
+}
+
+
 </style>
+
+
