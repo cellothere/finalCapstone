@@ -6,12 +6,12 @@ DROP TABLE IF EXISTS itinerary;
 
 CREATE TABLE landmark (
 landmark_id serial,
-landmark_img_url varchar (10000)
+landmark_img_url varchar (10000) NOT NULL,
 landmark_description varchar (100000) NOT NULL,
 landmark_name varchar (1000) NOT NULL,
 landmark_type varchar (1000) NOT NULL,
 landmark_latitude decimal (16,14) NOT NULL,
-landmark_longitude numeric (16,14) NOT NULL,
+landmark_longitude decimal (16,14) NOT NULL,
 hours_of_operations varchar (1000) NOT NULL,
 kid_friendly boolean NOT NULL,
 admission boolean NOT NULL,
@@ -120,3 +120,77 @@ VALUES ('https://lh5.googleusercontent.com/p/AF1QipP5mID8GHQ250_Swvqy9KuEnuRjKsS
 
 
 
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://vacationidea.com/pix/img25Hy8R/articles/t-c1_acacia_reservation_155444_mobi.jpg','Passive park of 155 acres with a paved loop trail, a clubhouse & a regular schedule of guided walks.', 'Acacia Reservation', 'Park', 41.50228444391652, -81.48984306136526,'6AM - 11PM', 'true','false','','true', 4.6);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipOtxnZSWnjDCvvUC6aTaqHXnlrcAYo1QjnBz2-w=s680-w680-h510','This forested recreation area with a creek & a gorge features hiking trails, picnic sites & golf.', 'Bedford Reservation', 'Park',41.379147238107606, -81.54265033863473,'6AM - 11PM', 'true','false','','true', 4.7);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://www.google.com/maps/uv?pb=!1s0x8830eb1cb31372ef:0x5ed6713561c6117f!3m1!7e115!4shttps://lh5.googleusercontent.com/p/AF1QipOqKIaudaWzu0MTx7AEyqld0h3kHtTUbzpmKXoa%3Dw260-h175-n-k-no!5sBig+Creek+Reservation+-+Google+Search!15zQ2dJZ0FRPT0&imagekey=!1e10!2sAF1QipOqKIaudaWzu0MTx7AEyqld0h3kHtTUbzpmKXoa&hl=en&sa=X&ved=2ahUKEwi_jr3d9KH-AhUKj4kEHZmADvIQ7ZgBKAB6BAgUEAI','Scenic 175-acre area featuring a multiuse lake-to-lake trail, playground, fishing & picnic space.', 'Big Creek Reservation', 'Park', 41.35515336585686, -81.82657781534134,'6AM - 11PM', 'true','false','','true', 4.8);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRyZ7uEYFix6vIqPqQafvjdlJi8hR9G6nmRyo2Y82Tow&s','Woodland park atop a sandstone quarry featuring a fishing lake & dense forest that hosts many deer.', 'Bradley Woods Reservation', 'Park', 41.412919978469034, -81.9562091,'6AM - 11PM', 'true','false','','true', 4.6);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh5.googleusercontent.com/p/AF1QipNGIGiyeaKfY1PYmvfhabfQljqk8Cnq9GigjSs-=w141-h101-n-k-no-nu','Brecksville Reservation is the largest urban park in the U.S. state of Ohio. Chippewa Creek flows through the 3,026-acre reservation, which is home to a section of the Buckeye Trail. The park supports a diverse set of ecosystems, featuring fields, a river plain, gorges, and a variety of forested areas', 'Brecksville Reservation', 'Park', 41.32200314607469, -81.61822898465867,'6AM - 11PM', 'true','false','','true', 4.8);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh5.googleusercontent.com/p/AF1QipMTG-t-TFwx_PxvjnJMWxQvo7XTGcBgAdYYjFru=w141-h176-n-k-no-nu','Brookside Reservation was one of the City of Cleveland''s oldest neighborhood parks before its acquisition by Cleveland Metroparks in 1993.', 'Brookside Reservation', 'Park', 41.45025828052311, -81.72542266931738,'6AM - 11PM', 'true','false','','true', 4.6);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh5.googleusercontent.com/p/AF1QipNup1cID9DehKsqlxJHZQW-76YgUMt_f1aNFumz=w141-h118-n-k-no-nu','City-managed parks on & near Lake Erie, featuring a beach, fishing, trails & seasonal sports.', 'Euclid Creek Reservation', 'Park', 41.5623727840942, -81.53101496136527,'6AM - 10PM', 'true','false','','true', 4.6);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh5.googleusercontent.com/p/AF1QipNGvBjXThp3RN8RaaOWzCZMEy7e5cs15zPQuHST=w141-h101-n-k-no-nu','Wetland habitat offering walking trails, a nature center, picnic areas & bird-watching.','Garfield Park Reservation', 'Park', 41.43113677975311, -81.6048765,'6AM - 11PM', 'true','false','','true', 4.5);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://www.google.com/maps/uv?pb=!1s0x8830c3574cde8403%3A0x282c0e379b7d7411!3m1!7e115!4shttps%3A%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipMhgzvbJgCS-9BRxWa29p0MwU2EoGWQCnHqQ4PL%3Dw130-h87-n-k-no!5sHinckley%20Reservation%20-%20Google%20Search!15sCgIgAQ&imagekey=!1e10!2sAF1QipMhgzvbJgCS-9BRxWa29p0MwU2EoGWQCnHqQ4PL&hl=en&sa=X&ved=2ahUKEwibt4iv96H-AhUokIkEHTM3AugQ7ZgBKAF6BAgUEAM#','At the southern end of Cleveland Metroparks is Hinckley Reservation, the site of the nationally-known annual Return of the Buzzards.','Hinckley Reservation', 'Park', 41.22788105299173, -81.70110085397604,'6AM - 11PM', 'true','false','','true', 4.6);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPyc8QW63h1HUnO-Wt93OiF7aMMnN-BiRNQ6725Htxag&s','103-acre park on Lake Erie offers fishing, swimming, trails, picnic areas & an old water tower.','Huntington Reservation', 'Park',41.48667394919134, -81.93556837672118,'6AM - 11PM', 'true','false','','true', 4.7);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS7oyhI7TdYch4tDE1DJXfgQBOEmfrwKkvc8TXJUa_x4Sp1wTrT','From beaches to boat ramps, fitness trails to fishing piers, Lakefront Reservation is a true gem in the “Emerald Necklace”','Lakefront Reservation', 'Park',41.58490088797798, -81.56945743216576,'6AM - 11PM', 'true','false','','true', 4.6);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1pd1XZYff5y73VLpn-iivoJqWYdu3Z8eUGtIgbXXFsQ&s','Year-round destination for outdoor recreation, including hiking, swimming, boating & sledding.','Mill Stream Run Reservation', 'Park',41.312243219970995, -81.79313539261078,'6AM - 11PM', 'true','false','','true', 4.7);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipNLtpidmVxf-Vq0zIQ0NitPHl1u0dCHxpsJe-up=s680-w680-h510','Wildlife-rich area with woodland & wetland trails to Buttermilk Falls Preserve & Squire''s Castle.','North Chagrin Reservation','Park', 41.56823603777238, -81.42993244602395,'6AM - 11PM', 'true','false','','true', 4.8);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://www.google.com/maps/uv?pb=!1s0x8830e519b43b3193:0xbd3cd98c20e326ca!3m1!7e115!4shttps://lh5.googleusercontent.com/p/AF1QipNx0NuKrxvY3iNJ0bPrECGDT91dIrqorE1YTunm%3Dw260-h175-n-k-no!5sOhio+Erie+Canal+Reservation+-+Google+Search!15zQ2dJZ0FRPT0&imagekey=!1e10!2sAF1QipNx0NuKrxvY3iNJ0bPrECGDT91dIrqorE1YTunm&hl=en&sa=X&ved=2ahUKEwjYhJ_LgaL-AhXpjYkEHWdgAHUQ7ZgBKAB6BAgWEAI','The Ohio & Erie Canal Reservation stretches through the villages of Cuyahoga Heights and Valley View and other surrounding communities.','Ohio & Erie Canal Reservation','Park', 41.45127721424245, -81.68395711190773,'6AM - 11PM', 'true','false','','true', 4.7);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://www.google.com/maps/uv?pb=!1s0x8830ecbaae14c8b5%3A0xffa0aa168e564b57!3m1!7e115!4shttps%3A%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipN2Yr84vz_g6vpogil_y5PN3MABnqk4igvThbya%3Dw260-h175-n-k-no!5sRocky%20River%20Reservation%20-%20Google%20Search!15sCgIgAQ&imagekey=!1e10!2sAF1QipN2Yr84vz_g6vpogil_y5PN3MABnqk4igvThbya&hl=en&sa=X&ved=2ahUKEwi--7XjgqL-AhWvtYkEHbklBlcQ7ZgBKAB6BAgaEAI#','Woodland park split by the Rocky River, offering hiking trails with bird & deer sightings.','Rocky River Reservation','Park', 41.413009411322115, -81.88359894094437,'6AM - 11PM', 'true','false','','true', 4.8);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://vacationidea.com/pix/img25Hy8R/articles/cleveland-parks_g16_mobi.jpg','South Chagrin Reservation is an expansive reservation in Cleveland''s Moreland Hills, Bentleyville, and Solon suburbs, located along the banks of the Chagrin River, a designated National Scenic River.','South Chagrin Reservation','Park', 41.42362578576614, -81.42152405767065,'6AM - 11PM', 'true','false','','true', 4.6);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://www.clevelandmetroparks.com/getmedia/64298c7c-068c-4b36-b08b-3b4633e313ac/Washington_Res_Carousel_03.ashx?h=200&w=200&mode=crop&scale=both','Located in Newburgh Heights the 59-acre Washington Reservation is Cleveland Metroparks 15th reservation','Washington Reservation','Park',41.456715538790064, -81.66035021534424,'6AM - 11PM', 'true','false','','true', 4.5);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipOzy8ZabCmsD2X6IcnI-8shkyueA49vsUibhYzB=s680-w680-h510','Upland & wetland landscape offers trails, picnic areas & a building with water management workshops.','West Creek Reservation','Park',41.390972108310834, -81.69410836932029,'6AM - 11PM', 'true','false','','true', 4.7);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://upload.wikimedia.org/wikipedia/commons/a/a6/Gordon_Park_01_-_Cleveland.jpg','A grand bathhouse catered to the multitudes who crowded onto the park''s beach, and the city also provided facilities for boaters, fishermen, and picnickers.','Gordon Park','Park',41.53631274117859, -81.63462181534132,'6AM - 11PM', 'true','false','','true', 4.7);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipO7DND26iw0hPlt-WA2XnBwOk9DwIxbNe_qEEVN=s680-w680-h510','The Cleveland Mall is a landscaped public park in downtown Cleveland, Ohio. One of the most complete examples of City Beautiful design in the United States, the park is a historic site listed on the National Register of Historic Places.','The Cleveland Mall','Park',41.503535931803825, -81.69390698465868,'6AM - 6AM', 'true','false','','true', 4.3);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://www.universitycircle.org/files/locations/slider/cleveland-cultural-gardens-rockefeller-park-82.jpg','Rockefeller Park is a city park named in honor of oil magnate John D. Rockefeller Sr., located in Cleveland, Ohio. Part of the Cleveland Public Parks District, Rockefeller Park is immediately adjacent Wade Park to the southeast, and across Euclid Ave on its northwest border.','Rockefeller Park & Greenhouse','Park',41.52479521515105,-81.62351059261077,'10AM - 4PM', 'true','false','','true', 4.6);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://www.fieldoperations.net/fileadmin/fo_uploads/projects/Public_Square/FO_PUBLIC_SQUARE_25_Aerial_at_Night_Aerial_Agents.jpg','Cleveland Public Square is downtown Cleveland''s premier outdoor venue. The Square is host site to hundreds of events that happen year round.','Cleveland Public Square','Park',41.499937278506565, -81.69356890839835,'6AM - 11PM', 'true','false','','true', 4.5);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://live.staticflickr.com/1052/1463448807_4b96462eb0_b.jpg','Willard Park is the home of the “Free Stamp” and otherwise just something you pass through on the way to the Browns Stadium or the Rock Hall','Willard Park','Park',41.515641838491774, -81.69460627186443,'6AM - 6AM', 'true','false','','true', 4.4);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipNyn88VznEXrEtOfDLNK_YhX_HaW6uBFzUVZjo4=s680-w680-h510','Cuyahoga Valley National Park lies along the Cuyahoga River between the Ohio cities of Cleveland and Akron. The Ohio and Erie Canal Towpath Trail is a restored section of the canal''s original towpath. In the park’s north, the Canal Exploration Center details the 19th-century waterway’s history. Towering Brandywine Falls is one of several waterfalls. The Cuyahoga Valley Scenic Railroad runs through the park.','Cuyahoga Valley National Park','Park',41.28533967682155, -81.56918529092219,'6AM - 6AM', 'true','false','','true', 4.8);
+
+INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipNe975Q08bgvZ6G6KkXBL4pVcKeRcKJtl2Y1NHn=s680-w680-h510','31-acre lakefront park featuring a seasonal pool, bandshell, skatepark, plus sport courts & fields.','Lakewood Park','Park',41.49549989808099, -81.79724143068263,'6AM - 11PM', 'true','false','','true', 4.8);
