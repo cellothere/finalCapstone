@@ -19,10 +19,7 @@
         <input type="password" id="password" v-model="user.password" required />
       </div>
       <input type="submit" value="Sign in" class="button" id="done" :style="inputStyle" v-on:keyup.enter="login"/>
-      <input type="submit" value="Need an account? Sign up" class="button" id="done" :style="inputStyle"/>
-      <p>
-        <router-link :to="{ name: 'register' }" tag="button" type="submit" class="button" id="register">Need an account? Sign up.</router-link>
-      </p>
+      <input type="submit" value="Need an account? Sign up" class="button" id="done" :style="inputStyle" v-on:click="register"/>
     </form>
 
   </div>
@@ -61,6 +58,9 @@ export default {
             this.invalidCredentials = true;
           }
         });
+    },
+    register() {
+      this.$router.push('/register')
     }
   }
 };
