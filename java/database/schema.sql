@@ -6,7 +6,11 @@ DROP TABLE IF EXISTS itinerary;
 
 CREATE TABLE landmark (
 landmark_id serial,
+<<<<<<< HEAD
 landmark_img_url varchar (10000) NOT NULL,
+=======
+landmark_img_url varchar (10000),
+>>>>>>> c05a28209cb77e07587347e3da6a4a1b5217c9a8
 landmark_description varchar (100000) NOT NULL,
 landmark_name varchar (1000) NOT NULL,
 landmark_type varchar (1000) NOT NULL,
@@ -40,7 +44,7 @@ CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users (user_id),
 CONSTRAINT FK_landmark_id FOREIGN KEY (landmark_id) REFERENCES landmark (landmark_id)
 );
 
-COMMIT;
+
 
 
 INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
@@ -119,6 +123,7 @@ INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, lan
 VALUES ('https://lh5.googleusercontent.com/p/AF1QipP5mID8GHQ250_Swvqy9KuEnuRjKsSLEdlNf1ys=w408-h271-k-no','Old-school ballroom, live music destination & American restaurant emphasizing locally sourced fare.','Beachland Ballroom & Tavern','Music Venue',41.5719009759708, -81.57027223863474, '7PM - 12AM','false','true','','false', 4.6);
 
 
+<<<<<<< HEAD
 
 INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
 VALUES ('https://vacationidea.com/pix/img25Hy8R/articles/t-c1_acacia_reservation_155444_mobi.jpg','Passive park of 155 acres with a paved loop trail, a clubhouse & a regular schedule of guided walks.', 'Acacia Reservation', 'Park', 41.50228444391652, -81.48984306136526,'6AM - 11PM', 'true','false','','true', 4.6);
@@ -194,3 +199,6 @@ VALUES ('https://lh3.googleusercontent.com/p/AF1QipNyn88VznEXrEtOfDLNK_YhX_HaW6u
 
 INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
 VALUES ('https://lh3.googleusercontent.com/p/AF1QipNe975Q08bgvZ6G6KkXBL4pVcKeRcKJtl2Y1NHn=s680-w680-h510','31-acre lakefront park featuring a seasonal pool, bandshell, skatepark, plus sport courts & fields.','Lakewood Park','Park',41.49549989808099, -81.79724143068263,'6AM - 11PM', 'true','false','','true', 4.8);
+=======
+COMMIT;
+>>>>>>> c05a28209cb77e07587347e3da6a4a1b5217c9a8
