@@ -46,6 +46,8 @@ public class JdbcClevelandSpotsDao implements ClevelandSpotsDao {
         return thingsToDo;
     }
 
+//    adding a comment
+
     private ThingToDo mapRowToThingToDo(SqlRowSet rs) {
         ThingToDo thingToDo = new ThingToDo();
         thingToDo.setId(rs.getInt("landmark_id"));
@@ -63,5 +65,6 @@ public class JdbcClevelandSpotsDao implements ClevelandSpotsDao {
         thingToDo.setLandmarkRating(rs.getDouble("landmark_rating"));
         return thingToDo;
     }
+
 
 }
