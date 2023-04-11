@@ -40,7 +40,7 @@ CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users (user_id),
 CONSTRAINT FK_landmark_id FOREIGN KEY (landmark_id) REFERENCES landmark (landmark_id)
 );
 
-COMMIT;
+
 
 
 INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
@@ -117,8 +117,6 @@ VALUES ('https://lh5.googleusercontent.com/p/AF1QipObsIGLADn5qZKNlVl74b4BMA_58Ua
 
 INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
 VALUES ('https://lh5.googleusercontent.com/p/AF1QipP5mID8GHQ250_Swvqy9KuEnuRjKsSLEdlNf1ys=w408-h271-k-no','Old-school ballroom, live music destination & American restaurant emphasizing locally sourced fare.','Beachland Ballroom & Tavern','Music Venue',41.5719009759708, -81.57027223863474, '7PM - 12AM','false','true','','false', 4.6);
-
-
 
 INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
 VALUES ('https://vacationidea.com/pix/img25Hy8R/articles/t-c1_acacia_reservation_155444_mobi.jpg','Passive park of 155 acres with a paved loop trail, a clubhouse & a regular schedule of guided walks.', 'Acacia Reservation', 'Park', 41.50228444391652, -81.48984306136526,'6AM - 11PM', 'true','false','','true', 4.6);
