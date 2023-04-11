@@ -11,4 +11,6 @@ public interface ClevelandSpotsDao {
 
     List<ThingToDo> findFreeActivities();
 
+    ThingToDo getThingToDoById(int id);
+
 }

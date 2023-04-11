@@ -87,12 +87,18 @@ export default {
 h1 {
   cursor: default;
   user-select: none;
+  font-family: Poppins;
+}
+
+h2 {
+  font-family: Poppins;
 }
 form {
   display: flex;
   min-width: 100vh;
   flex-direction: column;
   align-items: center;
+
 }
 
 .usernamePassword {

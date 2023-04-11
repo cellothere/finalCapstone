@@ -16,7 +16,7 @@ public class JdbcClevelandSpotsDao implements ClevelandSpotsDao {
     public JdbcClevelandSpotsDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-
+    @Override
     public List<ThingToDo> findAll(){
 
         List<ThingToDo> thingsToDo = new ArrayList<>();
@@ -31,7 +31,7 @@ public class JdbcClevelandSpotsDao implements ClevelandSpotsDao {
         return thingsToDo;
 
     }
-
+    @Override
     public List<ThingToDo> findFreeActivities(){
         List<ThingToDo> thingsToDo = new ArrayList<>();
         String sql = "select * from landmark WHERE admission = true;";
@@ -45,6 +45,20 @@ public class JdbcClevelandSpotsDao implements ClevelandSpotsDao {
 
         return thingsToDo;
     }
+    @Override
+    public ThingToDo getThingToDoById(int id){
+        ThingToDo thingToDo = null;
+        String sql = "select * from landmark WHERE landmark_id = ?;";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+
+        if (results.next()) {
+            ThingToDo thingToDo2 = mapRowToThingToDo(results);
+            thingToDo = thingToDo2;
+        }
+        return thingToDo;
+    }
+
 
 //    adding a comment
 

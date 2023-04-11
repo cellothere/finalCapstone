@@ -96,6 +96,7 @@ label {
   background-size: cover;
   height: 100vh;
   width: 100vw;
+  justify-content: center;
 }
 
 h1 {
@@ -109,6 +110,9 @@ form {
   align-items: center;
 }
 
+#confirmPassword {
+  position: relative;
+}
 
 input {
   border-radius: 3rem;
@@ -152,6 +156,9 @@ label {
 p {
   font-family: Poppins;
   background-color: white;
+}
+.button {
+  font-family: Poppins, sans-serif;
 }
 
 

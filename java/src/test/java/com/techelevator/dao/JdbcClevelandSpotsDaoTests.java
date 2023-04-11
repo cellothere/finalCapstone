@@ -31,16 +31,11 @@ public class JdbcClevelandSpotsDaoTests extends BaseDaoTests {
         @Test
         public void getAllSpots_returns_all_spots(){
             List<ThingToDo> thingToDos = sut.findAll();
-            Assert.assertEquals(50,thingToDos.size());
+            Assert.assertEquals(76,thingToDos.size());
         }
         @Test
         public void get_all_admission_free_locations(){
             List<ThingToDo> thingToDos = sut.findFreeActivities();
             Assert.assertEquals(18,thingToDos.size());
         }
-
-
-
-
-
     }
