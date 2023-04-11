@@ -1,5 +1,5 @@
 <template>
-  <div id="login">
+  <div id="login" >
   
     <form @submit.prevent="login" id="login">
       <h1 class="welcome"> Welcome To Cleveland!</h1>
@@ -18,13 +18,13 @@
         <label for="password">Password</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
-      <button type="submit">Sign in</button>
+      <input type="submit" value="Sign in" class="button" id="done" :style="inputStyle" v-on:keyup.enter="login"/>
+      <input type="submit" value="Need an account? Sign up" class="button" id="done" :style="inputStyle"/>
       <p>
-      <router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
+        <router-link :to="{ name: 'register' }" tag="button" type="submit" class="button" id="register">Need an account? Sign up.</router-link>
+      </p>
     </form>
-    <div class="welcome-img">
-      <img class="login-img" src="../../assets/login.jpg" alt="Login Cleveland">
-    </div>
+
   </div>
 </template>
 
@@ -70,37 +70,75 @@ export default {
 
 <style scoped>
 
-.welcome-img {
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+
+#login {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  min-height: 100vh;
+  background-image: url(../../assets/clevelandmap.jpg) ;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
 }
 
+h1 {
+  cursor: default;
+  user-select: none;
+}
 form {
   display: flex;
   min-width: 100vh;
   flex-direction: column;
   align-items: center;
-
 }
+
+
+input {
+  border-radius: 3rem;
+  border: none;
+  padding: 10px;
+  text-align: center;
+  outline: none;
+  margin: 10px;
+  width: 50%;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+input:hover {
+  box-shadow: 0px 0px 8px -5px #000000;
+}
+input:active {
+  box-shadow: 0px 0px 8px -5px #000000;
+}
+
+
 button {
   width: 60px;
-  
+  cursor: pointer;
+  user-select: none;
+}
+
+#done {
+  width: 20%;
 }
 .form-input-group {
   margin-bottom: 1rem;
 }
-#login {
-  text-align: center;
-}
+
 label {
   margin-right: 0.5rem;
 }
 .welcome {
   text-align: center;
 }
+p {
+  font-family: Poppins;
+  background-color: white;
+}
+
 
 </style>
