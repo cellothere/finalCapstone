@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+
 public class ThingToDo {
     private int id;
     @JsonProperty
@@ -35,6 +36,8 @@ public class ThingToDo {
     @JsonProperty
     private double landmarkRating;
 
+    public ThingToDo() {
+    }
     public ThingToDo(int id, String imageUrl, String description, String name, String type,
                      BigDecimal latitude, BigDecimal longitude, String hours, boolean isKidFriendly,
                      boolean isFreeAdmission, String restaurantType, boolean isOutdoor, double landmarkRating) {
@@ -54,6 +57,109 @@ public class ThingToDo {
 
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public BigDecimal getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(BigDecimal latitude) {
+        this.latitude = latitude;
+    }
+
+    public BigDecimal getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(BigDecimal longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getHours() {
+        return hours;
+    }
+
+    public void setHours(String hours) {
+        this.hours = hours;
+    }
+
+    public boolean isKidFriendly() {
+        return isKidFriendly;
+    }
+
+    public void setKidFriendly(boolean kidFriendly) {
+        isKidFriendly = kidFriendly;
+    }
+
+    public boolean isFreeAdmission() {
+        return isFreeAdmission;
+    }
+
+    public void setFreeAdmission(boolean freeAdmission) {
+        isFreeAdmission = freeAdmission;
+    }
+
+    public String getRestaurantType() {
+        return restaurantType;
+    }
+
+    public void setRestaurantType(String restaurantType) {
+        this.restaurantType = restaurantType;
+    }
+
+    public boolean isOutdoor() {
+        return isOutdoor;
+    }
+
+    public void setOutdoor(boolean outdoor) {
+        isOutdoor = outdoor;
+    }
+
+    public double getLandmarkRating() {
+        return landmarkRating;
+    }
+
+    public void setLandmarkRating(double landmarkRating) {
+        this.landmarkRating = landmarkRating;
+    }
 }
 
 
