@@ -18,18 +18,17 @@
 </template>
 
 <script>
+
+import destinationsService from '../services/DestinationsService';
+
 export default {
-    props: ['destination'],
+    props: {
+        'id': Number
+    },
     data() {
         return {
-            showDetail: false
-            // destination: {
-            //     name: 'Example Destination',
-            //     rating: 5,
-            //     description: 'This is an example of a description of a thing.',
-            //     latitude: 41.4990075,
-            //     longitude: -81.6932948
-            // }
+            showDetail: false,
+            destination: {}
         }
     },
     computed: {
@@ -44,6 +43,11 @@ export default {
                 this.$el.querySelector('#DetailsButton').innerHTML = 'Details';
             }
         }
+    },
+    created() {
+        destinationsService.getDestinationById(this.id).then(response => {
+            this.destination = response.data;
+    });
     }
 }
 </script>
