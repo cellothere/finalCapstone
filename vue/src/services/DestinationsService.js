@@ -8,5 +8,8 @@ export default {
 
   getDestinations() {
     return http.get('/thingsToDo');
+  },
+  getDestinationById() {
+    return http.get('/ENDPOINT');
   }
 }
