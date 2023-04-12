@@ -103,11 +103,14 @@ form {
   min-width: 100vh;
   flex-direction: column;
   align-items: center;
+  margin-top: 50px;
 
 }
 
 .usernamePassword {
   font-family: Poppins;
+  font-size: 18px;
+  font-weight: bold;
 }
 input {
   border-radius: 3rem;
