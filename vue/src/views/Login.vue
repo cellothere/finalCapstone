@@ -20,6 +20,7 @@
       </div>
       <input type="submit" value="Sign in" class="button" id="done" :style="inputStyle" v-on:keyup.enter="login"/>
       <input type="submit" value="Need an account? Sign up" class="button" id="done" :style="inputStyle" v-on:click="register"/>
+      <input type="submit" value="Continue as Guest" class="button" id="done" :style="inputStyle" v-on:click="goToGuestView"/>
     </form>
 
   </div>
@@ -61,6 +62,10 @@ export default {
     },
     register() {
       this.$router.push('/register')
+    },
+    // TODO send to guest view!
+    goToGuestView() {
+      this.$router.push('/guest')
     }
   }
 };
