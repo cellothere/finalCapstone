@@ -92,6 +92,7 @@ label {
 
 
 #register {
+  margin-top: 2rem;
   display: flex;
   background-image: url(../../assets/clevelandmap.jpg) ;
   background-attachment: fixed;
