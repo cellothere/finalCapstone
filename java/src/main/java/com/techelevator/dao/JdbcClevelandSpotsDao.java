@@ -20,7 +20,8 @@ public class JdbcClevelandSpotsDao implements ClevelandSpotsDao {
     public List<ThingToDo> findAll(){
 
         List<ThingToDo> thingsToDo = new ArrayList<>();
-        String sql = "select * from landmark;";
+        String sql = "Select landmark_id, landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, " +
+                "hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating From landmark;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
@@ -61,10 +62,10 @@ public class JdbcClevelandSpotsDao implements ClevelandSpotsDao {
 
     @Override
     public boolean create(ThingToDo thingToDo){
-        String sql = "INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)" +
-                "VALUES (?, ?, ? ?, ?, ?, ?, ?, ?,?,'?',?, ?);";
+        String sql = "INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, restaurant_type, landmark_rating, is_outdoor, kid_friendly, admission )" +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         int results = jdbcTemplate.update(sql, thingToDo.getImageUrl(), thingToDo.getDescription(), thingToDo.getName(), thingToDo.getType(),
-                thingToDo.getLatitude(), thingToDo.getHours(), thingToDo.isKidFriendly(), thingToDo.isFreeAdmission(), thingToDo.getRestaurantType(), thingToDo.getLandmarkRating());
+                thingToDo.getLatitude(), thingToDo.getLongitude(), thingToDo.getHours(), thingToDo.getRestaurantType(), thingToDo.getLandmarkRating(), thingToDo.isOutdoor(), thingToDo.isKidFriendly(), thingToDo.isFreeAdmission() );
 
         if(results == 1) {
             return true;
