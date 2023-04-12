@@ -8,14 +8,14 @@
                 v-for="n in roundedRating"
                 v-bind:key="n"/>
         </div>
-        <!-- <p>{{ distance }} mi away</p> -->
         <p class="description" v-if=showDetail>{{ destination.description }}</p>
+        <p v-if='showDetail'>{{ distance }} mi away</p>
         <p v-if="(showDetail && destination.hours)">Hours: {{ destination.hours }}</p>
         <div>
             <button class='tag' id='type' v-if="(showDetail && destination.type)">{{ destination.type }}</button>
-            <button class='tag' id='outdoor' v-if="(showDetail && destination.isOutdoor)">Outdoor</button>
-            <button class='tag' id='kid-friendly' v-if="(showDetail && destination.isKidFriendly)">Kid-Friendly</button>
-            <button class='tag' id='admission' v-if="(showDetail && destination.isFreeAdmission)">Admission Fee</button>
+            <button class='tag' id='outdoor' v-if="(showDetail && destination.outdoor)">Outdoor</button>
+            <button class='tag' id='kid-friendly' v-if="(showDetail && destination.kidFriendly)">Kid-Friendly</button>
+            <button class='tag' id='admission' v-if="(showDetail && destination.freeAdmission)">Admission Fee</button>
             <button class='tag' id='restaurant-type' v-if="(showDetail && destination.restaurantType)">{{ destination.restaurantType }}</button>
         </div>
         <br>
@@ -58,14 +58,8 @@ export default {
         },
         getUrl() {
             return this.destination.imageURL;
-        }
-    },
-    created() {
-        destinationsService.getDestinationById(this.id).then(response => {
-            this.destination = response.data;
-        });
-    },
-    getDistance(lat1, lon1, lat2, lon2) {
+        },
+        getDistance(lat1, lon1, lat2, lon2) {
         var R = 6371; // Radius of the earth in km
         var dLat = this.deg2rad(lat2-lat1);  // deg2rad below
         var dLon = this.deg2rad(lon2-lon1); 
@@ -77,10 +71,16 @@ export default {
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
         var d = R * c; // Distance in km
         return (d*0.621371).toFixed(1); //Distance in mi to one decimal place
+        },
+        deg2rad(deg) {
+            return deg * (Math.PI/180)
+        }
     },
-    deg2rad(deg) {
-        return deg * (Math.PI/180)
-    }
+    created() {
+        destinationsService.getDestinationById(this.id).then(response => {
+            this.destination = response.data;
+        });
+    },
 }
 </script>
 
@@ -97,6 +97,7 @@ export default {
     border-radius: 10px;
     width: 15vw;
     min-width: 250px;
+    height: 100%;
 }
 
 .thumbnail {
