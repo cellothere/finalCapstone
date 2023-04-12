@@ -1,24 +1,28 @@
 <template>
   <div id="register" class="text-center">
-    <form @submit.prevent="register">
-      <h1>Create Account</h1>
+    <form @submit.prevent="register" class="container">
+      <h1 id="createAccount">Create Account</h1>
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <div class="form-input-group">
+      <div class="form-input-group" id="inputUsername">
         <label for="username">Username</label>
         <input type="text" id="username" v-model="user.username" required autofocus />
       </div>
-      <div class="form-input-group">
+      <div class="form-input-group" id="inputPassword">
         <label for="password">Password</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
-      <div class="form-input-group">
+      <div class="form-input-group" id="confirmPassword">
         <label for="confirmPassword">Confirm Password</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
-      <input type="submit" value="Create Account" class="button" id="done" :style="inputStyle" v-on:keyup.enter="register" style="width: 50%"/>
-      <input type="submit" value="Already have an account? Log in." class="button" id="done" :style="inputStyle" v-on:click="alreadyHaveAccount" style="width: 50%"/>
+      <div class="form-input-group" id="registerAccount">
+        <input type="submit" value="Create Account" class="button" id="done" :style="inputStyle" v-on:keyup.enter="register" style="width: 50%"/>
+      </div>
+      <div class="form-input-group" id="alreadyHaveAccount">
+        <input type="submit" value="Already have an account? Log in." class="button" id="done" :style="inputStyle" v-on:click="alreadyHaveAccount" style="width: 50%"/>
+      </div>
     </form>
   </div>
 </template>
@@ -102,18 +106,22 @@ label {
 h1 {
   cursor: default;
   user-select: none;
+  font-size: 3rem;
 }
 form {
   display: flex;
-  min-width: 100vh;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
+  width: 50%;
 }
 
 #confirmPassword {
-  position: relative;
 }
-
+label {
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: bold;
+}
 input {
   border-radius: 3rem;
   border: none;
@@ -135,21 +143,20 @@ input:active {
 
 
 button {
-  width: 60px;
+  width: 50px;
   cursor: pointer;
   user-select: none;
 }
 
 #done {
-  width: 20%;
+
 }
 .form-input-group {
   margin-bottom: 1rem;
+  font-family: Poppins;
 }
 
-label {
-  margin-right: 0.5rem;
-}
+
 .welcome {
   text-align: center;
 }
