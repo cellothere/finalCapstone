@@ -13,4 +13,6 @@ public interface ClevelandSpotsDao {
 
     ThingToDo getThingToDoById(int id);
 
+    boolean create(ThingToDo thingToDo);
+
 }

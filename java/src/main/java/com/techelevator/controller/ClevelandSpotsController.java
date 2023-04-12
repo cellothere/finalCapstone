@@ -49,6 +49,11 @@ public class ClevelandSpotsController {
             return thingToDo;
         }
     }
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "thingsToDo/create", method = RequestMethod.POST)
+    public boolean createThingToDO(@RequestBody ThingToDo thingToDo){
+        return clevelandSpotsDao.create(thingToDo);
+    }
 }
 
 

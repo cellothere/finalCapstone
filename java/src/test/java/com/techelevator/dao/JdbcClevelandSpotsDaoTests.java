@@ -34,8 +34,14 @@ public class JdbcClevelandSpotsDaoTests extends BaseDaoTests {
             Assert.assertEquals(76,thingToDos.size());
         }
         @Test
-        public void get_all_admission_free_locations(){
+        public void get_all_free_admission_locations(){
             List<ThingToDo> thingToDos = sut.findFreeActivities();
             Assert.assertEquals(18,thingToDos.size());
+        }
+
+//       TODO Not sure if this test is working properly!
+        @Test
+        public void created_returns_true(){
+            Assert.assertTrue(sut.create(Thing_2));
         }
     }

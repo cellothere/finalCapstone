@@ -1,12 +1,8 @@
 package com.techelevator.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
 
 
 public class ThingToDo {
@@ -26,21 +22,21 @@ public class ThingToDo {
     @JsonProperty
     private String hours;
     @JsonProperty
-    private boolean isKidFriendly;
+    private boolean kidFriendly;
     @JsonProperty
-    private boolean isFreeAdmission;
+    private boolean freeAdmission;
     @JsonProperty
     private String restaurantType;
     @JsonProperty
-    private boolean isOutdoor;
+    private boolean outdoor;
     @JsonProperty
     private double landmarkRating;
 
     public ThingToDo() {
     }
     public ThingToDo(int id, String imageUrl, String description, String name, String type,
-                     BigDecimal latitude, BigDecimal longitude, String hours, boolean isKidFriendly,
-                     boolean isFreeAdmission, String restaurantType, boolean isOutdoor, double landmarkRating) {
+                     BigDecimal latitude, BigDecimal longitude, String hours, boolean kidFriendly,
+                     boolean freeAdmission, String restaurantType, boolean outdoor, double landmarkRating) {
         this.id = id;
         this.imageUrl = imageUrl;
         this.description = description;
@@ -49,10 +45,10 @@ public class ThingToDo {
         this.latitude = latitude;
         this.longitude = longitude;
         this.hours = hours;
-        this.isKidFriendly = isKidFriendly;
-        this.isFreeAdmission = isFreeAdmission;
+        this.kidFriendly = kidFriendly;
+        this.freeAdmission = freeAdmission;
         this.restaurantType = restaurantType;
-        this.isOutdoor = isOutdoor;
+        this.outdoor = outdoor;
         this.landmarkRating = landmarkRating;
 
     }
@@ -122,19 +118,19 @@ public class ThingToDo {
     }
 
     public boolean isKidFriendly() {
-        return isKidFriendly;
+        return kidFriendly;
     }
 
     public void setKidFriendly(boolean kidFriendly) {
-        isKidFriendly = kidFriendly;
+        this.kidFriendly = kidFriendly;
     }
 
     public boolean isFreeAdmission() {
-        return isFreeAdmission;
+        return freeAdmission;
     }
 
     public void setFreeAdmission(boolean freeAdmission) {
-        isFreeAdmission = freeAdmission;
+        this.freeAdmission = freeAdmission;
     }
 
     public String getRestaurantType() {
@@ -146,11 +142,11 @@ public class ThingToDo {
     }
 
     public boolean isOutdoor() {
-        return isOutdoor;
+        return outdoor;
     }
 
     public void setOutdoor(boolean outdoor) {
-        isOutdoor = outdoor;
+        this.outdoor = outdoor;
     }
 
     public double getLandmarkRating() {
