@@ -1,6 +1,5 @@
 <template>
     <div class="destination-card">
-        <!-- <p>{{ destination.latitude }}</p> -->
         <img class="thumbnail" :src="destination.imageUrl" />
         <h3>{{ destination.name }}</h3>
         <div class="rating">
@@ -11,6 +10,15 @@
         </div>
         <!-- <p>{{ distance }} mi away</p> -->
         <p class="description" v-if=showDetail>{{ destination.description }}</p>
+        <p v-if="(showDetail && destination.hours)">Hours: {{ destination.hours }}</p>
+        <div>
+            <button class='tag' id='type' v-if="(showDetail && destination.type)">{{ destination.type }}</button>
+            <button class='tag' id='outdoor' v-if="(showDetail && destination.isOutdoor)">Outdoor</button>
+            <button class='tag' id='kid-friendly' v-if="(showDetail && destination.isKidFriendly)">Kid-Friendly</button>
+            <button class='tag' id='admission' v-if="(showDetail && destination.isFreeAdmission)">Admission Fee</button>
+            <button class='tag' id='restaurant-type' v-if="(showDetail && destination.restaurantType)">{{ destination.restaurantType }}</button>
+        </div>
+        <br>
         <div class="button-container">
             <button id='DetailsButton' v-on:click=toggleShowDetail()>Details</button>
             <button>Add</button>
@@ -58,16 +66,17 @@ export default {
         });
     },
     getDistance(lat1, lon1, lat2, lon2) {
-      var R = 6371; // Radius of the earth in km
-      var dLat = this.deg2rad(lat2-lat1);  // deg2rad below
-      var dLon = this.deg2rad(lon2-lon1); 
-      var a = 
-          Math.sin(dLat/2) * Math.sin(dLat/2) +
-          Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) * 
-          Math.sin(dLon/2) * Math.sin(dLon/2); 
-      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-      var d = R * c; // Distance in km
-      return (d*0.621371).toFixed(1); //Distance in mi to one decimal place
+        var R = 6371; // Radius of the earth in km
+        var dLat = this.deg2rad(lat2-lat1);  // deg2rad below
+        var dLon = this.deg2rad(lon2-lon1); 
+        var a = 
+            Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) * 
+            Math.sin(dLon/2) * Math.sin(dLon/2)
+        ; 
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+        var d = R * c; // Distance in km
+        return (d*0.621371).toFixed(1); //Distance in mi to one decimal place
     },
     deg2rad(deg) {
         return deg * (Math.PI/180)
@@ -111,6 +120,40 @@ export default {
 
 h3 {
     margin-bottom: 2px;
+}
+
+.tag {
+    pointer-events: none;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 13px;
+    margin-left: -1px;
+    margin-bottom: 10px;
+    border-radius: 100px;
+}
+
+#outdoor {
+    background-color: green;
+}
+
+#kid-friendly {
+    background-color:purple;
+}
+
+#admission {
+    background-color: black;
+}
+
+#restaurant-type {
+    background-color: brown;
+}
+
+#type {
+    background-color: darkgray;
 }
 
 </style>
