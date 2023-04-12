@@ -24,9 +24,8 @@
           <option value=5 />
         </datalist>
     </form>
-    <!-- <p>{{ destinations }}</p> -->
     <div class="list">
-      <destination-card v-for="destination in destinations" v-bind:key="destination.id" v-bind:id="destination.id" />
+      <destination-card v-for="destination in filteredDestinations" v-bind:key="destination.id" v-bind:id="destination.id" />
     </div>
   </div>
 </template>
@@ -51,28 +50,16 @@ export default {
     destinationsService.getDestinations().then((response) => {
       this.destinations = response.data;
     });
-    // this.destinations.forEach(d => {
-    //   d.distance = this.getDistance(d.landmark_latitude, d.landmark_longitude, this.$store.state.currentLatitude, this.$store.state.currentLongitude);
-    // });
   },
   computed: {
     filteredDestinations() {
       return this.destinations.filter(d => {
-        return (
-          (d.name.includes(this.keyword) ||
-            d.description.includes(this.keyword) ||
-            d.landmark_type.includes(this.keyword)
-          ) ||
-          (d.distance >= this.distance) ||
-          (d.rating >= this.rating)
-        )
+        return (d.name.toLowerCase().includes(this.keyword.toLowerCase())) ||
+          (d.type.toLowerCase()).includes(this.keyword.toLowerCase())
       });
     }
   },
   methods: {
-    testMessage() {
-      console.log('HELLO WORLD!');
-    }
   }
   };
 </script>
@@ -100,7 +87,3 @@ export default {
 }
 
 </style>
-
-// v-for="destination in destinations"
-// v-bind:key="destination.id"
-// v-bind:destination="destination"
