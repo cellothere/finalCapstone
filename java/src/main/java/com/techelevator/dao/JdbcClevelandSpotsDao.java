@@ -59,8 +59,20 @@ public class JdbcClevelandSpotsDao implements ClevelandSpotsDao {
         return thingToDo;
     }
 
+    @Override
+    public boolean create(ThingToDo thingToDo){
+        String sql = "INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)" +
+                "VALUES (?, ?, ? ?, ?, ?, ?, ?, ?,?,'?',?, ?);";
+        int results = jdbcTemplate.update(sql, thingToDo.getImageUrl(), thingToDo.getDescription(), thingToDo.getName(), thingToDo.getType(),
+                thingToDo.getLatitude(), thingToDo.getHours(), thingToDo.isKidFriendly(), thingToDo.isFreeAdmission(), thingToDo.getRestaurantType(), thingToDo.getLandmarkRating());
 
-//    adding a comment
+        if(results == 1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
     private ThingToDo mapRowToThingToDo(SqlRowSet rs) {
         ThingToDo thingToDo = new ThingToDo();
