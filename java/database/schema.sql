@@ -54,7 +54,6 @@ CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users (user_id),
 CONSTRAINT FK_landmark_id FOREIGN KEY (landmark_id) REFERENCES landmark (landmark_id)
 );
 
-COMMIT;
 
 
 INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, Monday_open, Monday_close, Tuesday_open, Tuesday_close, Wednesday_open, Wednesday_close, Thursday_open, Thursday_close, Friday_open, Friday_close, Saturday_open, Saturday_close, Sunday_open, Sunday_close, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
