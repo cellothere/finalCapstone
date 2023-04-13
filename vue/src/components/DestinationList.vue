@@ -1,11 +1,10 @@
 <template>
   <div>
-    <!-- TODO: Add logic for singular/plural -->
+    <!-- TODO: Add logic for singular/plural (result/results) -->
     <p>{{ filteredDestinations.length }} results</p>
     <form class='filters'>
       <b>Filter Results:</b>
       <i>&nbsp;&nbsp;</i>
-      <label for="keyword"></label>
       <input name="keyword" type="text" placeholder="search" v-model='keyword'>
       <i>&nbsp;&nbsp;</i>
       <input list="distance" id="distanceFilter" placeholder="distance" v-model='distance'>
@@ -16,6 +15,18 @@
           <option value="20 mi" />
           <option value="50 mi" />
         </datalist>
+      <i>&nbsp;&nbsp;</i>
+      <input list="dayOpen" id="dayFilter" placeholder="any day" v-model='dayOpen'>
+        <datalist id="dayOpen" value=null>
+          <option value="Mon" />
+          <option value="Tue" />
+          <option value="Wed" />
+          <option value="Thu" />
+          <option value="Fri" />
+          <option value="Sat" />
+          <option value="Sun" />
+        </datalist>
+      <input name="timeOpen" id='timeFilter' type="text" placeholder="any hour" v-model='timeOpen'>
       <!-- <i>&nbsp;&nbsp;</i>
       <input list="rating" id="ratingFilter" placeholder="rating" v-model='rating'>
         <datalist id="rating">
@@ -46,7 +57,9 @@ export default {
       destinations: [],
       keyword: '',
       distance: null,
-      rating: null
+      rating: null,
+      timeOpen: null,
+      hourOpen: null
     }
   },
   created() {
@@ -66,6 +79,15 @@ export default {
           return (this.distanceCalc(d) <= this.distance)
         });
       }
+      if (this.dayOpen === 'Mon') {
+        filteredArray = filteredArray.filter(d => {
+          return (d.mondayOpen)});}
+      if (this.dayOpen === 'Tue') {filteredArray = filteredArray.filter(d => {return (d.tuesdayOpen)});}
+      if (this.dayOpen === 'Wed') {filteredArray = filteredArray.filter(d => {return (d.wednesdayOpen)});}
+      if (this.dayOpen === 'Thu') {filteredArray = filteredArray.filter(d => {return (d.thursdayOpen)});}
+      if (this.dayOpen === 'Fri') {filteredArray = filteredArray.filter(d => {return (d.fridayOpen)});}
+      if (this.dayOpen === 'Sat') {filteredArray = filteredArray.filter(d => {return (d.saturdayOpen)});}
+      if (this.dayOpen === 'Sun') {filteredArray = filteredArray.filter(d => {return (d.sundayOpen)});}
       return filteredArray;
     }
   },
@@ -108,6 +130,10 @@ export default {
 }
 
 #distanceFilter {
+  width: 70px;
+}
+
+#dayFilter {
   width: 70px;
 }
 

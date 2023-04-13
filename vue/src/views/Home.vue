@@ -29,9 +29,11 @@ export default {
 
 <style>
 
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
 .home {
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: poppins;
 }
 
 .suggestions {

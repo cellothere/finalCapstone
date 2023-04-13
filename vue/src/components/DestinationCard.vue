@@ -11,6 +11,13 @@
         <p class="description" v-if=showDetail>{{ destination.description }}</p>
         <p v-if='showDetail'>{{ distance }} mi away</p>
         <p v-if="(showDetail && destination.hours)">Hours: {{ destination.hours }}</p>
+        <!-- <p v-if='showDetail'>M {{ destination.mondayOpen }} - {{ destination.mondayClose }}</p>
+        <p v-if='showDetail'>M {{ destination.tuesdayOpen }} - {{ destination.tuesdayClose }}</p>
+        <p v-if='showDetail'>M {{ destination.wednesdayOpen }} - {{ destination.wednesdayClose }}</p>
+        <p v-if='showDetail'>M {{ destination.thursdayOpen }} - {{ destination.thursdayClose }}</p>
+        <p v-if='showDetail'>M {{ destination.fridayOpen }} - {{ destination.fridayClose }}</p>
+        <p v-if='showDetail'>M {{ destination.saturdayOpen }} - {{ destination.saturdayClose }}</p>
+        <p v-if='showDetail'>M {{ destination.sundayOpen }} - {{ destination.sundayClose }}</p> -->
         <div>
             <button class='tag' id='type' v-if="(showDetail && destination.type)">{{ destination.type }}</button>
             <button class='tag' id='outdoor' v-if="(showDetail && destination.outdoor)">Outdoor</button>
