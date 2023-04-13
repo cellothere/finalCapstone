@@ -1,23 +1,18 @@
 <template>
   <div class="favorites-sidebar">
     <h2>My Favorites</h2>
-    <ul>
-      <li v-for="item in favorites" :key="item.id">
-        {{ item.title }}
-      </li>
-    </ul>
+    <destination-list />
   </div>
 </template>
 
 <script>
+import DestinationList from './DestinationList.vue';
 export default {
+  components: { DestinationList },
   name: "FavoritesSideBar",
   data() {
     return {
       favorites: [
-        { id: 1, title: "Favorite item 1" },
-        { id: 2, title: "Favorite item 2" },
-        { id: 3, title: "Favorite item 3" },
       ],
     };
   },
@@ -27,7 +22,7 @@ export default {
 <style>
 .favorites-sidebar {
   position: fixed;
-  top: 0;
+  top: 30px;
   right: 0;
   width: 200px;
   height: 100%;
