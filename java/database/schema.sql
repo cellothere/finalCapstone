@@ -2,7 +2,9 @@ START TRANSACTION;
 
 DROP TABLE IF EXISTS landmark CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS itinerary_landmark CASCADE;
 DROP TABLE IF EXISTS itinerary CASCADE;
+DROP TABLE IF EXISTS itinerary_user CASCADE;
 
 CREATE TABLE landmark (
 landmark_id serial,
@@ -42,16 +44,24 @@ role varchar(50) NOT NULL,
 CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
+CREATE TABLE itinerary_landmark (
+itinerary_id serial,
+landmark_id int NOT NULL,
+sequence_number int NOT NULL,
+CONSTRAINT PK_itinerary_landmark PRIMARY KEY (itinerary_id)
+);
+
 CREATE TABLE itinerary (
 itinerary_id serial,
-user_id int,
-landmark_id int,
-sequence_id int,
+itinerary_title varchar (1000) NOT NULL,
+itinerary_date date NOT NULL,
+starting_time time,
+CONSTRAINT PK_itinerary PRIMARY KEY (itinerary_id)
+);
 
-
-CONSTRAINT PK_itinerary_id PRIMARY KEY (itinerary_id),
-CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users (user_id),
-CONSTRAINT FK_landmark_id FOREIGN KEY (landmark_id) REFERENCES landmark (landmark_id)
+CREATE TABLE itinerary_user (
+itinerary_id int NOT NULL,
+user_id int NOT NULL
 );
 
 COMMIT;
