@@ -2,23 +2,11 @@ package com.techelevator.controller;
 
 
 import com.techelevator.dao.ClevelandSpotsDao;
-import com.techelevator.model.LoginDto;
-import com.techelevator.model.LoginResponseDto;
-import com.techelevator.model.ThingToDo;
-import com.techelevator.model.User;
-import com.techelevator.security.jwt.JWTFilter;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
+import com.techelevator.model.ThingToDoDto;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -34,29 +22,29 @@ public class ClevelandSpotsController {
     }
 
     @RequestMapping(value = "/thingsToDo", method = RequestMethod.GET)
-    public List<ThingToDo> getAllThingsToDo() {
+    public List<ThingToDoDto> getAllThingsToDo() {
         return clevelandSpotsDao.findAll();
     }
 
     @RequestMapping(value ="/thingsToDo/freeAdmission", method = RequestMethod.GET)
-    public List<ThingToDo> findFreeActivities(){
+    public List<ThingToDoDto> findFreeActivities(){
             return clevelandSpotsDao.findFreeActivities();
     }
 
     @RequestMapping(value = "thingsToDo/{id}", method = RequestMethod.GET)
-    public ThingToDo findThingToDoById(@PathVariable int id) {
-        ThingToDo thingToDo = clevelandSpotsDao.getThingToDoById(id);
+    public ThingToDoDto findThingToDoById(@PathVariable int id) {
+        ThingToDoDto thingToDoDto = clevelandSpotsDao.getThingToDoById(id);
 
-        if(thingToDo == null){
+        if(thingToDoDto == null){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No landmark with this location ID");
         } else {
-            return thingToDo;
+            return thingToDoDto;
         }
     }
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "thingsToDo/create", method = RequestMethod.POST)
-    public boolean createThingToDO(@RequestBody ThingToDo thingToDo){
-        return clevelandSpotsDao.create(thingToDo);
+    public boolean createThingToDO(@RequestBody ThingToDoDto thingToDoDto){
+        return clevelandSpotsDao.create(thingToDoDto);
     }
 }
 

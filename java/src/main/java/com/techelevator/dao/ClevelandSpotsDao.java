@@ -1,18 +1,18 @@
 package com.techelevator.dao;
 
 
-import com.techelevator.model.ThingToDo;
+import com.techelevator.model.ThingToDoDto;
 
 import java.util.List;
 
 public interface ClevelandSpotsDao {
 
-    List<ThingToDo> findAll();
+    List<ThingToDoDto> findAll();
 
-    List<ThingToDo> findFreeActivities();
+    List<ThingToDoDto> findFreeActivities();
 
-    ThingToDo getThingToDoById(int id);
+    ThingToDoDto getThingToDoById(int id);
 
-    boolean create(ThingToDo thingToDo);
+    boolean create(ThingToDoDto thingToDoDto);
 
 }

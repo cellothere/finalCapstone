@@ -1,15 +1,11 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.ThingToDo;
-import com.techelevator.model.User;
+import com.techelevator.model.ThingToDoDto;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 public class JdbcClevelandSpotsDaoTests extends BaseDaoTests {
@@ -30,13 +26,13 @@ public class JdbcClevelandSpotsDaoTests extends BaseDaoTests {
 
         @Test
         public void getAllSpots_returns_all_spots(){
-            List<ThingToDo> thingToDos = sut.findAll();
-            Assert.assertEquals(76,thingToDos.size());
+            List<ThingToDoDto> thingToDoDtos = sut.findAll();
+            Assert.assertEquals(76, thingToDoDtos.size());
         }
         @Test
         public void get_all_free_admission_locations(){
-            List<ThingToDo> thingToDos = sut.findFreeActivities();
-            Assert.assertEquals(18,thingToDos.size());
+            List<ThingToDoDto> thingToDoDtos = sut.findFreeActivities();
+            Assert.assertEquals(18, thingToDoDtos.size());
         }
 
 ////       TODO Not sure if this test is working properly!

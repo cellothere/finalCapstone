@@ -14,7 +14,7 @@
 
 
 
-<style scoped>
+<style>
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
@@ -67,6 +67,53 @@
 #welcomeUser:hover {
     font-size:18px;
     font-size-adjust: 25px;
+}
+
+.tag {
+    border: solid;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 13px;
+    margin-left: -1px;
+    margin-bottom: 10px;
+    border-radius: 100px;
+}
+
+.tagSelected {
+    border: solid;
+    border-color: black;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 13px;
+    margin-left: -1px;
+    margin-bottom: 10px;
+    border-radius: 100px;
+}
+
+#outdoor {
+    background-color: green;
+}
+
+#kid-friendly {
+    background-color:purple;
+}
+
+#admission {
+    background-color: black;
+}
+
+#restaurant-type {
+    background-color: brown;
+}
+
+#type {
+    background-color: darkgray;
 }
   
 </style>

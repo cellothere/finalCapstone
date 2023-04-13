@@ -140,7 +140,7 @@ button {
 }
 
 #done {
-  width: 20%;
+  width: 35%;
 }
 .form-input-group {
   margin-bottom: 1rem;

@@ -17,8 +17,8 @@
         <label for="confirmPassword">Confirm Password</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
-      <input type="submit" value="Create Account" class="button" id="done" :style="inputStyle" v-on:keyup.enter="register" style="width: 50%"/>
-      <input type="submit" value="Already have an account? Log in." class="button" id="done" :style="inputStyle" v-on:click="alreadyHaveAccount" style="width: 50%"/>
+      <input type="submit" value="Create Account" class="button" id="done" :style="inputStyle" v-on:keyup.enter="register"/>
+      <input type="submit" value="Already have an account? Log in." class="button" id="done" :style="inputStyle" v-on:click="alreadyHaveAccount"/>
     </form>
   </div>
 </template>
@@ -151,7 +151,7 @@ button {
 }
 
 #done {
-  width: 100px;
+  width: 40%;
 }
 
 .welcome {
