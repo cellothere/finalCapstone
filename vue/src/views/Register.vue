@@ -17,12 +17,8 @@
         <label for="confirmPassword">Confirm Password</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
-      <div class="form-input-group" id="registerAccount">
-        <input type="submit" value="Create Account" class="button" id="done" :style="inputStyle" v-on:keyup.enter="register" style="width: 50%"/>
-      </div>
-      <div class="form-input-group" id="alreadyHaveAccount">
-        <input type="submit" value="Already have an account? Log in." class="button" id="done" :style="inputStyle" v-on:click="alreadyHaveAccount" style="width: 50%"/>
-      </div>
+      <input type="submit" value="Create Account" class="button" id="done" :style="inputStyle" v-on:keyup.enter="register" style="width: 50%"/>
+      <input type="submit" value="Already have an account? Log in." class="button" id="done" :style="inputStyle" v-on:click="alreadyHaveAccount" style="width: 50%"/>
     </form>
   </div>
 </template>
@@ -83,6 +79,8 @@ export default {
 <style scoped>
 .form-input-group {
   margin-bottom: 1rem;
+  font-family: Poppins;
+  position: relative;
 }
 label {
   margin-right: 0.5rem;
@@ -92,8 +90,8 @@ label {
 
 
 #register {
-  margin-top: 2rem;
   display: flex;
+  margin-top: 2rem;
   background-image: url(../../assets/clevelandmap.jpg) ;
   background-attachment: fixed;
   background-position: center;
@@ -109,19 +107,22 @@ h1 {
   user-select: none;
   font-size: 3rem;
 }
-form {
+.container {
   display: flex;
   flex-direction: column;
-  align-items: left;
-  width: 50%;
+  width: 70%;
+  align-items: center;
+
 }
 
-#confirmPassword {
-}
 label {
   font-family: Poppins;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: bold;
+}
+#confirmPassword {
+  position: relative;
+  right: 3.5%;
 }
 input {
   border-radius: 3rem;
@@ -150,13 +151,8 @@ button {
 }
 
 #done {
-
+  width: 100px;
 }
-.form-input-group {
-  margin-bottom: 1rem;
-  font-family: Poppins;
-}
-
 
 .welcome {
   text-align: center;

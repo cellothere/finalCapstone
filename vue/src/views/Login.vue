@@ -93,6 +93,7 @@ h1 {
   cursor: default;
   user-select: none;
   font-family: Poppins;
+  font-size: 3rem;
 }
 
 h2 {

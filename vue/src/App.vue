@@ -2,9 +2,10 @@
   <div id="app">
     <div id="nav">
       <div id="home">
-        <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-        <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+        <router-link v-bind:to="{ name: 'home' }" id="homeButton">Home</router-link>&nbsp;|&nbsp;
+        <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''" id="logoutButton">Logout</router-link>
       </div>
+      <img id="clevelandLogo" src="../assets/clevelandLogo.jpg" alt="Cleveland Logo" />
     <div id="welcomeUser" v-if="$store.state.token != ''">Welcome, {{ $store.state.user.username }}</div>
     </div>
     <router-view />
@@ -20,7 +21,7 @@
   #nav {
   display: flex;
   font-family: "Karma", sans-serif;
-  background-color: white;
+  background: linear-gradient(to right, white,#FAF9F9);
   max-width: auto;
   overflow: hidden;
    position: fixed; 
@@ -34,17 +35,38 @@
    
 }
 
+#clevelandLogo {
+  height: 4.5rem;
+  width: 5rem;
+  position: sticky;
+  right: 48%;
+}
+
 #home {
   font-family: Poppins;
   font-weight: bold;
   margin-left: 2%;
 }
+#homeButton:hover {
+  font-size: 18px;
+  font-size-adjust: 25px;
+}
+
+#logoutButton:hover {
+  font-size: 18px;
+  font-size-adjust: 25px;
+}
 #welcomeUser {
   float: right;
-  margin-right: 7%;
+  margin-right: 4%;
   text-align: center;
   font-family: Poppins;
   font-weight: bold;
+}
+
+#welcomeUser:hover {
+    font-size:18px;
+    font-size-adjust: 25px;
 }
   
 </style>
