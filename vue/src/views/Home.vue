@@ -48,6 +48,7 @@ export default {
 
 .banner-image {
   position: relative;
+  margin-top: 2.5%;
   top: 0px;
   left: 0px;
   height: 400px;
