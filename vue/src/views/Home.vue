@@ -70,5 +70,8 @@ export default {
   object-fit: contain;
   filter: invert(100%);
 }
+template {
+  background-color: bisque;
+}
 
 </style>
