@@ -26,7 +26,7 @@ export default {
   name: "home",
   data() {
     return {
-      showSidebar: false
+      showSidebar: true
     }
   },
 };
