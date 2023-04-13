@@ -20,10 +20,12 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    favorites: {},
+    favorites: [
+      1
+    ],
+
     currentLatitude: 41.5038033, //hard-coded temporarily
     currentLongitude: -81.6419466 //hard-coded temporarily,
-
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
