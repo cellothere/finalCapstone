@@ -2,13 +2,11 @@ package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.imageio.plugins.tiff.TIFFDirectory;
 import java.math.BigDecimal;
 import java.sql.Time;
-import java.time.LocalTime;
 
 
-public class ThingToDo {
+public class ThingToDoDto {
     private int id;
     @JsonProperty
     private String imageUrl;
@@ -51,8 +49,6 @@ public class ThingToDo {
     @JsonProperty
     private Time sundayClose;
     @JsonProperty
-    private String hours;
-    @JsonProperty
     private boolean kidFriendly;
     @JsonProperty
     private boolean freeAdmission;
@@ -63,13 +59,13 @@ public class ThingToDo {
     @JsonProperty
     private double landmarkRating;
 
-    public ThingToDo() {
+    public ThingToDoDto() {
     }
 
-    public ThingToDo(int id, String imageUrl, String description, String name, String type, BigDecimal latitude, BigDecimal longitude, Time mondayOpen,
-                     Time mondayClose, Time tuesdayOpen, Time tuesdayClose, Time wednesdayOpen, Time wednesdayClose, Time thursdayOpen, Time thursdayClose,
-                     Time fridayOpen, Time fridayClose, Time saturdayOpen, Time saturdayClose, Time sundayOpen, Time sundayClose, String hours, boolean kidFriendly,
-                     boolean freeAdmission, String restaurantType, boolean outdoor, double landmarkRating) {
+    public ThingToDoDto(String imageUrl, String description, String name, String type, BigDecimal latitude, BigDecimal longitude, Time mondayOpen,
+                        Time mondayClose, Time tuesdayOpen, Time tuesdayClose, Time wednesdayOpen, Time wednesdayClose, Time thursdayOpen, Time thursdayClose,
+                        Time fridayOpen, Time fridayClose, Time saturdayOpen, Time saturdayClose, Time sundayOpen, Time sundayClose, boolean kidFriendly,
+                        boolean freeAdmission, String restaurantType, boolean outdoor, double landmarkRating) {
         this.id = id;
         this.imageUrl = imageUrl;
         this.description = description;
@@ -91,7 +87,6 @@ public class ThingToDo {
         this.saturdayClose = saturdayClose;
         this.sundayOpen = sundayOpen;
         this.sundayClose = sundayClose;
-        this.hours = hours;
         this.kidFriendly = kidFriendly;
         this.freeAdmission = freeAdmission;
         this.restaurantType = restaurantType;
@@ -156,13 +151,6 @@ public class ThingToDo {
         this.longitude = longitude;
     }
 
-    public String getHours() {
-        return hours;
-    }
-
-    public void setHours(String hours) {
-        this.hours = hours;
-    }
 
     public boolean isKidFriendly() {
         return kidFriendly;
