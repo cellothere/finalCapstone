@@ -1,14 +1,14 @@
 <template>
   <div class="favorites-sidebar">
     <h2>My Favorites</h2>
-    <destination-list />
+    <sidebar-favorites-list/>
   </div>
 </template>
 
 <script>
-import DestinationList from './DestinationList.vue';
+import SidebarFavoritesList from './SidebarFavoritesList.vue';
 export default {
-  components: { DestinationList },
+  components: { SidebarFavoritesList },
   name: "FavoritesSideBar",
   data() {
     return {
@@ -30,4 +30,10 @@ export default {
   padding: 20px;
   z-index: 998;
 }
+
+destination-list {
+    width: 10px;
+}
+
 </style>
+

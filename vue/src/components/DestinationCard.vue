@@ -81,7 +81,7 @@ export default {
     padding: 10px;
     border-radius: 10px;
     width: 15vw;
-    min-width: 250px;
+    min-width: 50px;
     height: 100%;
 }
 
