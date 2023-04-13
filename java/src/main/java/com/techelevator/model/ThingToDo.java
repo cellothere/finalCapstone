@@ -2,7 +2,10 @@ package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.imageio.plugins.tiff.TIFFDirectory;
 import java.math.BigDecimal;
+import java.sql.Time;
+import java.time.LocalTime;
 
 
 public class ThingToDo {
@@ -20,6 +23,34 @@ public class ThingToDo {
     @JsonProperty
     private BigDecimal longitude;
     @JsonProperty
+    private Time mondayOpen;
+    @JsonProperty
+    private Time mondayClose;
+    @JsonProperty
+    private Time tuesdayOpen;
+    @JsonProperty
+    private Time tuesdayClose;
+    @JsonProperty
+    private Time wednesdayOpen;
+    @JsonProperty
+    private Time wednesdayClose;
+    @JsonProperty
+    private Time thursdayOpen;
+    @JsonProperty
+    private Time thursdayClose;
+    @JsonProperty
+    private Time fridayOpen;
+    @JsonProperty
+    private Time fridayClose;
+    @JsonProperty
+    private Time saturdayOpen;
+    @JsonProperty
+    private Time saturdayClose;
+    @JsonProperty
+    private Time sundayOpen;
+    @JsonProperty
+    private Time sundayClose;
+    @JsonProperty
     private String hours;
     @JsonProperty
     private boolean kidFriendly;
@@ -34,8 +65,10 @@ public class ThingToDo {
 
     public ThingToDo() {
     }
-    public ThingToDo(int id, String imageUrl, String description, String name, String type,
-                     BigDecimal latitude, BigDecimal longitude, String hours, boolean kidFriendly,
+
+    public ThingToDo(int id, String imageUrl, String description, String name, String type, BigDecimal latitude, BigDecimal longitude, Time mondayOpen,
+                     Time mondayClose, Time tuesdayOpen, Time tuesdayClose, Time wednesdayOpen, Time wednesdayClose, Time thursdayOpen, Time thursdayClose,
+                     Time fridayOpen, Time fridayClose, Time saturdayOpen, Time saturdayClose, Time sundayOpen, Time sundayClose, String hours, boolean kidFriendly,
                      boolean freeAdmission, String restaurantType, boolean outdoor, double landmarkRating) {
         this.id = id;
         this.imageUrl = imageUrl;
@@ -44,14 +77,28 @@ public class ThingToDo {
         this.type = type;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.mondayOpen = mondayOpen;
+        this.mondayClose = mondayClose;
+        this.tuesdayOpen = tuesdayOpen;
+        this.tuesdayClose = tuesdayClose;
+        this.wednesdayOpen = wednesdayOpen;
+        this.wednesdayClose = wednesdayClose;
+        this.thursdayOpen = thursdayOpen;
+        this.thursdayClose = thursdayClose;
+        this.fridayOpen = fridayOpen;
+        this.fridayClose = fridayClose;
+        this.saturdayOpen = saturdayOpen;
+        this.saturdayClose = saturdayClose;
+        this.sundayOpen = sundayOpen;
+        this.sundayClose = sundayClose;
         this.hours = hours;
         this.kidFriendly = kidFriendly;
         this.freeAdmission = freeAdmission;
         this.restaurantType = restaurantType;
         this.outdoor = outdoor;
         this.landmarkRating = landmarkRating;
-
     }
+
 
     public int getId() {
         return id;
@@ -156,105 +203,116 @@ public class ThingToDo {
     public void setLandmarkRating(double landmarkRating) {
         this.landmarkRating = landmarkRating;
     }
+
+    public Time getMondayOpen() {
+        return mondayOpen;
+    }
+
+    public void setMondayOpen(Time mondayOpen) {
+        this.mondayOpen = mondayOpen;
+    }
+
+    public Time getMondayClose() {
+        return mondayClose;
+    }
+
+    public void setMondayClose(Time mondayClose) {
+        this.mondayClose = mondayClose;
+    }
+
+    public Time getTuesdayOpen() {
+        return tuesdayOpen;
+    }
+
+    public void setTuesdayOpen(Time tuesdayOpen) {
+        this.tuesdayOpen = tuesdayOpen;
+    }
+
+    public Time getTuesdayClose() {
+        return tuesdayClose;
+    }
+
+    public void setTuesdayClose(Time tuesdayClose) {
+        this.tuesdayClose = tuesdayClose;
+    }
+
+    public Time getWednesdayOpen() {
+        return wednesdayOpen;
+    }
+
+    public void setWednesdayOpen(Time wednesdayOpen) {
+        this.wednesdayOpen = wednesdayOpen;
+    }
+
+    public Time getWednesdayClose() {
+        return wednesdayClose;
+    }
+
+    public void setWednesdayClose(Time wednesdayClose) {
+        this.wednesdayClose = wednesdayClose;
+    }
+
+    public Time getThursdayOpen() {
+        return thursdayOpen;
+    }
+
+    public void setThursdayOpen(Time thursdayOpen) {
+        this.thursdayOpen = thursdayOpen;
+    }
+
+    public Time getThursdayClose() {
+        return thursdayClose;
+    }
+
+    public void setThursdayClose(Time thursdayClose) {
+        this.thursdayClose = thursdayClose;
+    }
+
+    public Time getFridayOpen() {
+        return fridayOpen;
+    }
+
+    public void setFridayOpen(Time fridayOpen) {
+        this.fridayOpen = fridayOpen;
+    }
+
+    public Time getFridayClose() {
+        return fridayClose;
+    }
+
+    public void setFridayClose(Time fridayClose) {
+        this.fridayClose = fridayClose;
+    }
+
+    public Time getSaturdayOpen() {
+        return saturdayOpen;
+    }
+
+    public void setSaturdayOpen(Time saturdayOpen) {
+        this.saturdayOpen = saturdayOpen;
+    }
+
+    public Time getSaturdayClose() {
+        return saturdayClose;
+    }
+
+    public void setSaturdayClose(Time saturdayClose) {
+        this.saturdayClose = saturdayClose;
+    }
+
+    public Time getSundayOpen() {
+        return sundayOpen;
+    }
+
+    public void setSundayOpen(Time sundayOpen) {
+        this.sundayOpen = sundayOpen;
+    }
+
+    public Time getSundayClose() {
+        return sundayClose;
+    }
+
+    public void setSundayClose(Time sundayClose) {
+        this.sundayClose = sundayClose;
+    }
 }
-
-
-
-
-//}
-//
-//
-//
-//    private int id;
-//    private String username;
-//    @JsonIgnore
-//    private String password;
-//    @JsonIgnore
-//    private boolean activated;
-//    private Set<Authority> authorities = new HashSet<>();
-//
-//    public User() { }
-//
-//    public User(int id, String username, String password, String authorities) {
-//        this.id = id;
-//        this.username = username;
-//        this.password = password;
-//        if(authorities != null) this.setAuthorities(authorities);
-//        this.activated = true;
-//    }
-//
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public void setId(int id) {
-//        this.id = id;
-//    }
-//
-//    public String getUsername() {
-//        return username;
-//    }
-//
-//    public void setUsername(String username) {
-//        this.username = username;
-//    }
-//
-//    public String getPassword() {
-//        return password;
-//    }
-//
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
-//
-//    public boolean isActivated() {
-//        return activated;
-//    }
-//
-//    public void setActivated(boolean activated) {
-//        this.activated = activated;
-//    }
-//
-//    public Set<Authority> getAuthorities() {
-//        return authorities;
-//    }
-//
-//    public void setAuthorities(Set<Authority> authorities) {
-//        this.authorities = authorities;
-//    }
-//
-//    public void setAuthorities(String authorities) {
-//        String[] roles = authorities.split(",");
-//        for(String role : roles) {
-//            String authority = role.contains("ROLE_") ? role : "ROLE_" + role;
-//            this.authorities.add(new Authority(authority));
-//        }
-//    }
-//
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        User user = (User) o;
-//        return id == user.id &&
-//                activated == user.activated &&
-//                Objects.equals(username, user.username) &&
-//                Objects.equals(password, user.password) &&
-//                Objects.equals(authorities, user.authorities);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(id, username, password, activated, authorities);
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return "User{" +
-//                "id=" + id +
-//                ", username='" + username + '\'' +
-//                ", activated=" + activated +
-//                ", authorities=" + authorities +
-//                '}';
-//    }
-//}

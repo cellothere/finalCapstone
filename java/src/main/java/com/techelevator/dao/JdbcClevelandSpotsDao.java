@@ -21,7 +21,8 @@ public class JdbcClevelandSpotsDao implements ClevelandSpotsDao {
 
         List<ThingToDo> thingsToDo = new ArrayList<>();
         String sql = "Select landmark_id, landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, " +
-                "hours_of_operations, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating From landmark;";
+        "monday_open, monday_close, tuesday_open, tuesday_close, wednesday_open, wednesday_close, thursday_open, thursday_close, friday_open, friday_close," +
+                "saturday_open, saturday_close, sunday_open, sunday_close, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating From landmark;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
@@ -62,10 +63,16 @@ public class JdbcClevelandSpotsDao implements ClevelandSpotsDao {
 
     @Override
     public boolean create(ThingToDo thingToDo){
-        String sql = "INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, hours_of_operations, restaurant_type, landmark_rating, is_outdoor, kid_friendly, admission )" +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO landmark (landmark_id, landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude," +
+                "monday_open, monday_close, tuesday_open, tuesday_close, wednesday_open, wednesday_close, thursday_open, thursday_close, friday_open, friday_close," +
+                "saturday_open, saturday_close, sunday_open, sunday_close, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating From landmark;)" +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?,  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         int results = jdbcTemplate.update(sql, thingToDo.getImageUrl(), thingToDo.getDescription(), thingToDo.getName(), thingToDo.getType(),
-                thingToDo.getLatitude(), thingToDo.getLongitude(), thingToDo.getHours(), thingToDo.getRestaurantType(), thingToDo.getLandmarkRating(), thingToDo.isOutdoor(), thingToDo.isKidFriendly(), thingToDo.isFreeAdmission() );
+                thingToDo.getLatitude(), thingToDo.getLongitude(), thingToDo.getMondayOpen(), thingToDo.getMondayClose(),
+                thingToDo.getTuesdayOpen(), thingToDo.getTuesdayClose(), thingToDo.getWednesdayOpen(), thingToDo.getWednesdayClose(), thingToDo.getThursdayOpen(),
+                thingToDo.getThursdayClose(), thingToDo.getFridayOpen(), thingToDo.getFridayClose(), thingToDo.getSaturdayOpen(), thingToDo.getSaturdayClose(),
+                thingToDo.getSundayOpen(), thingToDo.getSundayClose(), thingToDo.getRestaurantType(), thingToDo.getLandmarkRating(), thingToDo.isOutdoor(),
+                thingToDo.isKidFriendly(), thingToDo.isFreeAdmission());
 
         if(results == 1) {
             return true;
@@ -84,7 +91,20 @@ public class JdbcClevelandSpotsDao implements ClevelandSpotsDao {
         thingToDo.setType(rs.getString("landmark_type"));
         thingToDo.setLatitude(rs.getBigDecimal("landmark_latitude"));
         thingToDo.setLongitude(rs.getBigDecimal("landmark_longitude"));
-        thingToDo.setHours(rs.getString("hours_of_operations"));
+        thingToDo.setMondayOpen(rs.getTime("monday_open"));
+        thingToDo.setMondayOpen(rs.getTime("monday_close"));
+        thingToDo.setMondayOpen(rs.getTime("tuesday_open"));
+        thingToDo.setMondayOpen(rs.getTime("tuesday_close"));
+        thingToDo.setMondayOpen(rs.getTime("wednesday_open"));
+        thingToDo.setMondayOpen(rs.getTime("wednesday_close"));
+        thingToDo.setMondayOpen(rs.getTime("thursday_open"));
+        thingToDo.setMondayOpen(rs.getTime("thursday_close"));
+        thingToDo.setMondayOpen(rs.getTime("friday_open"));
+        thingToDo.setMondayOpen(rs.getTime("friday_close"));
+        thingToDo.setMondayOpen(rs.getTime("saturday_open"));
+        thingToDo.setMondayOpen(rs.getTime("saturday_close"));
+        thingToDo.setMondayOpen(rs.getTime("sunday_open"));
+        thingToDo.setMondayOpen(rs.getTime("sunday_close"));
         thingToDo.setKidFriendly(rs.getBoolean("kid_friendly"));
         thingToDo.setFreeAdmission(rs.getBoolean("admission"));
         thingToDo.setRestaurantType(rs.getString("restaurant_type"));
