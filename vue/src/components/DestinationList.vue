@@ -1,42 +1,50 @@
 <template>
   <div>
-    <!-- TODO: Add logic for singular/plural (result/results) -->
-    <p>{{ filteredDestinations.length }} results</p>
+    <div class='filterButtons'>
+      <button 
+        id='entertainmentAndCulture'
+        v-on:click='toggleEntertainmentAndCultureFilter()'
+        v-bind:class="{ tag:!entertainmentAndCultureFilter, tagSelected: entertainmentAndCultureFilter }">
+        Entertainment & Culture
+      </button>
+      <button 
+        id='parks'
+        v-on:click='toggleParksFilter()'
+        v-bind:class="{ tag:!parksFilter, tagSelected: parksFilter }">
+        Parks
+      </button>
+      <button
+        id='restaurants'
+        v-on:click='toggleRestaurantsFilter()'
+        v-bind:class="{ tag:!restaurantsFilter, tagSelected: restaurantsFilter }">
+        Restaurants
+      </button>
+      <button
+        id='outdoor'
+        v-on:click='toggleOutdoorFilter()'
+        v-bind:class="{ tag:!outdoorFilter, tagSelected: outdoorFilter }">
+        Outdoor
+      </button>
+      <button
+        id='kid-friendly'
+        v-on:click='toggleKidFriendlyFilter()'
+        v-bind:class="{ tag:!kidFriendlyFilter, tagSelected: kidFriendlyFilter }">
+        Kid-Friendly
+      </button>
+      <button
+        id='free'
+        v-on:click='toggleFreeFilter()'
+        v-bind:class="{ tag:!freeFilter, tagSelected: freeFilter }">
+        Free
+      </button>
+    </div>
+    <br>
     <form class='filters'>
-      <b>Filter Results:</b>
+      <b>Filter By Keyword:</b>
       <i>&nbsp;&nbsp;</i>
       <input name="keyword" type="text" placeholder="search" v-model='keyword'>
-      <i>&nbsp;&nbsp;</i>
-      <input list="distance" id="distanceFilter" placeholder="distance" v-model='distance'>
-        <datalist id="distance" value=0>
-          <option value="1 mi" />
-          <option value="5 mi" />
-          <option value="10 mi" />
-          <option value="20 mi" />
-          <option value="50 mi" />
-        </datalist>
-      <i>&nbsp;&nbsp;</i>
-      <input list="dayOpen" id="dayFilter" placeholder="any day" v-model='dayOpen'>
-        <datalist id="dayOpen" value=null>
-          <option value="Mon" />
-          <option value="Tue" />
-          <option value="Wed" />
-          <option value="Thu" />
-          <option value="Fri" />
-          <option value="Sat" />
-          <option value="Sun" />
-        </datalist>
-      <input name="timeOpen" id='timeFilter' type="text" placeholder="any hour" v-model='timeOpen'>
-      <!-- <i>&nbsp;&nbsp;</i>
-      <input list="rating" id="ratingFilter" placeholder="rating" v-model='rating'>
-        <datalist id="rating">
-          <option value=1 />
-          <option value=2 />
-          <option value=3 />
-          <option value=4 />
-          <option value=5 />
-        </datalist> -->
     </form>
+    <p>{{ filteredDestinations.length }} results</p>
     <br>
     <div class="list">
       <destination-card v-for="destination in filteredDestinations" v-bind:key="destination.id" v-bind:id="destination.id" />
@@ -59,7 +67,13 @@ export default {
       distance: null,
       rating: null,
       timeOpen: null,
-      hourOpen: null
+      hourOpen: null,
+      entertainmentAndCultureFilter: false,
+      parksFilter: false,
+      restaurantsFilter: false,
+      outdoorFilter: false,
+      kidFriendlyFilter: false,
+      freeFilter: false,
     }
   },
   created() {
@@ -74,20 +88,39 @@ export default {
         return (d.name.toLowerCase().includes(this.keyword.toLowerCase())) ||
           (d.type.toLowerCase()).includes(this.keyword.toLowerCase())
       });
-      if (this.distance) {
+      if (this.entertainmentAndCultureFilter) {
         filteredArray = filteredArray.filter(d => {
-          return (this.distanceCalc(d) <= this.distance)
+          return (d.type==='Museum' || d.type==='Market' || d.type==='Garden' || 
+                  d.type==='Aquarium' || d.type==='Monument' || d.type==='Cultural Center' || 
+                  d.type==='Entertainment' || d.type==='Music Venue' || d.type==='Zoo' || 
+                  d.type==='Stadium' || d.type==='Historical Neighborhood' || d.type==='Cultural Hub');
         });
       }
-      if (this.dayOpen === 'Mon') {
+      if (this.parksFilter) {
         filteredArray = filteredArray.filter(d => {
-          return (d.mondayOpen)});}
-      if (this.dayOpen === 'Tue') {filteredArray = filteredArray.filter(d => {return (d.tuesdayOpen)});}
-      if (this.dayOpen === 'Wed') {filteredArray = filteredArray.filter(d => {return (d.wednesdayOpen)});}
-      if (this.dayOpen === 'Thu') {filteredArray = filteredArray.filter(d => {return (d.thursdayOpen)});}
-      if (this.dayOpen === 'Fri') {filteredArray = filteredArray.filter(d => {return (d.fridayOpen)});}
-      if (this.dayOpen === 'Sat') {filteredArray = filteredArray.filter(d => {return (d.saturdayOpen)});}
-      if (this.dayOpen === 'Sun') {filteredArray = filteredArray.filter(d => {return (d.sundayOpen)});}
+          return (d.type==='Park');
+        });
+      }
+      if (this.restaurantsFilter) {
+        filteredArray = filteredArray.filter(d => {
+          return (d.type==='Restaurant');
+        });
+      }
+      if (this.outdoorFilter) {
+        filteredArray = filteredArray.filter(d => {
+          return (d.outdoor);
+        });
+      }
+      if (this.kidFriendlyFilter) {
+        filteredArray = filteredArray.filter(d => {
+          return (d.kidFriendly);
+        });
+      }
+      if (this.freeFilter) {
+        filteredArray = filteredArray.filter(d => {
+          return (!d.freeAdmission && d.type!=='Restaurant');
+        });
+      }
       return filteredArray;
     }
   },
@@ -110,6 +143,27 @@ export default {
     },
     distanceCalc(d) {
       return this.getDistance(d.latitude, d.longitude, this.$store.state.currentLatitude, this.$store.state.currentLongitude)
+    },
+    toggleEntertainmentAndCultureFilter () {
+      this.entertainmentAndCultureFilter = !this.entertainmentAndCultureFilter
+    },
+    toggleParksFilter () {
+      this.parksFilter = !this.parksFilter
+    },
+    toggleRestaurantsFilter () {
+      this.restaurantsFilter = !this.restaurantsFilter
+    },
+    toggleOutdoorFilter () {
+      this.outdoorFilter = !this.outdoorFilter
+    },
+    toggleKidFriendlyFilter () {
+      this.kidFriendlyFilter = !this.kidFriendlyFilter
+    },
+    toggleFreeFilter () {
+      this.freeFilter = !this.freeFilter
+    },
+    toggleEntertainmentActive () {
+      this.entertainmentActive = !this.entertainmentActive;
     }
   }
   };
@@ -139,6 +193,22 @@ export default {
 
 #ratingFilter {
   width: 70px;
+}
+
+#restaurants {
+    background-color: brown;
+}
+
+#entertainmentAndCulture {
+    background-color: lightseagreen;
+}
+
+#parks {
+    background-color: darkolivegreen;
+}
+
+#free {
+    background-color: gray;
 }
 
 </style>
