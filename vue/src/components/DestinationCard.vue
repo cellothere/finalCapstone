@@ -13,14 +13,13 @@
                 </div>
             </div>
             <div class='card-back'>
-                <br>
+                <p class="description" >{{ destination.description }}</p>
                 <div class="rating" >
                     <img src="../../assets/star.png"
                         class="ratingStar"
                         v-for="n in roundedRating"
                         v-bind:key="n"/>
                 </div>
-                <p class="description" >{{ destination.description }}</p>
                 <br>
                 <div>
                     <button class='tag' id='type' v-if="(destination.type)">{{ destination.type }}</button>
@@ -29,11 +28,12 @@
                     <button class='tag' id='admission' v-if="(destination.freeAdmission)">Admission Fee</button>
                     <button class='tag' id='restaurant-type' v-if="(destination.restaurantType)">{{ destination.restaurantType }}</button>
                 </div>
+                <br>
                 <h3 v-on:click='flip()' >{{ destination.name }}</h3>
                 <div class="button-container">
-                    <label for="favorite"> Favorite: </label>
-                    <input type="checkbox" id="favorite" name="favorite" value="yes" v-model="selected">
-                 </div>
+                    <label for="favorite"> Add to list: </label>
+                    <input type="checkbox" id="favorite" name="favorite" value="yes" v-model="selected" v-on:click.stop>
+                </div> 
             </div>
         </div>
         
@@ -99,11 +99,6 @@ export default {
     flex-direction: column;
 }
 
-.destination-card:hover {
-    /* transform: rotateY(180deg); */
-    
-}
-
 .flipped {
     transform: rotateY(180deg);
 }
@@ -115,18 +110,18 @@ export default {
     width: 15vw;
     min-width: 250px;
     height: 500px;
-    background-color: lightgray;
+    background-color: rgb(230, 230, 230);
     margin: 10px;
     padding: 10px;
     border-radius: 10px;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-between;
 }
 
 .card-back {
     transform: rotateY(180deg);
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 .thumbnail {
@@ -134,18 +129,19 @@ export default {
     position: relative;
     top: 0px;
     left: 0px;
-    aspect-ratio: 1/1;
+    aspect-ratio: 1/1.4;
     object-fit: cover;
 }
 
 .ratingStar {
-    max-width: 20px;
+    max-width: 25px;
 }
 
 .button-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin-bottom: 20px;
 }
 
 h3 {

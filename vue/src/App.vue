@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div id="nav">
-      <div id="home">
-        <router-link v-bind:to="{ name: 'home' }" id="homeButton">Home</router-link>&nbsp;|&nbsp;
+      <div id="explore">
+        <router-link v-bind:to="{ name: 'explore' }" id="exploreButton">Explore</router-link>&nbsp;|&nbsp;
         <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''" id="logoutButton">Logout</router-link>
       </div>
       <img id="clevelandLogo" src="../assets/clevelandLogo.jpg" alt="Cleveland Logo" />
@@ -13,26 +13,24 @@
 </template>
 
 
-
 <style>
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
-  #nav {
-  display: flex;
-  font-family: "Karma", sans-serif;
-  background: linear-gradient(to right, white,#FAF9F9);
-  max-width: auto;
-  overflow: hidden;
-   position: fixed; 
-   top: 0; 
-   width: 100%; 
-   height: 7%;
-   justify-content: space-between;
-   align-items: center;
-   box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
-   z-index: 999;
-   
+#nav {
+display: flex;
+font-family: "Karma", sans-serif;
+background: linear-gradient(to right, white,#FAF9F9);
+max-width: auto;
+overflow: hidden;
+position: fixed; 
+top: 0; 
+width: 100%; 
+height: 7%;
+justify-content: space-between;
+align-items: center;
+box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+z-index: 999;
 }
 
 #clevelandLogo {
@@ -42,12 +40,12 @@
   right: 48%;
 }
 
-#home {
+#explore {
   font-family: Poppins;
   font-weight: bold;
   margin-left: 2%;
 }
-#homeButton:hover {
+#exploreButton:hover {
   font-size: 18px;
   font-size-adjust: 25px;
 }
@@ -82,6 +80,10 @@
     border-radius: 100px;
 }
 
+.tag:hover {
+  cursor: pointer;
+}
+
 .tagSelected {
     border: solid;
     border-color: black;
@@ -94,6 +96,10 @@
     margin-left: -1px;
     margin-bottom: 10px;
     border-radius: 100px;
+}
+
+.tagSelected:hover {
+  cursor: pointer;
 }
 
 #outdoor {
