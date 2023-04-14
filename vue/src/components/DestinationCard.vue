@@ -2,14 +2,14 @@
     <div class="card-container">
         <div class="destination-card"
             @click="handleClick"
-                :class="{flipped : showDetail}"
+                :class="{flipped : flipped}"
                 v-on:click='flip()' >
             <div class='card-front'>
                 <img class="thumbnail" :src="destination.imageUrl" />
                 <h3 >{{ destination.name }}</h3>
                 <div class="button-container">
                     <label for="favorite"> Add to list: </label>
-                    <input type="checkbox" id="favorite" name="favorite" value="yes" v-model="selected" @change.prevent="addToFavorites(destination)">
+                    <input type="checkbox" id="favorite" name="favorite" value="yes" v-model="selected" v-on:click.stop @change.prevent="addToFavorites(destination)">
                 </div>
             </div>
             <div class='card-back'>
@@ -20,7 +20,6 @@
                         v-for="n in roundedRating"
                         v-bind:key="n"/>
                 </div>
-                <br>
                 <div>
                     <button class='tag' id='type' v-if="(destination.type)">{{ destination.type }}</button>
                     <button class='tag' id='outdoor' v-if="(destination.outdoor)">Outdoor</button>
@@ -28,7 +27,6 @@
                     <button class='tag' id='admission' v-if="(destination.freeAdmission)">Admission Fee</button>
                     <button class='tag' id='restaurant-type' v-if="(destination.restaurantType)">{{ destination.restaurantType }}</button>
                 </div>
-                <br>
                 <h3 v-on:click='flip()' >{{ destination.name }}</h3>
                 <div class="button-container">
                     <label for="favorite"> Add to list: </label>
@@ -48,7 +46,7 @@ export default {
     props: ['id'],
     data() {
         return {
-            showDetail: false,
+            flipped: false,
             selected: false,
             destination: {}
         }
@@ -60,8 +58,8 @@ export default {
     },
     methods: {
         flip () {
-            this.showDetail = !this.showDetail;
-            if (this.showDetail) {
+            this.flipped = !this.flipped;
+            if (this.flipped) {
                 this.$el.querySelector('#DetailsButton').innerHTML = 'Collapse';
             }
             else {
@@ -108,7 +106,7 @@ export default {
     top: 0;
     left: 0;
     width: 15vw;
-    min-width: 250px;
+    min-width: 300px;
     height: 500px;
     background-color: rgb(230, 230, 230);
     margin: 10px;
@@ -129,8 +127,12 @@ export default {
     position: relative;
     top: 0px;
     left: 0px;
-    aspect-ratio: 1/1.4;
+    aspect-ratio: 1/1.3;
     object-fit: cover;
+}
+
+.rating {
+    margin-bottom: 15px;
 }
 
 .ratingStar {
