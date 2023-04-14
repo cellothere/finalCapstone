@@ -1,20 +1,17 @@
 <template>
-    <div>
-        <button class="btn btn-indigo outline" @click="sayhello">VISIT OUR WEBSITE
-        </button>
+<div class = "itinerary-display">
+    <h1>Itinerary</h1>
     </div>
 </template>
+
 <script>
-    export default {
-        data() {
-            return {
-               
-            }
-        },
-         methods: {
-           sayhello(){
-              alert('hello');
-           }
-         }
-    }
+export default {
+    name: "itinerary-display"
+}
 </script>
+
+<style scoped>
+.itinerary-display {
+    font-size: 100%;
+}
+</style>

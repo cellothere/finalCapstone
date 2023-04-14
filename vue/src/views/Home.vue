@@ -3,7 +3,7 @@
     <favorites-side-bar v-show="showSidebar == true" v-if="hasFavorites" />
     <div class="banner">
       <img class="banner-image" src="https://images.rawpixel.com/image_1000/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGQxOS0zLTEyODE2dS5qcGc.jpg" alt="Downtown Cleveland">
-      <h1>City Explorer</h1>
+      <h2>Discover Cleveland - Explore popular destinations - Select favorites to begin building your day!</h2>
       <img class="cleveland-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Destination_Cleveland_logo.svg/512px-Destination_Cleveland_logo.svg.png?20211216160402" alt="Script Cleveland"/>
     </div>
     
