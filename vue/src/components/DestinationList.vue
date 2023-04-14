@@ -84,6 +84,7 @@ export default {
   computed: {
     filteredDestinations() {
       let filteredArray = this.destinations;
+      filteredArray = filteredArray.sort((a, b) => (a.name > b.name) ? 1 : -1)
       filteredArray = filteredArray.filter(d => {
         return (d.name.toLowerCase().includes(this.keyword.toLowerCase())) ||
           (d.type.toLowerCase()).includes(this.keyword.toLowerCase())
@@ -164,6 +165,15 @@ export default {
     },
     toggleEntertainmentActive () {
       this.entertainmentActive = !this.entertainmentActive;
+    },
+    compare( a, b ) {
+      if ( a.name < b.name ){
+        return -1;
+      }
+      if ( a.name > b.name ){
+        return 1;
+      }
+      return 0;
     }
   }
   };

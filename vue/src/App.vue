@@ -13,26 +13,24 @@
 </template>
 
 
-
 <style>
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
-  #nav {
-  display: flex;
-  font-family: "Karma", sans-serif;
-  background: linear-gradient(to right, white,#FAF9F9);
-  max-width: auto;
-  overflow: hidden;
-   position: fixed; 
-   top: 0; 
-   width: 100%; 
-   height: 7%;
-   justify-content: space-between;
-   align-items: center;
-   box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
-   z-index: 999;
-   
+#nav {
+display: flex;
+font-family: "Karma", sans-serif;
+background: linear-gradient(to right, white,#FAF9F9);
+max-width: auto;
+overflow: hidden;
+position: fixed; 
+top: 0; 
+width: 100%; 
+height: 7%;
+justify-content: space-between;
+align-items: center;
+box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+z-index: 999;
 }
 
 #clevelandLogo {
@@ -82,6 +80,10 @@
     border-radius: 100px;
 }
 
+.tag:hover {
+  cursor: pointer;
+}
+
 .tagSelected {
     border: solid;
     border-color: black;
@@ -94,6 +96,10 @@
     margin-left: -1px;
     margin-bottom: 10px;
     border-radius: 100px;
+}
+
+.tagSelected:hover {
+  cursor: pointer;
 }
 
 #outdoor {
