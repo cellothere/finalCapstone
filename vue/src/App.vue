@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div id="nav">
-      <div id="home">
-        <router-link v-bind:to="{ name: 'home' }" id="homeButton">Home</router-link>&nbsp;|&nbsp;
+      <div id="explore">
+        <router-link v-bind:to="{ name: 'explore' }" id="exploreButton">Explore</router-link>&nbsp;|&nbsp;
         <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''" id="logoutButton">Logout</router-link>
       </div>
       <img id="clevelandLogo" src="../assets/clevelandLogo.jpg" alt="Cleveland Logo" />
@@ -42,12 +42,12 @@
   right: 48%;
 }
 
-#home {
+#explore {
   font-family: Poppins;
   font-weight: bold;
   margin-left: 2%;
 }
-#homeButton:hover {
+#exploreButton:hover {
   font-size: 18px;
   font-size-adjust: 25px;
 }
