@@ -8,7 +8,7 @@
                 <img class="thumbnail" :src="destination.imageUrl" />
                 <h3 >{{ destination.name }}</h3>
                 <div class="button-container">
-                    <label for="favorite"> Add to list: </label>
+                    <label for="favorite"> Favorite: </label>
                     <input type="checkbox" id="favorite" name="favorite" value="yes"  
                     v-on:click.stop v-model="isChecked">
                 </div>
@@ -31,7 +31,8 @@
                 <h3 v-on:click='flip()' >{{ destination.name }}</h3>
                 <div class="button-container">
                     <label for="favorite"> Favorite: </label>
-                    <input type="checkbox" id="favorite" name="favorite" value="yes" v-model="selected" v-on:click.stop>
+                    <input type="checkbox" id="favorite" name="favorite" value="yes"  
+                    v-on:click.stop v-model="isChecked">
                 </div> 
             </div>
         </div>
