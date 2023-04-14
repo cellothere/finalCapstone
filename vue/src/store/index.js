@@ -21,7 +21,6 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     favorites: [
-      1
     ],
 
     currentLatitude: 41.5038033, //hard-coded temporarily
