@@ -1,14 +1,14 @@
 <template>
   <div>
     <div class="sidebar-list">
-      <favorites-side-bar-card v-for="destination in filteredDestinations" v-bind:key="destination.id" v-bind:id="destination.id" />
+      <favorites-side-bar-card v-for="destination in destinations" v-bind:key="destination.id" v-bind:id="destination.id" />
     </div>
   </div>
 </template>
 
 <script>
 import FavoritesSideBarCard from "./FavoritesSideBarCard.vue";
-import destinationsService from '../services/DestinationsService';
+
 
 export default {
   components: {
@@ -30,11 +30,7 @@ export default {
       freeFilter: false,
     }
   },
-  created() {
-    destinationsService.getDestinations().then((response) => {
-      this.destinations = response.data;
-    });
-  },
+
   computed: {
     filteredDestinations() {
       let filteredArray = this.destinations;
@@ -77,7 +73,12 @@ export default {
       }
       return filteredArray;
     }
-  }
+  },
+    mounted() {
+  
+    const favorites = this.$store.state.favorites
+    this.destinations = favorites;
+  },
   };
 </script>
 
