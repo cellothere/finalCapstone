@@ -9,7 +9,7 @@
                 <h3 >{{ destination.name }}</h3>
                 <div class="button-container">
                     <label for="favorite"> Add to list: </label>
-                    <input type="checkbox" id="favorite" name="favorite" value="yes" v-model="selected">
+                    <input type="checkbox" id="favorite" name="favorite" value="yes" v-model="selected" @change.prevent="addToFavorites(favorite)">
                 </div>
             </div>
             <div class='card-back'>
@@ -73,6 +73,14 @@ export default {
         },
         handleClick() {
             this.flip;
+        },
+        addToFavorites(favorite) {
+            if (this.selected == true) {
+                let addedFavorite = Object.assign({ selected: true }, favorite);
+                this.$store.commit('SAVE_FAVORITE', addedFavorite);
+            } else {
+                this.$store.commit
+            }
         }
     },
     created() {

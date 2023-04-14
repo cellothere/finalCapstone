@@ -43,5 +43,8 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
+    SAVE_FAVORITE(state, favorite) {
+      state.favorites.push(favorite)
+    }
   }
 })
