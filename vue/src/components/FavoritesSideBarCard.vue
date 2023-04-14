@@ -53,10 +53,10 @@ export default {
     flex-wrap: nowrap;
     align-items: flex-start;
     background-color: lightgray;
-    margin: 10px;
+    margin-bottom: 10px;
     padding: 10px;
     border-radius: 10px;
-    width: 15vw;
+    width: 25vw;
     min-width: 50px;
     height: 100%;
 }
@@ -74,11 +74,6 @@ export default {
     max-width: 20px;
 }
 
-.button-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
 
 h4 {
     cursor: pointer;
