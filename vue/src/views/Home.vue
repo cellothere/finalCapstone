@@ -43,7 +43,6 @@ export default {
 
 .home {
   text-align: center;
-  font-family: Poppins;
 }
 
 .suggestions {
@@ -56,6 +55,7 @@ export default {
   position: relative;
   top: 0;
   left: 0;
+  margin-top: 18px;
 }
 
 .banner-image {
@@ -70,13 +70,14 @@ export default {
 
 .cleveland-logo {
   position: absolute;
-  top: 0px;
+  top: 40px;
   left: 0px;
-  height: 400px;
+  height: 375px;
   width: 100%;
   object-fit: contain;
   filter: invert(100%);
 }
+
 template {
   background-color: bisque;
 }

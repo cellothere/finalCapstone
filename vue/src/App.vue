@@ -17,20 +17,24 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
+#app {
+  font-family: Poppins;
+}
+
 #nav {
-display: flex;
-font-family: "Karma", sans-serif;
-background: linear-gradient(to right, white,#FAF9F9);
-max-width: auto;
-overflow: hidden;
-position: fixed; 
-top: 0; 
-width: 100%; 
-height: 7%;
-justify-content: space-between;
-align-items: center;
-box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
-z-index: 999;
+  display: flex;
+  font-family: "Karma", sans-serif;
+  background: linear-gradient(to right, white,#FAF9F9);
+  max-width: auto;
+  overflow: hidden;
+  position: fixed; 
+  top: 0; 
+  width: 100%; 
+  height: 7%;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+  z-index: 999;
 }
 
 #clevelandLogo {
@@ -68,6 +72,8 @@ z-index: 999;
 }
 
 .tag {
+    font-family: Poppins;
+    font-weight: bold;
     border: solid;
     color: white;
     padding: 10px 20px;
@@ -85,6 +91,8 @@ z-index: 999;
 }
 
 .tagSelected {
+    font-family: Poppins;
+    font-weight: bold;
     border: solid;
     border-color: black;
     color: white;
