@@ -9,7 +9,9 @@
                 <h3 >{{ destination.name }}</h3>
                 <div class="button-container">
                     <label for="favorite"> Add to list: </label>
-                    <input type="checkbox" id="favorite" name="favorite" value="yes" v-model="selected" v-on:click.stop @change.prevent="addToFavorites(destination)">
+                    <input type="checkbox" id="favorite" name="favorite" value="yes" v-model="selected"  
+                    v-on:click.stop v-on:click="this.selected == true ? this.selected == false : this.selected == true" 
+                    @change.prevent="addToFavorites(destination)"  >
                 </div>
             </div>
             <div class='card-back'>
@@ -54,7 +56,7 @@ export default {
     computed: {
         roundedRating() {
             return Math.round(this.destination.landmarkRating);
-        }
+        },
     },
     methods: {
         flip () {
@@ -73,8 +75,12 @@ export default {
             this.flip;
         },
         addToFavorites(destination) {
-            this.$store.commit('SAVE_FAVORITE', destination);
-        }
+            if(this.selected == true){
+                this.$store.commit('SAVE_FAVORITE', destination);
+            } else if(this.selected == false) {
+                this.$store.commit('DELETE_FAVORITE', destination)
+            }
+        },
     },
     created() {
         destinationsService.getDestinationById(this.id).then(response => {
