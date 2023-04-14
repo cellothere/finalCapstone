@@ -16,6 +16,9 @@ public class JdbcClevelandSpotsDao implements ClevelandSpotsDao {
     public JdbcClevelandSpotsDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+
+
+
     @Override
     public List<ThingToDoDto> findAll(){
 
