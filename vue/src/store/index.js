@@ -20,10 +20,11 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    favorites: {},
+    favorites: [
+    ],
+
     currentLatitude: 41.5038033, //hard-coded temporarily
     currentLongitude: -81.6419466 //hard-coded temporarily,
-
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -42,5 +43,11 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
+    SAVE_FAVORITE(state, destination) {
+      state.favorites.push(destination)
+    },
+    REMOVE_FAVORITE(state, favorite) {
+      state.favorites.unshift(favorite)
   }
+}
 })
