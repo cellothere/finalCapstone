@@ -37,5 +37,11 @@ destination-list {
     width: 10px;
 }
 
+@media (max-width: 768px) {
+  .favorites-sidebar {
+    display: none;
+  }
+}
+
 </style>
 

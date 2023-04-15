@@ -89,4 +89,13 @@ template {
   margin-right: 11%;
 }
 
+@media (max-width: 768px) {
+  .favorites-side-bar {
+    display: none;
+  }
+  .has-favorites .suggestions {
+    margin-right: 0%;
+}
+}
+
 </style>

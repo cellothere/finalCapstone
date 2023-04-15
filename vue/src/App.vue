@@ -129,6 +129,11 @@
 #type {
     background-color: darkgray;
 }
+@media (max-width: 768px) {
+  #clevelandLogo {
+    display: none;
+  }
+}
   
 </style>
 
