@@ -21,6 +21,8 @@ export default {
 
 <style>
 .favorites-sidebar {
+  display: flex;
+  flex-direction: column;
   position: fixed;
   top: 30px;
   right: 0;

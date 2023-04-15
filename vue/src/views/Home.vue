@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" :class="{ 'has-favorites': hasFavorites }">
     <favorites-side-bar v-show="showSidebar == true" v-if="hasFavorites" />
     <div class="banner">
       <img class="banner-image" src="https://images.rawpixel.com/image_1000/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGQxOS0zLTEyODE2dS5qcGc.jpg" alt="Downtown Cleveland">
@@ -32,8 +32,8 @@ export default {
   computed: {
     hasFavorites() {
       return this.$store.state.favorites.length > 0;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -52,10 +52,13 @@ export default {
 }
 
 .banner {
+  display: flex;
+  flex-direction: column;
   position: relative;
   top: 0;
   left: 0;
   margin-top: 18px;
+  margin-right: 10px;
 }
 
 .banner-image {
@@ -80,6 +83,10 @@ export default {
 
 template {
   background-color: bisque;
+}
+
+.has-favorites .suggestions {
+  margin-right: 11%;
 }
 
 </style>
