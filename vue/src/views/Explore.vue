@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="explore">
     <favorites-side-bar v-show="showSidebar == true" v-if="hasFavorites" />
     <div class="banner">
       <img class="banner-image" src="https://images.rawpixel.com/image_1000/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGQxOS0zLTEyODE2dS5qcGc.jpg" alt="Downtown Cleveland">
@@ -23,7 +23,7 @@ export default {
     destinationList,
     FavoritesSideBar
     },
-  name: "home",
+  name: "explore",
   data() {
     return {
       showSidebar: true
@@ -41,7 +41,7 @@ export default {
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
-.home {
+.explore {
   text-align: center;
   font-family: Poppins;
 }

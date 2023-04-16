@@ -37,7 +37,13 @@
         v-bind:class="{ tag:!freeFilter, tagSelected: freeFilter }">
         Free
       </button>
+      <button
+      id='reset'
+      v-on:click='toggleResetFilter()'
+      v-bind:class="{tag:!resetFilter, tagSelected: resetFilter }"> RESET FILTERS
+      </button>
     </div>
+    
     <br>
     <form class='filters'>
       <b>Filter By Keyword:</b>
@@ -74,6 +80,7 @@ export default {
       outdoorFilter: false,
       kidFriendlyFilter: false,
       freeFilter: false,
+      // resetFilter:false,
     }
   },
   created() {
@@ -122,6 +129,12 @@ export default {
           return (!d.freeAdmission && d.type!=='Restaurant');
         });
       }
+      // if (this.resetFilter) {
+      //   filteredArray = filteredArray.filter(d => {
+      //     return (d.type!=='Restaurant');
+
+      //   });
+      // }
       return filteredArray;
     }
   },
@@ -166,6 +179,20 @@ export default {
     toggleEntertainmentActive () {
       this.entertainmentActive = !this.entertainmentActive;
     },
+    toggleResetFilter () {
+       this.keyword = '';
+      this.distance = null;
+      this.rating = null;
+      this.timeOpen = null;
+      this.hourOpen = null;
+      this.entertainmentAndCultureFilter = false;
+      this.parksFilter = false;
+      this.restaurantsFilter = false;
+      this.outdoorFilter = false;
+      this.kidFriendlyFilter = false;
+      this.freeFilter = false;
+      this.resetFilter = true;
+  },
     compare( a, b ) {
       if ( a.name < b.name ){
         return -1;
@@ -219,6 +246,9 @@ export default {
 
 #free {
     background-color: gray;
+}
+#reset{
+  background-color: black;
 }
 
 </style>
