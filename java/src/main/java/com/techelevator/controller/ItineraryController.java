@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.ItineraryDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Itinerary;
+import com.techelevator.model.ThingToDoDto;
 import com.techelevator.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,6 +39,10 @@ public class ItineraryController {
         itineraryDao.delete(id);
     }
 
+    @RequestMapping(path = "/{userId}/itinerary/{itineraryId}", method = RequestMethod.DELETE)
+    public void deleteItineraryByUserAndItineraryId(@PathVariable int userId, @PathVariable int itineraryId){
+        itineraryDao.deleteByUserAndItineraryId(userId, itineraryId);
+    }
 
     @RequestMapping(path = "/{userId}/itinerary", method = RequestMethod.GET)
     public List<Itinerary> getAllItinerariesByUserId(@PathVariable int userId) {
@@ -47,10 +52,22 @@ public class ItineraryController {
     public Itinerary getItineraryByItineraryId(@PathVariable int itineraryId) {
         return itineraryDao.getItineraryByItineraryId(itineraryId);
     }
+
+    @RequestMapping(path = "/{userId}/itinerary/{itineraryId}", method = RequestMethod.GET)
+    public Itinerary getItineraryByItineraryIdAndUserId(@PathVariable int userId, @PathVariable int itineraryId) {
+        return itineraryDao.getItineraryByUserIdAndItineraryId(userId, itineraryId);
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/itinerary/{userId}/{itineraryId}/{landmarkId}/{sequenceId}", method = RequestMethod.POST)
     public void create(@PathVariable int userId, @PathVariable int itineraryId, @PathVariable int landmarkId, @PathVariable int sequenceId) {
         itineraryDao.addThingToDoToItinerary(itineraryId, landmarkId, sequenceId);
     }
+    @RequestMapping(path = "itinerary/{userId}/{itineraryId}", method = RequestMethod.GET)
+    public List<ThingToDoDto> getAllActivitiesByUserIdAndItineraryId(@PathVariable int userId, @PathVariable int itineraryId) {
+        return itineraryDao.getAllItineraryActivitiesByUserAndItineraryId(userId, itineraryId);
+    }
+
+
 
 }

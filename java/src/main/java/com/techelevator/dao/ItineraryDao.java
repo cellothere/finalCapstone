@@ -14,11 +14,17 @@ public interface ItineraryDao {
 
     void delete(int Id);
 
+    void deleteByUserAndItineraryId(int userId, int itineraryId);
+
+    List<ThingToDoDto> getAllItineraryActivitiesByUserAndItineraryId(int userId, int itineraryId);
+
     List<Itinerary> getAllItinerariesByUserId(int userId);
 
     Itinerary getItineraryByItineraryId(int itineraryId);
 
     void addThingToDoToItinerary(int itineraryId, int landmarkId, int sequenceId);
+
+    Itinerary getItineraryByUserIdAndItineraryId(int itineraryId, int userId);
 
 
 }

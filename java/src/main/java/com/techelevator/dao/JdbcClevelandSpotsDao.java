@@ -83,7 +83,7 @@ public class JdbcClevelandSpotsDao implements ClevelandSpotsDao {
         }
     }
 
-    private ThingToDoDto mapRowToThingToDo(SqlRowSet rs) {
+    public ThingToDoDto mapRowToThingToDo(SqlRowSet rs) {
         ThingToDoDto thingToDoDto = new ThingToDoDto();
         thingToDoDto.setId(rs.getInt("landmark_id"));
         thingToDoDto.setImageUrl(rs.getString("landmark_img_url"));
