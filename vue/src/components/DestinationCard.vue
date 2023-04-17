@@ -42,6 +42,7 @@
 <script>
 
 import destinationsService from '../services/DestinationsService';
+// import ItineraryService from '../services/ItineraryService'
 
 export default {
     props: ['id',],
@@ -90,10 +91,9 @@ export default {
         this.$store.commit('ADD_TO_FAVORITES', this.destination);
       } else {
         this.$store.commit('REMOVE_FROM_FAVORITES', this.destination);
-      }
-    }
+      } 
+    },
   }
-    
 }
 </script>
 
