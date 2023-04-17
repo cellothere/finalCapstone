@@ -57,4 +57,9 @@ export default new Vuex.Store({
     }
 }
 }
+<<<<<<< HEAD
 )
+=======
+})
+
+>>>>>>> 99eb4fa5fb80ea3f5fd1f6e248744644eecb1590
