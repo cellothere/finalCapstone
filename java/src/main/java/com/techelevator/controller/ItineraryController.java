@@ -39,12 +39,12 @@ public class ItineraryController {
         itineraryDao.delete(id);
     }
 
-    @RequestMapping(path = "/{userId}/itinerary/{itineraryId}", method = RequestMethod.DELETE)
+    @RequestMapping(path = "/itinerary/{userId}/{itineraryId}", method = RequestMethod.DELETE)
     public void deleteItineraryByUserAndItineraryId(@PathVariable int userId, @PathVariable int itineraryId){
         itineraryDao.deleteByUserAndItineraryId(userId, itineraryId);
     }
 
-    @RequestMapping(path = "/{userId}/itinerary", method = RequestMethod.GET)
+    @RequestMapping(path = "/itinerary/{userId}/all", method = RequestMethod.GET)
     public List<Itinerary> getAllItinerariesByUserId(@PathVariable int userId) {
         return itineraryDao.getAllItinerariesByUserId(userId);
     }
@@ -53,7 +53,7 @@ public class ItineraryController {
         return itineraryDao.getItineraryByItineraryId(itineraryId);
     }
 
-    @RequestMapping(path = "/{userId}/itinerary/{itineraryId}", method = RequestMethod.GET)
+    @RequestMapping(path = "/itinerary/{userId}/{itineraryId}", method = RequestMethod.GET)
     public Itinerary getItineraryByItineraryIdAndUserId(@PathVariable int userId, @PathVariable int itineraryId) {
         return itineraryDao.getItineraryByUserIdAndItineraryId(userId, itineraryId);
     }
@@ -63,7 +63,7 @@ public class ItineraryController {
     public void create(@PathVariable int userId, @PathVariable int itineraryId, @PathVariable int landmarkId, @PathVariable int sequenceId) {
         itineraryDao.addThingToDoToItinerary(itineraryId, landmarkId, sequenceId);
     }
-    @RequestMapping(path = "itinerary/{userId}/{itineraryId}", method = RequestMethod.GET)
+    @RequestMapping(path = "itinerary/{userId}/{itineraryId}/thingToDo", method = RequestMethod.GET)
     public List<ThingToDoDto> getAllActivitiesByUserIdAndItineraryId(@PathVariable int userId, @PathVariable int itineraryId) {
         return itineraryDao.getAllItineraryActivitiesByUserAndItineraryId(userId, itineraryId);
     }
