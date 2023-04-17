@@ -42,7 +42,10 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 .explore {
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  flex-shrink: 1;
 }
 
 .suggestions {
@@ -90,7 +93,7 @@ template {
 }
 
 @media (max-width: 768px) {
-  .favorites-side-bar {
+  favorites-side-bar {
     display: none;
   }
   .has-favorites .suggestions {

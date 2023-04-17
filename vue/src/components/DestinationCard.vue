@@ -91,6 +91,9 @@ export default {
       } else {
         this.$store.commit('REMOVE_FROM_FAVORITES', this.destination);
       }
+      if(this.$store.state.uncheckAllBoxes == true) {
+          this.data.isChecked = false;
+      }
     }
   }
     

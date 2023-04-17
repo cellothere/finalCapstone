@@ -2,6 +2,12 @@
   <div class="favorites-sidebar">
     <h2>My Favorites</h2>
     <sidebar-favorites-list/>
+        <button
+        id='clearFavorites'
+        v-on:click='clearFavorites()'
+        v-bind:class="{ tag:!restaurantsFilter, tagSelected: restaurantsFilter }">
+        Clear Favorites
+      </button>
   </div>
 </template>
 
@@ -16,6 +22,11 @@ export default {
       ],
     };
   },
+  methods: {
+    clearFavorites() {
+      this.$store.commit('CLEAR_FAVORITES');
+    },
+  }
 };
 </script>
 
@@ -37,7 +48,20 @@ destination-list {
     width: 10px;
 }
 
-@media (max-width: 768px) {
+#clearFavorites {
+    background-color: brown;
+    position: fixed;
+    margin-top: 800px; /* push the button to the bottom of the div */
+    margin-left: 38px
+  
+}
+
+#clearFavorites:hover {
+  background: #0090FF;
+  color: black;
+}
+
+@media (max-width: 1000px) {
   .favorites-sidebar {
     display: none;
   }
