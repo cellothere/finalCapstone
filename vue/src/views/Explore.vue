@@ -1,5 +1,5 @@
 <template>
-  <div class="explore">
+  <div class="explore" :class="{ 'has-favorites': hasFavorites }">
     <favorites-side-bar v-show="showSidebar == true" v-if="hasFavorites" />
     <div class="banner">
       <img class="banner-image" src="https://images.rawpixel.com/image_1000/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGQxOS0zLTEyODE2dS5qcGc.jpg" alt="Downtown Cleveland">
