@@ -1,7 +1,8 @@
 <template>
   <div class="favorites-sidebar">
     <h2>My Favorites</h2>
-    <sidebar-favorites-list/>
+    <sidebar-favorites-list id="sidebarFavs"/>
+    <div id="backgroundShading" />
         <button
         id='clearFavorites'
         v-on:click='clearFavorites()'
@@ -38,21 +39,42 @@ export default {
   top: 30px;
   right: 0;
   width: 200px;
-  height: 100%;
+  height: 83%;
   background-color: #f5f5f5;
   padding: 20px;
   z-index: 998;
+  overflow: auto;
 }
+#backgroundShading {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 850px;
+  right: 0;
+  width: 200px;
+  height: 100%;
+  background-color: #f5f5f5;
+  padding: 20px;
+  z-index: 997;
+  overflow: auto;
+
+}
+
 
 destination-list {
     width: 10px;
+}
+
+#sidebarFavs {
+  height: 10px;
 }
 
 #clearFavorites {
     background-color: brown;
     position: fixed;
     margin-top: 800px; /* push the button to the bottom of the div */
-    margin-left: 38px
+    margin-left: 38px;
+    z-index: 999;
   
 }
 
