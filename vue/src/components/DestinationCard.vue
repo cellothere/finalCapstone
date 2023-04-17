@@ -9,7 +9,8 @@
                 <h3 >{{ destination.name }}</h3>
                 <div class="button-container">
                     <label for="favorite"> Favorite: </label>
-                    <input type="checkbox" id="favorite" name="favorite" value="yes" v-model="selected" v-on:click.stop @change.prevent="addToFavorites(destination)">
+                    <input type="checkbox" id="favorite" name="favorite" value="yes"  
+                    v-on:click.stop v-model="isChecked">
                 </div>
             </div>
             <div class='card-back'>
@@ -35,7 +36,6 @@
                 </div> 
             </div>
         </div>
-        
     </div>
 </template>
 
