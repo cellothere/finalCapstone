@@ -8,23 +8,26 @@
         Itinerary Name:
         <input type="text" v-model="newItinerary.name" required />
       </label>
-      <label>
-        Starting Location:
+      <!-- <label>
+        Landmark:
         <input type="text" v-model="newItinerary.location" required />
-      </label>
+      </label> -->
       <label>
         Date:
         <input type="date" v-model="newItinerary.date" required />
       </label>
-      <label>
+      <!-- <label>
           Time: 
         <input type="time" v-model="newItinerary.time" />
-        </label>
-      <button type="submit">Create</button>
+        </label> -->
+      
+
+    <button type="submit">Create</button>
     </form>
-    <hr />
-    <h2>My Itineraries</h2>
-    <ul>
+    
+    <!-- <h2>My itinerary</h2> -->
+
+    <!-- <ul>
       <li v-for="(itinerary, index) in itineraries" :key="index">
         <h2>{{ itinerary.name }}</h2>
         <p>{{ itinerary.location }}</p>
@@ -33,21 +36,25 @@
         <button v-on:click="editItinerary(index)">Edit</button>
         <button v-on:click="deleteItinerary(index)">Delete</button>
       </li>
-    </ul>
+    </ul> -->
 
-    <!-- <ul>
+    <ol>
   <li v-for="(itinerary, index) in itineraries" :key="index">
     <h2>{{ itinerary.name }}</h2>
-    <p>{{ itinerary.location }}</p>
     <p>{{ itinerary.date }} </p>
+
     <div v-if="itinerary.places.length > 0">
       <h3>Places to Visit:</h3>
-      <ul>
+      <ol>
         <li v-for="(place, index) in itinerary.places" :key="index">
           <h4>{{ place.name }}</h4>
           <p>{{ place.location }}</p>
+          <p>{{place.date}} </p>
+             <p>{{place.time}} -
+    {{place.time2}} </p>
+          
         </li>
-      </ul>
+      </ol>
     </div>
     <button v-on:click="editItinerary(index)">Edit</button>
     <button v-on:click="deleteItinerary(index)">Delete</button>
@@ -55,37 +62,41 @@
     <h4>Add Place:</h4>
     <form v-on:submit.prevent="addPlace(index)">
       <label>
-        Place Name:
+        Landmark:
         <input type="text" v-model="newPlace.name" required />
       </label>
       <label>
-        Location:
-        <input type="text" v-model="newPlace.location" required />
-      </label>
+         Time:
+          <input type="time" v-model="newPlace.time" />
+          </label>
+          <label>
+            to Time:
+            <input type="time" v-model="newPlace.time2" />
+            </label>
+        
       <button type="submit">Add</button>
     </form>
   </li>
-</ul> -->
-
+</ol>
     <div v-if="selectedItinerary !== null">
       <h1>Edit Itinerary</h1>
       <form v-on:submit.prevent="updateItinerary">
         <label>
-          Title:
+          Name:
           <input type="text" v-model="selectedItinerary.name" required />
         </label>
-        <label>
+        <!-- <label>
           Location:
           <input type="text" v-model="selectedItinerary.location" required />
-        </label>
+        </label> -->
         <label>
           Date:
           <input type="date" v-model="selectedItinerary.date" required />
         </label>
-        <label>
+        <!-- <label>
             Time:
             <input type="time" v-model="selectedItinerary.time" />
-        </label>
+        </label> -->
         <button type="submit">Save</button>
         <button v-on:click="cancelEdit">Cancel</button>
       </form>
@@ -95,22 +106,23 @@
 
 <script>
 export default {
-  data() {
-    return {
-      newItinerary: {
-        name: "",
-        location: "",
-        date: ""
-      },
-    //   places: []
-    //   },
-    //   newPlace: {
-    //   name: "",
-    //   location: ""
-      itineraries: [],
-      selectedItinerary: null
-    };
-  },
+ data() {
+  return {
+    newItinerary: {
+      name: "",
+      date: "",
+      places: []
+    },
+    newPlace: {
+      name: "",
+      location: "",
+      time: ""
+    },
+    itineraries: [],
+    selectedItinerary: null
+  };
+},
+
   methods: {
     addItinerary() {
       this.itineraries.push(this.newItinerary);
@@ -120,6 +132,7 @@ export default {
         date: ""
       };
     },
+
     editItinerary(index) {
       this.selectedItinerary = this.itineraries[index];
     },
@@ -131,16 +144,18 @@ export default {
     },
     deleteItinerary(index) {
       this.itineraries.splice(index, 1);
-    }
-//     addPlace(index) {
-//   this.itineraries[index].places.push(this.newPlace);
-//   this.newPlace = {
-//     name: "",
-//     location: ""
-//   };
-// },
-  }
+    },
+   addPlace(index) {
+  this.itineraries[index].places.push(this.newPlace);
+  this.newPlace = {
+    name: "",
+    location: ""
+  };
+},
+  },
 };
+
+
 </script>
 
 <style>

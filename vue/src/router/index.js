@@ -35,7 +35,7 @@ const router = new Router({
       name: "login",
       component: Login,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -43,7 +43,7 @@ const router = new Router({
       name: "logout",
       component: Logout,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -51,7 +51,7 @@ const router = new Router({
       name: "register",
       component: Register,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -59,7 +59,7 @@ const router = new Router({
       name: "itinerary",
       component: Itinerary,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     }
   ]
