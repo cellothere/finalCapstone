@@ -71,9 +71,8 @@ public class JdbcFavoritesDao implements FavoritesDao {
                 thingToDoDto.getLatitude(), thingToDoDto.getLongitude(), thingToDoDto.getMondayOpen(), thingToDoDto.getMondayClose(),
                 thingToDoDto.getTuesdayOpen(), thingToDoDto.getTuesdayClose(), thingToDoDto.getWednesdayOpen(), thingToDoDto.getWednesdayClose(), thingToDoDto.getThursdayOpen(),
                 thingToDoDto.getThursdayClose(), thingToDoDto.getFridayOpen(), thingToDoDto.getFridayClose(), thingToDoDto.getSaturdayOpen(), thingToDoDto.getSaturdayClose(),
-                thingToDoDto.getSundayOpen(), thingToDoDto.getSundayClose(), thingToDoDto.getRestaurantType(), thingToDoDto.getLandmarkRating(), thingToDoDto.isOutdoor(),
-                thingToDoDto.isKidFriendly(), thingToDoDto.isFreeAdmission());
-
+                thingToDoDto.getSundayOpen(), thingToDoDto.getSundayClose(), thingToDoDto.isKidFriendly(), thingToDoDto.isFreeAdmission(), thingToDoDto.getRestaurantType(),
+                thingToDoDto.isOutdoor(), thingToDoDto.getLandmarkRating());
         if(results == 1) {
             return true;
         }

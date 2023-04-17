@@ -11,8 +11,6 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-//TODO build an authitication that works. Is it not authenticating on the front end? Roles in sql are ROLE_USER and ROLE_ADMIN
-//@PreAuthorize("hasRole('ROLE_USER')")
 public class ClevelandSpotsController {
 
     private ClevelandSpotsDao clevelandSpotsDao;

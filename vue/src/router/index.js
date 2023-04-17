@@ -28,7 +28,7 @@ const router = new Router({
       name: 'explore',
       component: Explore,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
