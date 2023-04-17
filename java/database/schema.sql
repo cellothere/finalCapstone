@@ -96,6 +96,15 @@ CONSTRAINT PK_favorites_id PRIMARY KEY (favorites_id)
 );
 COMMIT;
 
+INSERT INTO itinerary (itinerary_title, itinerary_date, starting_time)
+VALUES ('Itinerary 1', 01/01/2023, 9:00:00);
+
+INSERT INTO itinerary (itinerary_title, itinerary_date, starting_time)
+VALUES ('Itinerary 2', 01/02/2023, 10:00:00);
+
+INSERT INTO itinerary (itinerary_title, itinerary_date, starting_time)
+VALUES ('Itinerary 3', 01/03/2023, 11:00:00);
+
 
 INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, Monday_open, Monday_close, Tuesday_open, Tuesday_close, Wednesday_open, Wednesday_close, Thursday_open, Thursday_close, Friday_open, Friday_close, Saturday_open, Saturday_close, Sunday_open, Sunday_close, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
 VALUES ('https://lh3.googleusercontent.com/p/AF1QipOAG5J0JPXL-NQhuby1GehcPdXAhQ2vGAQe7HaK=s680-w680-h510','The Cleveland Museum of Art is an art museum in Cleveland, Ohio, located in the Wade Park District, in the University Circle neighborhood on the citys east side.', 'The Cleveland Museum of Art', 'Museum', 41.508143000791016, -81.61199376059822,NULL,NULL,'10:00:00','17:00:00','10:00:00','21:00:00','10:00:00','17:00:00','10:00:00','21:00:00','10:00:00','17:00:00','10:00:00','17:00:00', 'true','true','','false', 4.9);
