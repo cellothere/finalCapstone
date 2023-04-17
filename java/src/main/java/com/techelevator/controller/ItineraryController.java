@@ -1,7 +1,10 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.ItineraryDao;
+import com.techelevator.dao.UserDao;
 import com.techelevator.model.Itinerary;
+import com.techelevator.model.ThingToDoDto;
+import com.techelevator.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -16,60 +19,55 @@ public class ItineraryController {
 
     @Autowired
     private ItineraryDao itineraryDao;
+    private UserDao userDao;
 
 
     @RequestMapping(path = "/itinerary", method = RequestMethod.GET)
     public List<Itinerary> getAllItineraries() {
-        return itineraryDao.getAllSites();
+        return itineraryDao.getAllItineraries();
     }
 
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/itinerary/create", method = RequestMethod.POST)
-    public void create(@RequestBody Itinerary itinerary){
-        itineraryDao.create(itinerary);
+    @RequestMapping(path = "/itinerary/{id}/create", method = RequestMethod.POST)
+    public void create(@RequestBody Itinerary itinerary, @PathVariable int id){
+        itineraryDao.create(itinerary, id);
     }
 
     @RequestMapping(path = "/itinerary/{id}/delete", method = RequestMethod.DELETE)
     public void delete(@PathVariable int id) {
         itineraryDao.delete(id);
     }
+
+    @RequestMapping(path = "/itinerary/{userId}/{itineraryId}", method = RequestMethod.DELETE)
+    public void deleteItineraryByUserAndItineraryId(@PathVariable int userId, @PathVariable int itineraryId){
+        itineraryDao.deleteByUserAndItineraryId(userId, itineraryId);
+    }
+
+    @RequestMapping(path = "/itinerary/{userId}/all", method = RequestMethod.GET)
+    public List<Itinerary> getAllItinerariesByUserId(@PathVariable int userId) {
+        return itineraryDao.getAllItinerariesByUserId(userId);
+    }
+    @RequestMapping(path = "/itinerary/{itineraryId}", method = RequestMethod.GET)
+    public Itinerary getItineraryByItineraryId(@PathVariable int itineraryId) {
+        return itineraryDao.getItineraryByItineraryId(itineraryId);
+    }
+
+    @RequestMapping(path = "/itinerary/{userId}/{itineraryId}", method = RequestMethod.GET)
+    public Itinerary getItineraryByItineraryIdAndUserId(@PathVariable int userId, @PathVariable int itineraryId) {
+        return itineraryDao.getItineraryByUserIdAndItineraryId(userId, itineraryId);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "/itinerary/{userId}/{itineraryId}/{landmarkId}/{sequenceId}", method = RequestMethod.POST)
+    public void create(@PathVariable int userId, @PathVariable int itineraryId, @PathVariable int landmarkId, @PathVariable int sequenceId) {
+        itineraryDao.addThingToDoToItinerary(itineraryId, landmarkId, sequenceId);
+    }
+    @RequestMapping(path = "itinerary/{userId}/{itineraryId}/thingToDo", method = RequestMethod.GET)
+    public List<ThingToDoDto> getAllActivitiesByUserIdAndItineraryId(@PathVariable int userId, @PathVariable int itineraryId) {
+        return itineraryDao.getAllItineraryActivitiesByUserAndItineraryId(userId, itineraryId);
+    }
+
+
+
 }
-
-
-
-
-//public class ClevelandSpotsController {
-//
-//    private ClevelandSpotsDao clevelandSpotsDao;
-//
-//    public ClevelandSpotsController(ClevelandSpotsDao clevelandSpotsDao){
-//        this.clevelandSpotsDao = clevelandSpotsDao;
-//    }
-//
-//    @RequestMapping(value = "/thingsToDo", method = RequestMethod.GET)
-//    public List<ThingToDoDto> getAllThingsToDo() {
-//        return clevelandSpotsDao.findAll();
-//    }
-//
-//    @RequestMapping(value ="/thingsToDo/freeAdmission", method = RequestMethod.GET)
-//    public List<ThingToDoDto> findFreeActivities(){
-//        return clevelandSpotsDao.findFreeActivities();
-//    }
-//
-//    @RequestMapping(value = "thingsToDo/{id}", method = RequestMethod.GET)
-//    public ThingToDoDto findThingToDoById(@PathVariable int id) {
-//        ThingToDoDto thingToDoDto = clevelandSpotsDao.getThingToDoById(id);
-//
-//        if(thingToDoDto == null){
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No landmark with this location ID");
-//        } else {
-//            return thingToDoDto;
-//        }
-//    }
-//    @ResponseStatus(HttpStatus.CREATED)
-//    @RequestMapping(path = "thingsToDo/create", method = RequestMethod.POST)
-//    public boolean createThingToDO(@RequestBody ThingToDoDto thingToDoDto){
-//        return clevelandSpotsDao.create(thingToDoDto);
-//    }
-//}

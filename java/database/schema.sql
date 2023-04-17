@@ -45,10 +45,11 @@ CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
 CREATE TABLE itinerary_landmark (
-itinerary_id serial,
+itinerary_landmark_id serial,
+itinerary_id int NOT NULL,
 landmark_id int NOT NULL,
 sequence_number int NOT NULL,
-CONSTRAINT PK_itinerary_landmark PRIMARY KEY (itinerary_id)
+CONSTRAINT PK_itinerary_landmark PRIMARY KEY (itinerary_landmark_id)
 );
 
 CREATE TABLE itinerary (

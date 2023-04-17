@@ -21,6 +21,8 @@ export default {
 
 <style>
 .favorites-sidebar {
+  display: flex;
+  flex-direction: column;
   position: fixed;
   top: 30px;
   right: 0;
@@ -33,6 +35,12 @@ export default {
 
 destination-list {
     width: 10px;
+}
+
+@media (max-width: 768px) {
+  .favorites-sidebar {
+    display: none;
+  }
 }
 
 </style>

@@ -46,8 +46,15 @@ export default new Vuex.Store({
     SAVE_FAVORITE(state, destination) {
       state.favorites.push(destination)
     },
-    REMOVE_FAVORITE(state, favorite) {
-      state.favorites.unshift(favorite)
-  }
+    ADD_TO_FAVORITES(state, destination) {
+      state.favorites.push(destination);
+    },
+    REMOVE_FROM_FAVORITES(state, destination) {
+      const index = state.favorites.indexOf(destination);
+      if (index !== -1) {
+        state.favorites.splice(index, 1);
+      }
+    }
 }
-})
+}
+)

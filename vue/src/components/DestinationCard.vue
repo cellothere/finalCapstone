@@ -30,7 +30,8 @@
                 <h3 v-on:click='flip()' >{{ destination.name }}</h3>
                 <div class="button-container">
                     <label for="favorite"> Favorite: </label>
-                    <input type="checkbox" id="favorite" name="favorite" value="yes" v-model="selected" v-on:click.stop>
+                    <input type="checkbox" id="favorite" name="favorite" value="yes"  
+                    v-on:click.stop v-model="isChecked">
                 </div> 
             </div>
         </div>
@@ -43,18 +44,20 @@
 import destinationsService from '../services/DestinationsService';
 
 export default {
-    props: ['id'],
+    props: ['id',],
     data() {
         return {
             flipped: false,
             selected: false,
-            destination: {}
+            destination: {},
+            isChecked: false
         }
     },
     computed: {
         roundedRating() {
             return Math.round(this.destination.landmarkRating);
-        }
+        },
+
     },
     methods: {
         flip () {
@@ -72,15 +75,25 @@ export default {
         handleClick() {
             this.flip;
         },
-        addToFavorites(destination) {
-            this.$store.commit('SAVE_FAVORITE', destination);
-        }
+    },
+    toggleFavorite(destination) {
+      this.$store.commit('TOGGLE_FAVORITE', destination);
     },
     created() {
         destinationsService.getDestinationById(this.id).then(response => {
             this.destination = response.data;
         });
     },
+    watch: {
+    isChecked(newValue) {
+      if (newValue) {
+        this.$store.commit('ADD_TO_FAVORITES', this.destination);
+      } else {
+        this.$store.commit('REMOVE_FROM_FAVORITES', this.destination);
+      }
+    }
+  }
+    
 }
 </script>
 
@@ -150,5 +163,6 @@ h3 {
     margin-bottom: 2px;
     cursor: pointer;
 }
+
 
 </style>
