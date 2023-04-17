@@ -6,7 +6,11 @@ const http = axios.create({
 
 export default {
 
-  getActivitiesByUserIdAndItineraryId(userId, itineraryId) {
+  getItineraryActivitiesByUserAndItinerary(userId, itineraryId) {
     return http.get(`itinerary/${userId}/${itineraryId}/thingToDo`);
-  }
+  },
+
+  getItinerariesByItineraryId(itineraryId) {
+    return http.get(`itinerary/${itineraryId}/all`)
+  },
 }

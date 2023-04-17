@@ -20,6 +20,7 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
+    favoritesInitialState: [],
     favorites: [
     ],
 
@@ -54,6 +55,9 @@ export default new Vuex.Store({
       if (index !== -1) {
         state.favorites.splice(index, 1);
       }
+    },
+    CLEAR_FAVORITES(state) {
+      state.favorites = [];
     }
 }
 }
