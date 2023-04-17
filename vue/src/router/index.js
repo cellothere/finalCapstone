@@ -6,6 +6,7 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
+import Itinerary2 from '../views/Itinerary2.vue'
 
 Vue.use(Router)
 
@@ -58,6 +59,14 @@ const router = new Router({
       path: "/itinerary",
       name: "itinerary",
       component: Itinerary,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+    path: "/itinerary2/:userId/:itineraryId",
+      name: "itinerary2",
+      component: Itinerary2,
       meta: {
         requiresAuth: false
       }
