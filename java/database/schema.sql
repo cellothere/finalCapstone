@@ -5,6 +5,7 @@ DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS itinerary_landmark CASCADE;
 DROP TABLE IF EXISTS itinerary CASCADE;
 DROP TABLE IF EXISTS itinerary_user CASCADE;
+DROP TABLE IF EXISTS favorites CASCADE;
 
 CREATE TABLE landmark (
 landmark_id serial,
@@ -45,11 +46,10 @@ CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
 CREATE TABLE itinerary_landmark (
-itinerary_landmark_id serial,
-itinerary_id int NOT NULL,
+itinerary_id serial,
 landmark_id int NOT NULL,
 sequence_number int NOT NULL,
-CONSTRAINT PK_itinerary_landmark PRIMARY KEY (itinerary_landmark_id)
+CONSTRAINT PK_itinerary_landmark PRIMARY KEY (itinerary_id)
 );
 
 CREATE TABLE itinerary (
@@ -64,6 +64,37 @@ CREATE TABLE itinerary_user (
 itinerary_id int NOT NULL,
 user_id int NOT NULL
 );
+
+CREATE TABLE favorites (
+favorites_id serial,
+landmark_img_url varchar (10000) NOT NULL,
+landmark_description varchar (100000) NOT NULL,
+landmark_name varchar (1000) NOT NULL,
+landmark_type varchar (1000) NOT NULL,
+landmark_latitude decimal (16,14) NOT NULL,
+landmark_longitude decimal (16,14) NOT NULL,
+Monday_open time,
+Monday_close time,
+Tuesday_open time,
+Tuesday_close time,
+Wednesday_open time,
+Wednesday_close time,
+Thursday_open time,
+Thursday_close time,
+Friday_open time,
+Friday_close time,
+Saturday_open time, 
+Saturday_close time,
+Sunday_open time,
+Sunday_close time,
+kid_friendly boolean NOT NULL,
+admission boolean NOT NULL,
+restaurant_type varchar (1000),
+is_outdoor boolean NOT NULL,
+landmark_rating numeric (6,2),
+CONSTRAINT PK_favorites_id PRIMARY KEY (favorites_id)
+);
+COMMIT;
 
 
 INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, Monday_open, Monday_close, Tuesday_open, Tuesday_close, Wednesday_open, Wednesday_close, Thursday_open, Thursday_close, Friday_open, Friday_close, Saturday_open, Saturday_close, Sunday_open, Sunday_close, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
@@ -94,7 +125,7 @@ INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, lan
 VALUES ('https://s3.us-east-2.amazonaws.com/s3.donleyinc.com/wp-content/uploads/2016/09/29221532/DSC_1717_small.jpg','The James A. Garfield Memorial is a memorial for and the final resting place of assassinated President James A. Garfield, located in Lake View Cemetery in Cleveland, Ohio.', 'James A. Garfield Monument','Monument',41.510639763042875,-81.59134931534133,'10:00:00','17:00:00','10:00:00','17:00:00','10:00:00','17:00:00','10:00:00','17:00:00','10:00:00','17:00:00','10:00:00','17:00:00','10:00:00','17:00:00','true','false','','true', 4.7);
 
 INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, Monday_open, Monday_close, Tuesday_open, Tuesday_close, Wednesday_open, Wednesday_close, Thursday_open, Thursday_close, Friday_open, Friday_close, Saturday_open, Saturday_close, Sunday_open, Sunday_close, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
-VALUES ('https://www.iccleveland.com/resourcefiles/feature-boxes-things-to-do/iccleveland-ttd-playhouse-square.jpg','Playhouse Square is a theater district in downtown Cleveland. It is the largest performing arts center in the US outside of New York City. Constructed in a span of 19 months in the early 1920s, the theaters were subsequently closed down, but were revived through a grassroots effort.', 'Playhouse Square','cultural center',41.50185149489846, -81.68063865397605,'00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','true','false','','true', 4.8);
+VALUES ('https://www.iccleveland.com/resourcefiles/feature-boxes-things-to-do/iccleveland-ttd-playhouse-square.jpg','Playhouse Square is a theater district in downtown Cleveland, Ohio, United States. It is the largest performing arts center in the US outside of New York City. Constructed in a span of 19 months in the early 1920s, the theaters were subsequently closed down, but were revived through a grassroots effort.', 'Playhouse Square','cultural center',41.50185149489846, -81.68063865397605,'00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','true','false','','true', 4.8);
 
 INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, Monday_open, Monday_close, Tuesday_open, Tuesday_close, Wednesday_open, Wednesday_close, Thursday_open, Thursday_close, Friday_open, Friday_close, Saturday_open, Saturday_close, Sunday_open, Sunday_close, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
 VALUES ('https://ewscripps.brightspotcdn.com/dims4/default/b00ce73/2147483647/strip/true/crop/5983x3366+4+351/resize/1280x720!/quality/90/?url=http%3A%2F%2Fewscripps-brightspot.s3.amazonaws.com%2F6c%2F9f%2F359a1c8642e4b1c7f574bb52bdb0%2F20180524-dsc0515.jpg','Progressive Field is a Major League Baseball baseball park located in the downtown area of Cleveland, Ohio, United States. It is the home field of the Cleveland Guardians and, together with Rocket Mortgage FieldHouse, is part of the Gateway Sports and Entertainment Complex.', 'Progressive Field','Entertainment',41.49699851273636, -81.68565805341318,'12:00:00','22:00:00','12:00:00','22:00:00','12:00:00','22:00:00','12:00:00','22:00:00','12:00:00','22:00:00','12:00:00','22:00:00','12:00:00','22:00:00','true','true','','true', 4.7);
@@ -121,10 +152,10 @@ INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, lan
 VALUES ('https://www.clevelandorchestra.com/globalassets/_test/tco-orchestra-full.jpg','The Cleveland Orchestra, based in Cleveland, is one of the five American orchestras informally referred to as the "Big Five". Founded in 1918 by the pianist and impresario Adella Prentiss Hughes, the orchestra plays most of its concerts at Severance Hall.','The Cleveland Orchestra','Music Venue',41.5063008896062, -81.60936100031599,'18:00:00','23:00:00','18:00:00','23:00:00','18:00:00','23:00:00','18:00:00','23:00:00','18:00:00','23:00:00','18:00:00','23:00:00','18:00:00','23:00:00','true','true','','false', 4.7);
 
 INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, Monday_open, Monday_close, Tuesday_open, Tuesday_close, Wednesday_open, Wednesday_close, Thursday_open, Thursday_close, Friday_open, Friday_close, Saturday_open, Saturday_close, Sunday_open, Sunday_close, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
-VALUES ('https://www.clevelandzoosociety.org/files/blog/featured/czs-zoovies-5d34610b-edit3.jpg','The Cleveland Metroparks Zoo is a 183-acre zoo in Cleveland, Ohio. The Zoo is divided into several areas: Australian Adventure; African Savanna; Northern Wilderness Trek, The Primate, Cat & Aquatics Building, Waterfowl Lake, The RainForest, and the newly added Asian Highlands.','Cleveland Metroparks Zoo','Zoo',41.44663841916885, -81.7126246,'10:00:00','17:00:00','10:00:00','17:00:00','10:00:00','17:00:00','10:00:00','17:00:00','10:00:00','17:00:00','10:00:00','17:00:00','10:00:00','17:00:00','true','true','','true', 4.7);
+VALUES ('https://www.clevelandzoosociety.org/files/blog/featured/czs-zoovies-5d34610b-edit3.jpg','The Cleveland Metroparks Zoo aka Cleveland Zoological Park is a 183-acre zoo in Cleveland, Ohio. The Zoo is divided into several areas: Australian Adventure; African Savanna; Northern Wilderness Trek, The Primate, Cat & Aquatics Building, Waterfowl Lake, The RainForest, and the newly added Asian Highlands.','Cleveland Metroparks Zoo','Zoo',41.44663841916885, -81.7126246,'10:00:00','17:00:00','10:00:00','17:00:00','10:00:00','17:00:00','10:00:00','17:00:00','10:00:00','17:00:00','10:00:00','17:00:00','10:00:00','17:00:00','true','true','','true', 4.7);
 
 INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, Monday_open, Monday_close, Tuesday_open, Tuesday_close, Wednesday_open, Wednesday_close, Thursday_open, Thursday_close, Friday_open, Friday_close, Saturday_open, Saturday_close, Sunday_open, Sunday_close, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
-VALUES ('https://lh5.googleusercontent.com/p/AF1QipNRBozNC4zSKM8lcjej3o-1oFdRqKVngQ1uCHhC=w640-h240-k-no','A multi-purpose arena and home of the Cleveland Cavaliers of the National Basketball Association and the Cleveland Monsters of the American Hockey League. It also serves as a secondary arena for Cleveland State Vikings mens and womens basketball.','Rocket Mortgage FieldHouse','Stadium',41.497109907152876, -81.68801448465868,'17:00:00','00:00:00','17:00:00','00:00:00','17:00:00','00:00:00','17:00:00','00:00:00','17:00:00','00:00:00','17:00:00','00:00:00','17:00:00','00:00:00','true','true','','false', 4.6);
+VALUES ('https://lh5.googleusercontent.com/p/AF1QipNRBozNC4zSKM8lcjej3o-1oFdRqKVngQ1uCHhC=w640-h240-k-no','Rocket Mortgage FieldHouse is a multi-purpose arena in Cleveland, Ohio. The building is the home of the Cleveland Cavaliers of the National Basketball Association and the Cleveland Monsters of the American Hockey League. It also serves as a secondary arena for Cleveland State Vikings mens and womens basketball.','Rocket Mortgage FieldHouse','Stadium',41.497109907152876, -81.68801448465868,'17:00:00','00:00:00','17:00:00','00:00:00','17:00:00','00:00:00','17:00:00','00:00:00','17:00:00','00:00:00','17:00:00','00:00:00','17:00:00','00:00:00','true','true','','false', 4.6);
 
 INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, Monday_open, Monday_close, Tuesday_open, Tuesday_close, Wednesday_open, Wednesday_close, Thursday_open, Thursday_close, Friday_open, Friday_close, Saturday_open, Saturday_close, Sunday_open, Sunday_close, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
 VALUES ('https://lh5.googleusercontent.com/p/AF1QipMCsx-nOH2z8ZfkHhcwjHM0U0BQufLMqB4AdBMc=w408-h272-k-no','The Childrens Museum of Cleveland was established in 1981 and is located in the Midtown neighborhood of Cleveland, Ohio.','The Childrens Museum of Cleveland','Museum',41.50554136349363, -81.66042738409581,'09:00:00','13:30:00','09:00:00','13:30:00','09:00:00','13:30:00',NULL,NULL,'09:00:00','13:30:00','09:00:00','13:30:00','09:00:00','13:30:00','true','true','','false', 4.7);
@@ -133,7 +164,7 @@ INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, lan
 VALUES ('https://lh5.googleusercontent.com/p/AF1QipP01y6E58LHWjAqK_zaL0YNPriy8CA0e6HOJMGq=w408-h306-k-no','In Little Italy, the main strip Mayfield Road is full of old-school Italian cafes, bakeries and pizzerias, as well as elegant trattorias where singers perform opera arias. Indie art galleries and Italian food and wine shops are also dotted around the area. Colorful murals depict the stories of Italian immigrants.','Little Italy','Historical Neighborhood',41.50908068638288, -81.5987891105193,'00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','true','false','','true', 4.7);
 
 INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, Monday_open, Monday_close, Tuesday_open, Tuesday_close, Wednesday_open, Wednesday_close, Thursday_open, Thursday_close, Friday_open, Friday_close, Saturday_open, Saturday_close, Sunday_open, Sunday_close, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
-VALUES ('https://s3.amazonaws.com/crowdriff-media/full/444ce9873a6db9733147ac68ffddae654cc6e6cc3b7aa267536a64ae61b07678.jpg','University Circle is a busy cultural hub with institutions like the Cleveland Natural History Museum, the Museum of Contemporary Art and Severance Hall which hosts performances by the Cleveland Orchestra. Casual college bars, ramen joints and Asian fusion eateries dot the area.','University Circle','Cultural Hub',41.50922602862502,-81.60886420872895,'00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','true','false','','true', 4.6);
+VALUES ('https://s3.amazonaws.com/crowdriff-media/full/444ce9873a6db9733147ac68ffddae654cc6e6cc3b7aa267536a64ae61b07678.jpg','University Circle is a busy cultural hub with institutions like the Cleveland Natural History Museum and the Museum of Contemporary Art, a modern mirrored structure with regularly changing exhibitions. Severance Hall hosts performances by the Cleveland Orchestra, and paths wind past roses and maple trees at the Cleveland Botanical Garden. Casual college bars, ramen joints and Asian fusion eateries dot the area.','University Circle','Cultural Hub',41.50922602862502,-81.60886420872895,'00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','true','false','','true', 4.6);
 
 INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, Monday_open, Monday_close, Tuesday_open, Tuesday_close, Wednesday_open, Wednesday_close, Thursday_open, Thursday_close, Friday_open, Friday_close, Saturday_open, Saturday_close, Sunday_open, Sunday_close, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
 VALUES ('https://lh5.googleusercontent.com/p/AF1QipObsIGLADn5qZKNlVl74b4BMA_58UaNR8PQliI-=w408-h541-k-no','The Cleveland Botanical Garden, located in the University Circle neighborhood of Cleveland, Ohio, in the United States.','Cleveland Botanical Gardens','Garden',41.51170068041453, -81.60959720000001,NULL,NULL,'10:00:00','17:00:00','10:00:00','17:00:00','10:00:00','17:00:00','10:00:00','17:00:00','10:00:00','17:00:00','12:00:00','17:00:00','true','true','','false', 4.7);
@@ -213,7 +244,7 @@ INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, lan
 VALUES ('https://live.staticflickr.com/1052/1463448807_4b96462eb0_b.jpg','Willard Park is the home of the “Free Stamp” and otherwise just something you pass through on the way to the Browns Stadium or the Rock Hall.','Willard Park','Park',41.515641838491774, -81.69460627186443,'00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00', 'true','false','','true', 4.4);
 
 INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, Monday_open, Monday_close, Tuesday_open, Tuesday_close, Wednesday_open, Wednesday_close, Thursday_open, Thursday_close, Friday_open, Friday_close, Saturday_open, Saturday_close, Sunday_open, Sunday_close, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
-VALUES ('https://lh3.googleusercontent.com/p/AF1QipNyn88VznEXrEtOfDLNK_YhX_HaW6uBFzUVZjo4=s680-w680-h510','Cuyahoga Valley National Park lies along the Cuyahoga River between the Ohio cities of Cleveland and Akron. Features include a restored section of the Ohio and Erie canal''s original towpath, the Canal Exploration Center, towering Brandywine Falls and the Cuyahoga Valley Scenic Railroad.','Cuyahoga Valley National Park','Park',41.28533967682155, -81.56918529092219,'00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00', 'true','false','','true', 4.8);
+VALUES ('https://lh3.googleusercontent.com/p/AF1QipNyn88VznEXrEtOfDLNK_YhX_HaW6uBFzUVZjo4=s680-w680-h510','Cuyahoga Valley National Park lies along the Cuyahoga River between the Ohio cities of Cleveland and Akron. The Ohio and Erie Canal Towpath Trail is a restored section of the canal''s original towpath. In the park’s north, the Canal Exploration Center details the 19th-century waterway’s history. Towering Brandywine Falls is one of several waterfalls. The Cuyahoga Valley Scenic Railroad runs through the park.','Cuyahoga Valley National Park','Park',41.28533967682155, -81.56918529092219,'00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00', 'true','false','','true', 4.8);
 
 INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, Monday_open, Monday_close, Tuesday_open, Tuesday_close, Wednesday_open, Wednesday_close, Thursday_open, Thursday_close, Friday_open, Friday_close, Saturday_open, Saturday_close, Sunday_open, Sunday_close, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
 VALUES ('https://lh3.googleusercontent.com/p/AF1QipNe975Q08bgvZ6G6KkXBL4pVcKeRcKJtl2Y1NHn=s680-w680-h510','31-acre lakefront park featuring a seasonal pool, bandshell, skatepark, plus sport courts & fields.','Lakewood Park','Park',41.49549989808099, -81.79724143068263,'06:00:00','23:00:00','06:00:00','23:00:00','06:00:00','23:00:00','06:00:00','23:00:00','06:00:00','23:00:00','06:00:00','23:00:00','06:00:00','23:00:00', 'true','false','','true', 4.8);
@@ -295,13 +326,7 @@ VALUES ('https://lh3.googleusercontent.com/p/AF1QipM-oxDGrnLet9C6TgJ10H5s8tcxESx
 INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, Monday_open, Monday_close, Tuesday_open, Tuesday_close, Wednesday_open, Wednesday_close, Thursday_open, Thursday_close, Friday_open, Friday_close, Saturday_open, Saturday_close, Sunday_open, Sunday_close, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
 VALUES ('https://lh3.googleusercontent.com/p/AF1QipNvNs2Ht3vMGOX2VRE04zXxEPyzqcSfKKq9v5yE=s680-w680-h510','Quirky tea shop with beverages such as smoothies & shakes, plus Mediterranean-inspired nibbles.','Algebra Tea House','Restaurant',41.50591026976114, -81.59983844602397,NULL,NULL,'10:00:00','21:00:00','10:00:00','21:00:00','10:00:00','21:00:00','10:00:00','21:00:00','10:00:00','21:00:00','10:00:00','21:00:00', 'true','false','Mediterranean Restaurant','false', 4.6);
 
-INSERT into itinerary (itinerary_title, itinerary_date, starting_time)
-VALUES ('Test', '1/1/2023', '11:11');
-
-
 COMMIT;
-
-
 
 
 
