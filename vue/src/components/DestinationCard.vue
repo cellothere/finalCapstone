@@ -10,7 +10,7 @@
                 <div class="button-container">
                     <label for="favorite"> Favorite: </label>
                     <input type="checkbox" id="favorite" name="favorite" value="yes"  
-                    v-on:click.stop v-model="isChecked">
+                    v-on:click.stop v-on:click="addToFavorites(destination)" v-model="isChecked">
                 </div>
             </div>
             <div class='card-back'>
@@ -43,6 +43,7 @@
 
 import destinationsService from '../services/DestinationsService';
 // import ItineraryService from '../services/ItineraryService'
+import favoriteService from '../services/FavoritesService'
 
 export default {
     props: ['id',],
@@ -76,6 +77,9 @@ export default {
         handleClick() {
             this.flip;
         },
+        addToFavorites() {
+            favoriteService.saveFavoriteToDatabase(this.destination)
+        }
     },
     toggleFavorite(destination) {
       this.$store.commit('TOGGLE_FAVORITE', destination);
