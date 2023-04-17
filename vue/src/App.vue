@@ -3,7 +3,9 @@
     <div id="nav">
       <div id="explore">
         <router-link v-bind:to="{ name: 'explore' }" id="exploreButton">Explore</router-link>&nbsp;|&nbsp;
+        <router-link v-bind:to="{ name: 'itinerary'}" id="itineraryButton">Itinerary</router-link>&nbsp;|&nbsp;
         <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''" id="logoutButton">Logout</router-link>
+        
       </div>
       <img id="clevelandLogo" src="../assets/clevelandLogo.jpg" alt="Cleveland Logo" />
     <div id="welcomeUser" v-if="$store.state.token != ''">Welcome, {{ $store.state.user.username }}</div>
@@ -50,6 +52,10 @@
   margin-left: 2%;
 }
 #exploreButton:hover {
+  font-size: 18px;
+  font-size-adjust: 25px;
+}
+#itineraryButton:hover {
   font-size: 18px;
   font-size-adjust: 25px;
 }
