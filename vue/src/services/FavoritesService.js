@@ -14,7 +14,7 @@ export default {
     return http.get(`itinerary/${itineraryId}/all`)
   },
 
-  saveFavoriteToDatabase(userId, itineraryId, sequenceId) {
-    return http.post(`itinerary/${userId}/${itineraryId}/${sequenceId}`)
-  }
+  // saveFavoriteToDatabase(destination) {
+  //   return http.post(`itinerary/${userId}/${itineraryId}/${sequenceId}`)
+  // }
 }
