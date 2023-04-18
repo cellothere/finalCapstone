@@ -6,11 +6,9 @@
                 v-on:click='flip()' >
             <div class='card-front'>
                 <img class="thumbnail" :src="destination.imageUrl" />
-                <h3 >{{ destination.name }}</h3>
-                <div class="button-container">
-                    <label for="favorite"> Favorite: </label>
-                    <input type="checkbox" id="favorite" name="favorite" value="yes"  
-                    v-on:click.stop v-on:click="addToFavorites(destination)" v-model="isChecked">
+                <div class='info'>
+                  <h3>{{ destination.name }}</h3>
+                  <p>{{ time }}</p>
                 </div>
             </div>
             <div class='card-back'>
@@ -28,12 +26,6 @@
                     <button class='tag' id='admission' v-if="(destination.freeAdmission)">Admission Fee</button>
                     <button class='tag' id='restaurant-type' v-if="(destination.restaurantType)">{{ destination.restaurantType }}</button>
                 </div>
-                <h3 v-on:click='flip()' >{{ destination.name }}</h3>
-                <div class="button-container">
-                    <label for="favorite"> Favorite: </label>
-                    <input type="checkbox" id="favorite" name="favorite" value="yes"  
-                    v-on:click.stop v-model="isChecked">
-                </div> 
             </div>
         </div>
     </div>
@@ -42,11 +34,12 @@
 <script>
 
 import destinationsService from '../services/DestinationsService';
-// import ItineraryService from '../services/ItineraryService'
-import favoriteService from '../services/FavoritesService'
 
 export default {
-    props: ['id',],
+    props: [
+      'id',
+      'time'
+      ],
     data() {
         return {
             flipped: false,
@@ -77,10 +70,6 @@ export default {
         handleClick() {
             this.flip;
         },
-        addToFavorites() {
-            let userId = this.$store.state.user.id
-            favoriteService.saveFavoriteToDatabase(this.destination, userId)
-        }
     },
     toggleFavorite(destination) {
       this.$store.commit('TOGGLE_FAVORITE', destination);
@@ -96,8 +85,8 @@ export default {
         this.$store.commit('ADD_TO_FAVORITES', this.destination);
       } else {
         this.$store.commit('REMOVE_FROM_FAVORITES', this.destination);
-      } 
-    },
+      }
+    }
   }
 }
 </script>
@@ -105,6 +94,7 @@ export default {
 <style>
 .card-container {
     perspective: 1000px;
+    text-align: center;
 }
 
 .destination-card {
@@ -112,7 +102,6 @@ export default {
     transform-style: preserve-3d;
     transition: transform 0.6s;
     display: flex;
-    flex-direction: column;
 }
 
 .flipped {
@@ -120,16 +109,18 @@ export default {
 }
 
 .card-front, .card-back {
+    display: flex;
     backface-visibility: hidden;
     top: 0;
     left: 0;
     width: 15vw;
-    min-width: 300px;
-    height: 500px;
+    min-width: 500px;
+    height: 300px;
     background-color: rgb(230, 230, 230);
     margin: 10px;
     padding: 10px;
     border-radius: 10px;
+    text-align: center;
 }
 
 .card-back {
@@ -138,14 +129,22 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    align-items: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .thumbnail {
-    max-width: 100%;
+    max-height: 100%;
     position: relative;
     top: 0px;
     left: 0px;
-    aspect-ratio: 1/1.3;
+    aspect-ratio: 1/1;
     object-fit: cover;
 }
 

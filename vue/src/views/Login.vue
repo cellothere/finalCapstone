@@ -1,28 +1,31 @@
 <template>
   <div id="login">
-  
-    <form @submit.prevent="login" id="login">
-      <h1 class="welcome"> Welcome To Cleveland!</h1>
-      <h2 >Please sign in to build your adventure</h2>
-      <div role="alert" v-if="invalidCredentials">
-        Invalid username and password!
-      </div>
-      <div role="alert" v-if="this.$route.query.registration">
-        Thank you for registering, please sign in.
-      </div>
-      <div class="form-input-group">
-        <label for="username" class="usernamePassword">Username</label>
-        <input type="text" id="username" v-model="user.username" required autofocus />
-      </div>
-      <div class="form-input-group">
-        <label for="password" class="usernamePassword">Password</label>
-        <input type="password" id="password" v-model="user.password" required />
-      </div>
-      <input type="submit" value="Sign in" class="button" id="done" :style="inputStyle" v-on:keyup.enter="login"/>
-      <input type="submit" value="Need an account? Sign up" class="button" id="done" :style="inputStyle" v-on:click="register"/>
-      <input type="submit" value="Continue as Guest" class="button" id="done" :style="inputStyle" v-on:click="goToGuestView"/>
-    </form>
-
+    <div class="banner">
+      <img class="banner-image" src="https://images.rawpixel.com/image_1000/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGQxOS0zLTEyODE2dS5qcGc.jpg" alt="Downtown Cleveland">
+      <img class="cleveland-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Destination_Cleveland_logo.svg/512px-Destination_Cleveland_logo.svg.png?20211216160402" alt="Script Cleveland"/>
+    </div>
+    <div class='formBox'>
+      <form @submit.prevent="login" id="login">
+        <h2 >Please sign in to build your adventure</h2>
+        <div role="alert" v-if="invalidCredentials">
+          Invalid username and password!
+        </div>
+        <div role="alert" v-if="this.$route.query.registration">
+          Thank you for registering, please sign in.
+        </div>
+        <div class="form-input-group">
+          <label for="username" class="usernamePassword">Username</label>
+          <input type="text" id="username" v-model="user.username" required autofocus />
+        </div>
+        <div class="form-input-group">
+          <label for="password" class="usernamePassword">Password</label>
+          <input type="password" id="password" v-model="user.password" required />
+        </div>
+        <input type="submit" value="Sign in" class="button" id="done" :style="inputStyle" v-on:keyup.enter="login"/>
+        <input type="submit" value="Need an account? Sign up" class="button" id="done" :style="inputStyle" v-on:click="register"/>
+        <input type="submit" value="Continue as Guest" class="button" id="done" :style="inputStyle" v-on:click="goToGuestView"/>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -72,14 +75,12 @@ export default {
 </script>
 
 
-
 <style scoped>
-
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-
 
 #login {
   display: flex;
+  flex-direction: column;
   background-image: url(../../assets/clevelandmap.jpg) ;
   background-attachment: fixed;
   background-position: center;
@@ -99,17 +100,17 @@ h1 {
 h2 {
   font-family: Poppins;
 }
+
 form {
   display: flex;
-  min-width: 100vh;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px;
+}
 
+.formBox {
 }
 
 .usernamePassword {
-  font-family: Poppins;
   font-size: 18px;
   font-weight: bold;
 }
@@ -132,9 +133,8 @@ input:active {
   box-shadow: 0px 0px 8px -5px #000000;
 }
 
-
-button {
-  width: 60px;
+.button {
+  width: 35%;
   cursor: pointer;
   user-select: none;
 }

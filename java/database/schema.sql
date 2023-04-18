@@ -65,6 +65,11 @@ itinerary_id int NOT NULL,
 user_id int NOT NULL
 );
 
+CREATE TABLE favorites_user (
+favorites_id int NOT NULL,
+user_id int NOT NULL
+);
+
 CREATE TABLE favorites (
 favorites_id serial,
 landmark_img_url varchar (10000) NOT NULL,
@@ -97,13 +102,13 @@ CONSTRAINT PK_favorites_id PRIMARY KEY (favorites_id)
 COMMIT;
 
 INSERT INTO itinerary (itinerary_title, itinerary_date, starting_time)
-VALUES ('Itinerary 1', 01/01/2023, 9:00:00);
+VALUES ('Itinerary 1', '01/01/2023', '9:00:00');
 
 INSERT INTO itinerary (itinerary_title, itinerary_date, starting_time)
-VALUES ('Itinerary 2', 01/02/2023, 10:00:00);
+VALUES ('Itinerary 2', '01/02/2023', '10:00:00');
 
 INSERT INTO itinerary (itinerary_title, itinerary_date, starting_time)
-VALUES ('Itinerary 3', 01/03/2023, 11:00:00);
+VALUES ('Itinerary 3', '01/03/2023', '11:00:00');
 
 
 INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, Monday_open, Monday_close, Tuesday_open, Tuesday_close, Wednesday_open, Wednesday_close, Thursday_open, Thursday_close, Friday_open, Friday_close, Saturday_open, Saturday_close, Sunday_open, Sunday_close, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
@@ -173,7 +178,7 @@ INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, lan
 VALUES ('https://lh5.googleusercontent.com/p/AF1QipP01y6E58LHWjAqK_zaL0YNPriy8CA0e6HOJMGq=w408-h306-k-no','In Little Italy, the main strip Mayfield Road is full of old-school Italian cafes, bakeries and pizzerias, as well as elegant trattorias where singers perform opera arias. Indie art galleries and Italian food and wine shops are also dotted around the area. Colorful murals depict the stories of Italian immigrants.','Little Italy','Historical Neighborhood',41.50908068638288, -81.5987891105193,'00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','true','false','','true', 4.7);
 
 INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, Monday_open, Monday_close, Tuesday_open, Tuesday_close, Wednesday_open, Wednesday_close, Thursday_open, Thursday_close, Friday_open, Friday_close, Saturday_open, Saturday_close, Sunday_open, Sunday_close, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
-VALUES ('https://s3.amazonaws.com/crowdriff-media/full/444ce9873a6db9733147ac68ffddae654cc6e6cc3b7aa267536a64ae61b07678.jpg','University Circle is a busy cultural hub with institutions like the Cleveland Natural History Museum and the Museum of Contemporary Art, a modern mirrored structure with regularly changing exhibitions. Severance Hall hosts performances by the Cleveland Orchestra, and paths wind past roses and maple trees at the Cleveland Botanical Garden. Casual college bars, ramen joints and Asian fusion eateries dot the area.','University Circle','Cultural Hub',41.50922602862502,-81.60886420872895,'00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','true','false','','true', 4.6);
+VALUES ('https://s3.amazonaws.com/crowdriff-media/full/444ce9873a6db9733147ac68ffddae654cc6e6cc3b7aa267536a64ae61b07678.jpg','University Circle is a busy cultural hub with institutions like the Cleveland Natural History Museum and the Museum of Contemporary Art, a modern mirrored structure with regularly changing exhibitions. Severance Hall hosts performances by the Cleveland Orchestra, and paths wind past roses and maple trees at the Cleveland Botanical Garden.','University Circle','Cultural Hub',41.50922602862502,-81.60886420872895,'00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','00:00:00','true','false','','true', 4.6);
 
 INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, Monday_open, Monday_close, Tuesday_open, Tuesday_close, Wednesday_open, Wednesday_close, Thursday_open, Thursday_close, Friday_open, Friday_close, Saturday_open, Saturday_close, Sunday_open, Sunday_close, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
 VALUES ('https://lh5.googleusercontent.com/p/AF1QipObsIGLADn5qZKNlVl74b4BMA_58UaNR8PQliI-=w408-h541-k-no','The Cleveland Botanical Garden, located in the University Circle neighborhood of Cleveland, Ohio, in the United States.','Cleveland Botanical Gardens','Garden',41.51170068041453, -81.60959720000001,NULL,NULL,'10:00:00','17:00:00','10:00:00','17:00:00','10:00:00','17:00:00','10:00:00','17:00:00','10:00:00','17:00:00','12:00:00','17:00:00','true','true','','false', 4.7);
