@@ -2,13 +2,13 @@
     <div class="card-container-itinerary">
         <div class="destination-card-itinerary"
             @click="handleClick"
-                :class="{flipped : flipped}"
-                v-on:click='flip()' >
+            :class="{flipped : flipped}"
+            v-on:click='flip()'>
+            <!-- <div>{{ id }}</div> -->
             <div class='card-front-itinerary'>
                 <img class="thumbnail-itinerary" :src="destination.imageUrl" />
                 <div class='info-itinerary'>
-                  <h3>{{ destination.name }}</h3>
-                  <p>{{ time }}</p>
+                  <h2>{{ destination.name }}</h2>
                 </div>
             </div>
             <div class='card-back-itinerary'>
@@ -120,7 +120,7 @@ export default {
     margin: 10px;
     padding: 10px;
     border-radius: 10px;
-    text-align: center;
+    justify-content: space-between;
 }
 
 .card-back-itinerary {
@@ -137,6 +137,8 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 10px;
+  text-align: right;
 }
 
 .thumbnail-itinerary {
