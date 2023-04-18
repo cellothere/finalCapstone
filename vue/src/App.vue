@@ -3,7 +3,8 @@
     <div id="nav">
       <div id="explore">
         <router-link v-bind:to="{ name: 'explore' }" id="exploreButton">Explore</router-link>&nbsp;|&nbsp;
-        <router-link v-bind:to="{ name: 'itinerary'}" id="itineraryButton">Itinerary</router-link>&nbsp;|&nbsp;
+        <router-link v-bind:to="{ name: 'build itinerary'}" id="buildItineraryButton">Build Your Itinerary</router-link>&nbsp;|&nbsp;
+        <router-link v-bind:to="{ name: 'saved itinerary'}" id="savedItineraryButton">Saved Itineraries</router-link>&nbsp;|&nbsp;
         <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''" id="logoutButton">Logout</router-link>
         
       </div>
@@ -13,6 +14,17 @@
     <router-view />
   </div>
 </template>
+
+<script>
+import SavedItineraries from './views/SavedItineraries.vue'
+export default {
+  name: 'App',
+  views: {
+    SavedItineraries
+  }
+  
+}
+</script>
 
 
 <style>

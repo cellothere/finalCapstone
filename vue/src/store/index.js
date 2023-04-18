@@ -54,7 +54,9 @@ export default new Vuex.Store({
       if (index !== -1) {
         state.favorites.splice(index, 1);
       }
+    },
+      ADD_Itinerary(state, itinerary) {
+        state.itineraries.unshift(itinerary);
+      }
     }
-}
-}
-)
+})

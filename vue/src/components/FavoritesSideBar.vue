@@ -12,8 +12,7 @@ export default {
   name: "FavoritesSideBar",
   data() {
     return {
-      favorites: [
-      ],
+      favorites: [],
     };
   },
 };
