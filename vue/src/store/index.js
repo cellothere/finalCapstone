@@ -28,6 +28,7 @@ export default new Vuex.Store({
       startingTime: null,
       destinations: {}
     },
+
     currentLatitude: 41.5038033, //hard-coded temporarily
     currentLongitude: -81.6419466 //hard-coded temporarily,
   },
