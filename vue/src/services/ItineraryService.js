@@ -6,6 +6,10 @@ const http = axios.create({
 
 export default {
 
+  getAllItineraries() {
+      return http.get('/itinerary');
+    },
+  
   getItineraryActivitiesByUserAndItinerary(userId, itineraryId) {
     return http.get(`itinerary/${userId}/${itineraryId}/thingToDo`);
   },
@@ -13,6 +17,7 @@ export default {
   getItinerariesByItineraryId(itineraryId) {
     return http.get(`itinerary/${itineraryId}/all`)
   },
+
 
   saveFavoriteToDatabase(userId, itineraryId, sequenceId) {
     return http.post(`itinerary/${userId}/${itineraryId}/${sequenceId}`)

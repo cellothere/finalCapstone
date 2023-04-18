@@ -14,7 +14,7 @@ public interface FavoritesDao {
 
         boolean create(ThingToDoDto thingToDoDto, int userId);
 
-//        void delete(int favoriteId, int userId);
+        void deleteFavorite(String favoriteName, int userId);
 
     }
 
