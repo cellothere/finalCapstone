@@ -5,9 +5,11 @@ import com.techelevator.dao.ItineraryDao;
 import com.techelevator.model.ItineraryLandmark;
 import com.techelevator.model.ThingToDoDto;
 import com.techelevator.model.User;
+import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
 
@@ -63,6 +65,10 @@ public class JdbcItineraryDao implements ItineraryDao {
         String sql = "INSERT INTO itinerary_landmark (itinerary_id, landmark_id, sequence_number) VALUES (?, ?, ?) RETURNING landmark_id";
 
         Integer landmark = jdbcTemplate.queryForObject(sql, Integer.class, itineraryId, landmarkId, sequenceId);
+
+        if (landmark == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The landmark could not be found");
+        }
 
     }
 

@@ -1,12 +1,11 @@
 <template>
   <div id="login">
-    <div class="banner">
-      <img class="banner-image" src="https://images.rawpixel.com/image_1000/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGQxOS0zLTEyODE2dS5qcGc.jpg" alt="Downtown Cleveland">
-      <img class="cleveland-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Destination_Cleveland_logo.svg/512px-Destination_Cleveland_logo.svg.png?20211216160402" alt="Script Cleveland"/>
-    </div>
     <div class='formBox'>
       <form @submit.prevent="login" id="login">
-        <h2 >Please sign in to build your adventure</h2>
+        <br>
+        <br>
+        <img class="cleveland-logo-login" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Destination_Cleveland_logo.svg/512px-Destination_Cleveland_logo.svg.png?20211216160402" alt="Script Cleveland"/>
+        <h2 >Please sign in to build your adventure!</h2>
         <div role="alert" v-if="invalidCredentials">
           Invalid username and password!
         </div>
@@ -23,7 +22,7 @@
         </div>
         <input type="submit" value="Sign in" class="button" id="done" :style="inputStyle" v-on:keyup.enter="login"/>
         <input type="submit" value="Need an account? Sign up" class="button" id="done" :style="inputStyle" v-on:click="register"/>
-        <input type="submit" value="Continue as Guest" class="button" id="done" :style="inputStyle" v-on:click="goToGuestView"/>
+        <!-- <input type="submit" value="Continue as Guest" class="button" id="done" :style="inputStyle" v-on:click="goToGuestView"/> -->
       </form>
     </div>
   </div>
@@ -76,6 +75,7 @@ export default {
 
 
 <style scoped>
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 #login {
@@ -88,6 +88,7 @@ export default {
   background-size: cover;
   height: 100vh;
   width: 100vw;
+  margin: -10px;
 }
 
 h1 {
@@ -108,12 +109,16 @@ form {
 }
 
 .formBox {
+  display: flex;
+  background-color: white;
+  align-items: center;
 }
 
 .usernamePassword {
   font-size: 18px;
   font-weight: bold;
 }
+
 input {
   border-radius: 3rem;
   border: none;
@@ -140,8 +145,10 @@ input:active {
 }
 
 #done {
-  width: 35%;
+  width: 300px;
+  font-weight: bold;
 }
+
 .form-input-group {
   margin-bottom: 1rem;
 }
@@ -149,13 +156,26 @@ input:active {
 label {
   margin-right: 0.5rem;
 }
+
 .welcome {
   text-align: center;
 }
+
 p {
   font-family: Poppins;
   background-color: white;
 }
 
+#username {
+  width: 250px;
+}
+
+#password {
+  width: 250px;
+}
+
+.cleveland-logo-login {
+  width: 300px;
+}
 
 </style>

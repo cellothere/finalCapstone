@@ -1,7 +1,10 @@
 <template>
   <div id="register" class="text-center">
     <form @submit.prevent="register" class="container">
-      <h1 id="createAccount">Create Account</h1>
+      <br>
+      <br>
+      <img class="cleveland-logo-login" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Destination_Cleveland_logo.svg/512px-Destination_Cleveland_logo.svg.png?20211216160402" alt="Script Cleveland"/>
+      <h2 id="createAccount">Create Account</h2>
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -13,7 +16,7 @@
         <label for="password">Password</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
-      <div class="form-input-group" id="confirmPassword">
+      <div class="form-input-group" id="confirmPasswordContainer">
         <label for="confirmPassword">Confirm Password</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
@@ -77,21 +80,21 @@ export default {
 </script>
 
 <style scoped>
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
 .form-input-group {
   margin-bottom: 1rem;
   font-family: Poppins;
   position: relative;
 }
+
 label {
   margin-right: 0.5rem;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-
-
 #register {
   display: flex;
-  margin-top: 2rem;
   background-image: url(../../assets/clevelandmap.jpg) ;
   background-attachment: fixed;
   background-position: center;
@@ -100,6 +103,7 @@ label {
   height: 100vh;
   width: 100vw;
   justify-content: center;
+  margin: -10px;
 }
 
 h1 {
@@ -107,12 +111,12 @@ h1 {
   user-select: none;
   font-size: 3rem;
 }
+
 .container {
   display: flex;
   flex-direction: column;
   width: 70%;
   align-items: center;
-
 }
 
 label {
@@ -120,10 +124,11 @@ label {
   font-size: 17px;
   font-weight: bold;
 }
+
 #confirmPassword {
-  position: relative;
-  right: 3.5%;
+  width: 250px;
 }
+
 input {
   border-radius: 3rem;
   border: none;
@@ -136,13 +141,14 @@ input {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
 }
+
 input:hover {
   box-shadow: 0px 0px 8px -5px #000000;
 }
+
 input:active {
   box-shadow: 0px 0px 8px -5px #000000;
 }
-
 
 button {
   width: 50px;
@@ -151,7 +157,8 @@ button {
 }
 
 #done {
-  width: 40%;
+  width: 300px;
+  font-weight: bold;
 }
 
 .welcome {
@@ -165,6 +172,17 @@ p {
   font-family: Poppins, sans-serif;
 }
 
+.cleveland-logo-login {
+  width: 300px;
+}
+
+#username {
+  width: 250px;
+}
+
+#password {
+  width: 250px;
+}
 
 </style>
 

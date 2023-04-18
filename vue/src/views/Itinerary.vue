@@ -4,22 +4,22 @@
         <br>
         <br>
         <itinerary-list />
-        <!-- <favorites-side-bar /> -->
+
         <favorites-side-bar />
     </div>
     
 </template>
 
 <script>
-import FavoritesSideBar from '../components/FavoritesSideBar.vue';
 import itineraryList from "../components/ItineraryList.vue";
-// import favoritesSideBar from '../components/FavoritesSideBar.vue'
+import favoritesSideBar from '../components/FavoritesSideBar.vue'
 
 export default {
     components: { 
         itineraryList,
         // favoritesSideBar
-        FavoritesSideBar
+        favoritesSideBar
+
     },
 
 }
@@ -29,6 +29,6 @@ export default {
     .list-container {
         display: flex;
         flex-direction: column;
-        justify-items: flex-end;
+        align-items: center;
     }
 </style>
