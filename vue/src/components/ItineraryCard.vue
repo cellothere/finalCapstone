@@ -1,21 +1,21 @@
 <template>
-    <div class="card-container">
-        <div class="destination-card"
+    <div class="card-container-itinerary">
+        <div class="destination-card-itinerary"
             @click="handleClick"
                 :class="{flipped : flipped}"
                 v-on:click='flip()' >
-            <div class='card-front'>
-                <img class="thumbnail" :src="destination.imageUrl" />
-                <div class='info'>
+            <div class='card-front-itinerary'>
+                <img class="thumbnail-itinerary" :src="destination.imageUrl" />
+                <div class='info-itinerary'>
                   <h3>{{ destination.name }}</h3>
                   <p>{{ time }}</p>
                 </div>
             </div>
-            <div class='card-back'>
-                <p class="description" >{{ destination.description }}</p>
-                <div class="rating" >
+            <div class='card-back-itinerary'>
+                <p class="description-itinerary" >{{ destination.description }}</p>
+                <div class="rating-itinerary" >
                     <img src="../../assets/star.png"
-                        class="ratingStar"
+                        class="ratingStar-itinerary"
                         v-for="n in roundedRating"
                         v-bind:key="n"/>
                 </div>
@@ -92,12 +92,12 @@ export default {
 </script>
 
 <style>
-.card-container {
+.card-container-itinerary {
     perspective: 1000px;
     text-align: center;
 }
 
-.destination-card {
+.destination-card-itinerary {
     cursor: pointer;
     transform-style: preserve-3d;
     transition: transform 0.6s;
@@ -108,7 +108,7 @@ export default {
     transform: rotateY(180deg);
 }
 
-.card-front, .card-back {
+.card-front-itinerary, .card-back-itinerary {
     display: flex;
     backface-visibility: hidden;
     top: 0;
@@ -123,7 +123,7 @@ export default {
     text-align: center;
 }
 
-.card-back {
+.card-back-itinerary {
     transform: rotateY(180deg);
     position: absolute;
     display: flex;
@@ -132,14 +132,14 @@ export default {
     align-items: center;
 }
 
-.info {
+.info-itinerary {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.thumbnail {
+.thumbnail-itinerary {
     max-height: 100%;
     position: relative;
     top: 0px;
@@ -148,11 +148,11 @@ export default {
     object-fit: cover;
 }
 
-.rating {
+.rating-itinerary {
     margin-bottom: 15px;
 }
 
-.ratingStar {
+.ratingStar-itinerary {
     max-width: 25px;
 }
 

@@ -1,7 +1,7 @@
 <template>
-    <div class='list'>
+    <div class='list-itinerary'>
         <div class='itinerary-params'>
-            <div class='title'>
+            <div class='title-itinerary'>
                 <h2>Title: </h2>
                 <input type="text" id='titleInput' v-model='title' v-on:change='updateTitle()'>
             </div>
@@ -59,7 +59,7 @@ export default {
 
 <style>
 
-.list {
+.list-itinerary {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -101,7 +101,7 @@ export default {
     font-size: large;
 }
 
-.title  {
+.title-itinerary  {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
