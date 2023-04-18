@@ -19,7 +19,7 @@
 <script>
 import itineraryCard from '../components/ItineraryCard.vue'
 // import itineraryService from '../services/ItineraryService.js'
-import destinationsService from '../services/DestinationsService'
+// import destinationsService from '../services/DestinationsService'
 
 export default {
     components: {
@@ -33,9 +33,12 @@ export default {
         }
     },
     created() {
-        destinationsService.getDestinations().then((response) => {
-        this.destinations = response.data;
-        });
+        // destinationsService.getDestinations().then((response) => {
+        // this.destinations = response.data;
+        // });
+
+        const favorites = this.$store.state.favorites
+        this.destinations = favorites;
     // itineraryService
     //     .getActivitiesByUserIdAndItineraryId(this.$route.params.userId, this.$route.params.itineraryId)
     //     .then((response) => {
@@ -52,8 +55,7 @@ export default {
         updateDate() {
             this.$store.state.currentItinerary.date = this.date;
         }
-    }
-
+    },
 }
 </script>
 
