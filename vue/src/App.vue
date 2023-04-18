@@ -15,16 +15,6 @@
   </div>
 </template>
 
-<script>
-import SavedItineraries from './views/SavedItineraries.vue'
-export default {
-  name: 'App',
-  views: {
-    SavedItineraries
-  }
-  
-}
-</script>
 
 
 <style>
@@ -67,9 +57,13 @@ export default {
   font-size: 18px;
   font-size-adjust: 25px;
 }
-#itineraryButton:hover {
+#buildItineraryButton:hover {
   font-size: 18px;
   font-size-adjust: 25px;
+}
+#savedItineraryButton:hover {
+  font-size: 18px;
+  font-size-adjust:25px;
 }
 
 #logoutButton:hover {

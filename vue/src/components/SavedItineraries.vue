@@ -7,6 +7,7 @@
     </div>
 
 
+    
 </template>
 
 <script>
@@ -35,8 +36,7 @@ export default {
 <style>
 #route {
   margin-top: 4%;
-
-
-
+  font-size: 18px;
+  object-fit: cover;
 }
 </style>
