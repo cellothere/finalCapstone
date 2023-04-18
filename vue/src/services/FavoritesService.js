@@ -11,10 +11,11 @@ export default {
   },
 
   getItinerariesByItineraryId(itineraryId) {
+    
     return http.get(`/itinerary/${itineraryId}/all`)
   },
 
-  saveFavoriteToDatabase(destination) {
-    return http.post(`/favorites/create/`, destination)
+  saveFavoriteToDatabase(destination, userId) {
+    return http.post(`/favorites/${userId}/create`, destination)
   }
 }

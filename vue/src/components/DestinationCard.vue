@@ -78,7 +78,8 @@ export default {
             this.flip;
         },
         addToFavorites() {
-            favoriteService.saveFavoriteToDatabase(this.destination)
+            let userId = this.$store.state.user.id
+            favoriteService.saveFavoriteToDatabase(this.destination, userId)
         }
     },
     toggleFavorite(destination) {

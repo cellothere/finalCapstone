@@ -40,9 +40,9 @@ public class FavoritesController {
             }
         }
         @ResponseStatus(HttpStatus.CREATED)
-        @RequestMapping(path = "favorites/create", method = RequestMethod.POST)
-        public boolean createThingToDO(@RequestBody ThingToDoDto thingToDoDto){
-            return favoritesDao.create(thingToDoDto);
+        @RequestMapping(path = "favorites/{userId}/create", method = RequestMethod.POST)
+        public boolean createThingToDO(@RequestBody ThingToDoDto thingToDoDto, @PathVariable int userId){
+            return favoritesDao.create(thingToDoDto, userId);
         }
     }
 
