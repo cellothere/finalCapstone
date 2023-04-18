@@ -20,8 +20,7 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    favorites: [
-    ],
+    favorites: [],
 
     currentLatitude: 41.5038033, //hard-coded temporarily
     currentLongitude: -81.6419466 //hard-coded temporarily,
