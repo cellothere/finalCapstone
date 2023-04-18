@@ -62,19 +62,24 @@ public class JdbcFavoritesDao implements FavoritesDao {
     }
 
     @Override
-    public boolean create(ThingToDoDto thingToDoDto){
+    public boolean create(ThingToDoDto thingToDoDto, int userId){
         String sql = "INSERT INTO favorites (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude," +
                 "monday_open, monday_close, tuesday_open, tuesday_close, wednesday_open, wednesday_close, thursday_open, thursday_close, friday_open, friday_close," +
                 "saturday_open, saturday_close, sunday_open, sunday_close, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
-        int results = jdbcTemplate.update(sql, thingToDoDto.getImageUrl(), thingToDoDto.getDescription(), thingToDoDto.getName(), thingToDoDto.getType(),
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING favorites_id;";
+        Integer results = jdbcTemplate.queryForObject(sql, Integer.class, thingToDoDto.getImageUrl(), thingToDoDto.getDescription(), thingToDoDto.getName(), thingToDoDto.getType(),
                 thingToDoDto.getLatitude(), thingToDoDto.getLongitude(), thingToDoDto.getMondayOpen(), thingToDoDto.getMondayClose(),
                 thingToDoDto.getTuesdayOpen(), thingToDoDto.getTuesdayClose(), thingToDoDto.getWednesdayOpen(), thingToDoDto.getWednesdayClose(), thingToDoDto.getThursdayOpen(),
                 thingToDoDto.getThursdayClose(), thingToDoDto.getFridayOpen(), thingToDoDto.getFridayClose(), thingToDoDto.getSaturdayOpen(), thingToDoDto.getSaturdayClose(),
                 thingToDoDto.getSundayOpen(), thingToDoDto.getSundayClose(), thingToDoDto.isKidFriendly(), thingToDoDto.isFreeAdmission(), thingToDoDto.getRestaurantType(),
                 thingToDoDto.isOutdoor(), thingToDoDto.getLandmarkRating());
-        if(results == 1) {
+
+        if(results != null) {
+
+            String sql2 = "INSERT INTO favorites_user (favorites_id, user_id) VALUES (?, ?)";
+            jdbcTemplate.update(sql2, results, userId);
             return true;
+
         }
         else {
             return false;

@@ -12,7 +12,9 @@ public interface FavoritesDao {
 
         ThingToDoDto getThingToDoById(int id);
 
-        boolean create(ThingToDoDto thingToDoDto);
+        boolean create(ThingToDoDto thingToDoDto, int userId);
+
+//        void delete(int favoriteId, int userId);
 
     }
 

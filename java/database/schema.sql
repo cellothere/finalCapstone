@@ -65,6 +65,11 @@ itinerary_id int NOT NULL,
 user_id int NOT NULL
 );
 
+CREATE TABLE favorites_user (
+favorites_id int NOT NULL,
+user_id int NOT NULL
+);
+
 CREATE TABLE favorites (
 favorites_id serial,
 landmark_img_url varchar (10000) NOT NULL,
@@ -97,13 +102,13 @@ CONSTRAINT PK_favorites_id PRIMARY KEY (favorites_id)
 COMMIT;
 
 INSERT INTO itinerary (itinerary_title, itinerary_date, starting_time)
-VALUES ('Itinerary 1', 01/01/2023, 9:00:00);
+VALUES ('Itinerary 1', '01/01/2023', '9:00:00');
 
 INSERT INTO itinerary (itinerary_title, itinerary_date, starting_time)
-VALUES ('Itinerary 2', 01/02/2023, 10:00:00);
+VALUES ('Itinerary 2', '01/02/2023', '10:00:00');
 
 INSERT INTO itinerary (itinerary_title, itinerary_date, starting_time)
-VALUES ('Itinerary 3', 01/03/2023, 11:00:00);
+VALUES ('Itinerary 3', '01/03/2023', '11:00:00');
 
 
 INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, Monday_open, Monday_close, Tuesday_open, Tuesday_close, Wednesday_open, Wednesday_close, Thursday_open, Thursday_close, Friday_open, Friday_close, Saturday_open, Saturday_close, Sunday_open, Sunday_close, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)

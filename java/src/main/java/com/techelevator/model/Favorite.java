@@ -62,7 +62,7 @@ public class Favorite {
     public Favorite() {
     }
 
-    public Favorite(String imageUrl, String description, String name, String type, BigDecimal latitude, BigDecimal longitude, Time mondayOpen,
+    public Favorite(int id, String imageUrl, String description, String name, String type, BigDecimal latitude, BigDecimal longitude, Time mondayOpen,
                     Time mondayClose, Time tuesdayOpen, Time tuesdayClose, Time wednesdayOpen, Time wednesdayClose, Time thursdayOpen, Time thursdayClose,
                     Time fridayOpen, Time fridayClose, Time saturdayOpen, Time saturdayClose, Time sundayOpen, Time sundayClose, boolean kidFriendly,
                     boolean freeAdmission, String restaurantType, boolean outdoor, double landmarkRating) {
