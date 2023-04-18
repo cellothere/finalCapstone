@@ -22,6 +22,7 @@ public class ItineraryController {
     private UserDao userDao;
 
 
+
     @RequestMapping(path = "/itinerary", method = RequestMethod.GET)
     public List<Itinerary> getAllItineraries() {
         return itineraryDao.getAllItineraries();

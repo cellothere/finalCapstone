@@ -61,10 +61,8 @@ export default new Vuex.Store({
         state.favorites.splice(index, 1);
       }
     },
-    CLEAR_FAVORITES(state) {
-      state.favorites = [];
+      ADD_Itinerary(state, itinerary) {
+        state.itineraries.unshift(itinerary);
+      }
     }
-
-}
-}
-)
+})
