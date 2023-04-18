@@ -62,6 +62,14 @@ public class JdbcFavoritesDao implements FavoritesDao {
     }
 
     @Override
+    public void deleteFavorite(String favoriteName, int userId){
+        String sql = "delete from favorites USING favorites_user WHERE favorites_user.favorites_id = favorites.favorites_id AND favorites_user.user_id = ? AND favorites.landmark_name = ?;";
+
+        jdbcTemplate.update(sql, userId, favoriteName);
+
+    }
+
+    @Override
     public boolean create(ThingToDoDto thingToDoDto, int userId){
         String sql = "INSERT INTO favorites (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude," +
                 "monday_open, monday_close, tuesday_open, tuesday_close, wednesday_open, wednesday_close, thursday_open, thursday_close, friday_open, friday_close," +

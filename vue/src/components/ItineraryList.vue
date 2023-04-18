@@ -14,16 +14,20 @@ export default {
     },
     data () {
         return {
-        destinations: [],
+        favorites: [],
         }
     },
     created() {
-    itineraryService
-        .getActivitiesByUserIdAndItineraryId(this.$route.params.userId, this.$route.params.itineraryId)
-        .then((response) => {
-            this.destinations = response.data;
+        itineraryService.getAllItineraries().then((response) => {
+         this.favorites = response.data;
     });
-  },
+    let userId = this.$store.state.user.id
+    itineraryService
+        .getActivitiesByUserIdAndItineraryId(userId, this.favorites.id)
+        .then((response) => {
+            this.favorites = response.data;
+    });
+  }
 }
 </script>
 
