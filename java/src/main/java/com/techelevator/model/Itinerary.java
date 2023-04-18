@@ -3,6 +3,8 @@ package com.techelevator.model;
 import javax.validation.constraints.NotEmpty;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Itinerary {
     
@@ -10,6 +12,7 @@ public class Itinerary {
     private String itineraryTitle;
     private Date itineraryDate;
     private Time startingTime;
+    private List<ThingToDoDto> itineraryItems;
 
 
     public Itinerary() {
@@ -23,6 +26,14 @@ public class Itinerary {
 
     public Itinerary(int itineraryId) {
         this.itineraryId = itineraryId;
+    }
+
+    public Itinerary(int itineraryId, String itineraryTitle, Date itineraryDate, Time startingTime, List<ThingToDoDto> itineraryItems) {
+        this.itineraryId = itineraryId;
+        this.itineraryTitle = itineraryTitle;
+        this.itineraryDate = itineraryDate;
+        this.startingTime = startingTime;
+        this.itineraryItems = itineraryItems;
     }
 
     public Itinerary(int itineraryId, String itineraryTitle, Date itineraryDate, Time startingTime) {
@@ -62,6 +73,14 @@ public class Itinerary {
 
     public void setStartingTime(Time startingTime) {
         this.startingTime = startingTime;
+    }
+
+    public List<ThingToDoDto> getItineraryItems() {
+        return itineraryItems;
+    }
+
+    public void setItineraryItems(List<ThingToDoDto> itineraryItems) {
+        this.itineraryItems = itineraryItems;
     }
 }
 
