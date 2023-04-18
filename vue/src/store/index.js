@@ -23,10 +23,10 @@ export default new Vuex.Store({
     favoritesInitialState: [],
     favorites: [],
     currentItinerary: {
-      title: null,
-      date: null,
-      startingTime: null,
-      destinations: {}
+      itineraryTitle: null,
+      itineratyDate: null,
+      itineraryStartingTime: null,
+      destinations: []
     },
 
     currentLatitude: 41.5038033, //hard-coded temporarily

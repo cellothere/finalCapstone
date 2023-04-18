@@ -11,6 +11,9 @@
                 <h4>Starting time: </h4>
                 <input id='timeInput' type="time" v-model="startingTime" v-on:change='updateStartingTime()'>
             </div>
+            <div class='get-directions'>
+                <h2 v-on:click='getDirections()'>Get Directions</h2>
+            </div>
         </div>
         <itinerary-card v-for="destination in destinations" v-bind:key="destination.id" v-bind:id="destination.id" />
     </div>
@@ -54,6 +57,14 @@ export default {
         },
         updateDate() {
             this.$store.state.currentItinerary.date = this.date;
+        },
+        // TODO - MAKE THIS WORK!
+        getDirections() {
+            let directionsURL = 'https://www.google.com/maps/dir/';
+            this.destinations.forEach((d) => {
+                directionsURL = directionsURL + d.latitude + ',' + d.longitude + '/';
+            });
+            window.open(directionsURL, '_blank');
         }
     },
 }
@@ -76,7 +87,7 @@ export default {
     left: 0;
     width: 15vw;
     min-width: 500px;
-    height: 200px;
+    height: 275px;
     background-color: rgb(230, 230, 230);
     margin: 10px;
     padding: 10px;
@@ -114,6 +125,11 @@ export default {
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
+}
+
+.get-directions {
+    margin: -30px;
+    cursor: pointer;
 }
 
 </style>
