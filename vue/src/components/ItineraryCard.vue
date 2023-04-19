@@ -4,11 +4,18 @@
             @click="handleClick"
             :class="{flipped : flipped}"
             v-on:click='flip()'>
-            <!-- <div>{{ id }}</div> -->
             <div class='card-front-itinerary'>
                 <img class="thumbnail-itinerary" :src="destination.imageUrl" />
+                <button class='stop-counter'>Stop <i class='stop-number'>#{{ index + 1 }}</i></button>
                 <div class='info-itinerary'>
-                  <h2>{{ destination.name }}</h2>
+                    <h2>{{ destination.name }}</h2>
+                    <!-- <i>M {{ convertTime(destination.mondayOpen) }} - {{ convertTime(destination.mondayClose) }}</i>
+                    <i>Tu {{ convertTime(destination.tuesdayOpen) }} - {{ convertTime(destination.tuesdayClose) }}</i>
+                    <i>W {{ convertTime(destination.wednesdayOpen) }} - {{ convertTime(destination.wednesdayClose) }}</i>
+                    <i>Th {{ convertTime(destination.thursdayOpen) }} - {{ convertTime(destination.thursdayClose) }}</i>
+                    <i>F {{ convertTime(destination.fridayOpen) }} - {{ convertTime(destination.fridayClose) }}</i>
+                    <i>Sa {{ convertTime(destination.saturdayOpen) }} - {{ convertTime(destination.saturdayClose) }}</i>
+                    <i>Su {{ convertTime(destination.sundayOpen) }} - {{ convertTime(destination.sundayClose) }}</i> -->
                 </div>
             </div>
             <div class='card-back-itinerary'>
@@ -38,7 +45,8 @@ import destinationsService from '../services/DestinationsService';
 export default {
     props: [
       'id',
-      'time'
+      'time',
+      'index'
       ],
     data() {
         return {
@@ -70,9 +78,41 @@ export default {
         handleClick() {
             this.flip;
         },
-    },
     toggleFavorite(destination) {
-      this.$store.commit('TOGGLE_FAVORITE', destination);
+        this.$store.commit('TOGGLE_FAVORITE', destination);
+    },
+    convertTime(str) {
+        let result = ''
+        // Get Hours
+        var h1 = Number(str[0] - '0');
+        var h2 = Number(str[1] - '0');
+        var hh = h1 * 10 + h2;
+        // Finding out the Meridien of time
+        // ie. AM or PM   
+        var Meridien;
+        if (hh < 12) { Meridien = "AM";}
+        else Meridien = "PM";
+        hh %= 12;
+        // Handle 00 and 12 case separately
+        if (hh == 0) {
+            result = result + "12";
+            // Printing minutes and seconds
+            for (var i = 2; i < 2; ++i) {
+            result = result + str[i];
+            }
+        }
+        else {
+            result = result + hh;
+            // Printing minutes and seconds
+            for (var j = 2; j < 2; ++j) {
+            result = result + str[j];
+            }
+        }
+        // After time is printed
+        // cout Meridien
+        result = result + Meridien;
+        return result;
+        },
     },
     created() {
         destinationsService.getDestinationById(this.id).then(response => {
@@ -136,7 +176,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: right;
   padding: 10px;
   text-align: right;
 }
@@ -168,6 +208,33 @@ export default {
 h3 {
     margin-bottom: 2px;
     cursor: pointer;
+}
+
+i {
+    font-size: small;
+}
+
+.stop-counter {
+    font-family: Poppins;
+    font-weight: bold;
+    font-size: medium;
+    border: solid;
+    color: white;
+    background-color: purple;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 13px;
+    margin-left: -1px;
+    margin-bottom: 10px;
+    border-radius: 100px;
+    position: absolute;
+    right: 90%;
+}
+
+.stop-number {
+    font-size:xx-large;
 }
 
 

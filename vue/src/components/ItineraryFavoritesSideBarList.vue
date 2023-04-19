@@ -1,19 +1,19 @@
 <template>
   <div>
     <div class="sidebar-list">
-      <favorites-side-bar-card v-for="destination in destinations" v-bind:key="destination.id" v-bind:id="destination.id" />
+      <itinerary-favorites-side-bar-card v-for="destination in destinations" v-bind:key="destination.id" v-bind:id="destination.id" />
       <div class='spacer'/>
     </div>
   </div>
 </template>
 
 <script>
-import FavoritesSideBarCard from "./FavoritesSideBarCard.vue";
+import ItineraryFavoritesSideBarCard from "./ItineraryFavoritesSideBarCard.vue";
 
 
 export default {
   components: {
-    FavoritesSideBarCard
+    ItineraryFavoritesSideBarCard
   },
   data () {
     return {

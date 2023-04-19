@@ -43,7 +43,6 @@
       v-bind:class="{tag:!resetFilter, tagSelected: resetFilter }"> RESET FILTERS
       </button>
     </div>
-    
     <br>
     <form class='filters'>
       <b>Filter By Keyword:</b>
