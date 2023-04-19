@@ -65,7 +65,7 @@ public class ItineraryController {
 //    public void create(@PathVariable int userId, @PathVariable int itineraryId, @PathVariable int landmarkId) {
 //        itineraryDao.addThingToDoToItinerary(itineraryId, landmarkId);
 //    }
-    
+
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/itinerary/{userId}/{itineraryId}", method = RequestMethod.POST)
     public void saveItineraryDestinationIds(@PathVariable int userId, @PathVariable int itineraryId, @RequestBody int[] destinationIds){
