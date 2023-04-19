@@ -1,75 +1,76 @@
 <template>
   <div id="adding">
-    <div id=route>
-        <router-link v-bind:to="{ name: 'build itinerary'}" id="buildAddNewButton">+Add New Itinerary</router-link>
-        <button v-if="showButton" type="button" v-on:click="getAllItineraries(), getAllItineraryActivities(22)" >Load Itineraries</button>
-      </div>
-
-    <router-view />
-
-  <div>
-    
-    <h2>Itineraries</h2>
-    <ul>
-      <li v-for="itinerary in itineraries" :key="itinerary.itinerary_id"> 
-        {{ itinerary.itineraryTitle }} - {{ itinerary.itineraryDate }} - {{ itinerary.startingTime }}
-         </li>
-      <li v-for="destination in destinations" :key="destination.landmark_id" >
-        {{ destination.name }}
-      </li>
-      
-    </ul>
+    <div id="route">
+    </div>
+    <br>
+    <br>
+    <div class="itinerary-container" v-for="itinerary in itineraries" :key="itinerary.itinerary_id">
+      <h2 class="itinerary-title">{{ itinerary.itineraryTitle }}</h2>
+      <p class="itinerary-date">{{ itinerary.itineraryDate }} - {{ itinerary.startingTime }}</p>
+    </div>
   </div>
-  </div>
-
-    
 </template>
-
 
 <script>
 import ItineraryService from '../services/ItineraryService.js';
 
 export default {
-
   name: 'saved-itinerary',
   data() {
     return {
       itineraries: [],
       destinations: [],
-      showButton: true
+      showButton: true,
+      selectedItineraryId: 22,
+      
     }
   },
-  methods: {
-    getAllItineraries() {
+  created() {
+   
       let userId = this.$store.state.user.id
       ItineraryService.getAllItinerariesByUserId(userId)
         .then(response => {
-        console.log(response.data)
-        this.itineraries = response.data;
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }, getAllItineraryActivities(itineraryId){
-      let userId = this.$store.state.user.id
-        ItineraryService.getAllItineraryActivities(userId, itineraryId)
-                .then(response => {
-                console.log(response.data)
-                this.destinations = response.data;
+          console.log(response.data)
+          this.itineraries = response.data;
         })
         .catch(error => {
           console.log(error);
         });
     }
-  }
 }
 </script>
-
 
 <style>
 #route {
   margin-top: 4%;
   font-size: 18px;
-  
+}
+
+#adding {
+  background-image: url(../../assets/CleTOursArUs.jpg) ;
+  background-attachment:scroll;
+  background-position: center;
+  background-position:;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+.itinerary-container {
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 40%;
+  background-color: rgb(230, 230, 230);
+  border-radius: 10px;
+  margin-left: 1%;
+}
+
+.itinerary-title {
+  margin-top: 0;
+}
+
+.itinerary-date {
+  margin-bottom: 0;
 }
 </style>
