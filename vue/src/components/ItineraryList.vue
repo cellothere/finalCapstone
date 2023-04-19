@@ -21,7 +21,7 @@
             </div>
         </div>
         <itinerary-card 
-            v-for="(destination,index) in $store.state.currentItineraryDestinations" 
+            v-for="(destination, index) in destinations" 
             v-bind:key="destination.id" 
             v-bind:id="destination.id"
             v-bind:index='index' />
@@ -39,14 +39,36 @@ export default {
     data () {
         return {
             destinations: [],
-            Title: "",
+            itineraries: [],
+            title: "",
             startingTime: '00:00',
             date: ''
         }
     },
     created() {
-        this.destinations = this.$store.state.favorites;
+    //   let userId = this.$store.state.user.id
+    //   let itineraryId = this.$route.params.itineraryId
+      let userId = this.$store.state.user.id
+      let itineraryId = 22;
+        itineraryService.getAllItineraryActivities(userId, itineraryId)
+                .then(response => {
+                console.log(response.data)
+                this.destinations = response.data;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+
+      itineraryService.getAllItinerariesByUserId(userId)
+        .then(response => {
+          console.log(response.data)
+          this.itineraries = response.data;
+        })
+        .catch(error => {
+          console.log(error);
+        });
     },
+
     methods: {
         updateStartingTime() {
             this.$store.state.currentItinerary.startingTime = this.startingTime;

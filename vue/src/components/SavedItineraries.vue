@@ -21,7 +21,6 @@ export default {
       itineraries: [],
       destinations: [],
       showButton: true,
-      selectedItineraryId: 22,
       
     }
   },
