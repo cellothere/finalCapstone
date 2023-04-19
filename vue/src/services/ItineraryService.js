@@ -8,7 +8,7 @@ export default {
 
   getAllItineraries() {
       return http.get('/itinerary');
-    },
+  },
   
   getItinerariesByItineraryId(itineraryId) {
     return http.get(`itinerary/${itineraryId}/all`)
@@ -21,7 +21,9 @@ export default {
   createItinerary(userId, itinerary) {
     return http.post(`/itinerary/${userId}/create`, itinerary)
   },
+
   deleteItinerary(userId, itineraryId) {
     return http.post(`/itinerary/${userId}/${itineraryId}`)
   }
+  
   }
