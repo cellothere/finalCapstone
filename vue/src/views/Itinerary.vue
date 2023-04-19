@@ -4,21 +4,20 @@
         <br>
         <br>
         <itinerary-list />
-
-        <favorites-side-bar />
+        <itinerary-favorites-side-bar />
+        
     </div>
     
 </template>
 
 <script>
 import itineraryList from "../components/ItineraryList.vue";
-import favoritesSideBar from '../components/FavoritesSideBar.vue'
+import itineraryFavoritesSideBar from '../components/ItineraryFavoritesSideBar.vue'
 
 export default {
     components: { 
         itineraryList,
-        // favoritesSideBar
-        favoritesSideBar
+        itineraryFavoritesSideBar
 
     },
 

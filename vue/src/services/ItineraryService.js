@@ -8,7 +8,7 @@ export default {
 
   getAllItineraries() {
       return http.get('/itinerary');
-    },
+  },
   
   getItinerariesByItineraryId(itineraryId) {
     return http.get(`itinerary/${itineraryId}/all`)

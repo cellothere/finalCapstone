@@ -1,6 +1,9 @@
 <template>
-    <div class="sidebar-destination-card">
-        <h6>{{ destination.name }}</h6>
+    <div class="sidebar-destination-card" v-show='!added'>
+        <div id='nameAdd'>
+            <h6>{{ destination.name }}</h6>
+            <button class='tag' id='add' v-on:click='addToItinerary()'>Add</button>
+        </div>
         <img class="sidebarThumbnail" :src="destination.imageUrl" />
     </div>
 </template>
@@ -16,11 +19,27 @@ export default {
             destination: {}
         }
     },
+    computed: {
+        added() {
+            let result = false;
+            this.$store.state.currentItineraryDestinations.forEach((d) => {
+                if (d.name === this.destination.name) {
+                    result = true;
+                }
+            });
+            return result;
+        }
+    },
     created() {
         destinationsService.getDestinationById(this.id).then(response => {
             this.destination = response.data;
         });
     },
+    methods: {
+        addToItinerary() {
+            this.$store.state.currentItineraryDestinations.push(this.destination);
+        }
+    }
 }
 </script>
 
@@ -47,6 +66,20 @@ export default {
     left: 0px;
     aspect-ratio: 1/1;
     object-fit: cover;
+}
+
+#add {
+    background-color: green;
+    scale: 80%;
+}
+
+#nameAdd {
+    display: flex;
+    flex-direction: column;
+}
+
+h6 {
+    margin: 5px;
 }
 
 </style>
