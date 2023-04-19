@@ -16,11 +16,15 @@
             </div>
             <div class='itinerary-buttons'>
                 <button class='tag' id='save' v-on:click='saveItinerary()'>Save</button>
-                <button class='tag' id='reset' v-on:click='resetDestinationList()'>Reset</button>
+                <button class='tag' id='reset-itinerary' v-on:click='resetDestinationList()'>Clear</button>
                 <button class='tag' id='delete' v-on:click='deleteItinerary()'>Delete</button>
             </div>
         </div>
-        <itinerary-card v-for="destination in $store.state.currentItineraryDestinations" v-bind:key="destination.id" v-bind:id="destination.id" />
+        <itinerary-card 
+            v-for="(destination,index) in $store.state.currentItineraryDestinations" 
+            v-bind:key="destination.id" 
+            v-bind:id="destination.id"
+            v-bind:index='index' />
     </div>
 </template>
 
@@ -166,7 +170,7 @@ export default {
     background-color: green;
 }
 
-#reset {
+#reset-itinerary {
     background-color: gray;
 }
 
