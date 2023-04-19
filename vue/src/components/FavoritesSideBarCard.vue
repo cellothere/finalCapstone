@@ -1,6 +1,6 @@
 <template>
     <div class="sidebar-destination-card">
-        <h4 v-on:click='toggleShowDetail()' >{{ destination.name }}</h4>
+        <h6 v-on:click='toggleShowDetail()' >{{ destination.name }}</h6>
         <img class="sidebarThumbnail" :src="destination.imageUrl" />
     </div>
 </template>

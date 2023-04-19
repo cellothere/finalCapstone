@@ -1,20 +1,19 @@
 <template>
   <div class="favorites-sidebar">
     <h2>My Favorites</h2>
+    <button
+      id='clearFavorites'
+      v-on:click='clearFavorites()'
+      class="tag">
+      Clear Favorites
+    </button>
+    <button
+      id='buildItinerary'
+      v-on:click='buildItinerary()'
+      class="tag">
+      Build Itinerary
+    </button>
     <sidebar-favorites-list id="sidebarFavs"/>
-    <div id="backgroundShading" />
-      <button
-        id='clearFavorites'
-        v-on:click='clearFavorites()'
-        class="tag">
-        Clear Favorites
-      </button>
-      <button
-        id='buildItinerary'
-        v-on:click='buildItinerary()'
-        class="tag">
-        Build Itinerary
-      </button>
   </div>
 </template>
 
@@ -34,7 +33,7 @@ export default {
       location.reload();
     },
     buildItinerary() {
-      this.$router.push({ name: 'itinerary' } );
+      this.$router.push({ name: 'build itinerary' } );
     }
   }
 };
@@ -49,30 +48,16 @@ export default {
   top: 30px;
   right: 0;
   width: 200px;
-  height: 75%;
+  height: 100%;
   background-color: #f5f5f5;
   padding: 20px;
   z-index: 998;
   overflow: auto;
 }
 
-#backgroundShading {
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  top: 775px;
-  right: 0;
-  width: 200px;
-  height: 100%;
-  background-color: #f5f5f5;
-  padding: 20px;
-  z-index: 997;
-  overflow: auto;
-  align-items: flex-end;
-}
-
 #sidebarFavs {
   height: 10px;
+  margin-bottom: 100px;
 }
 
 #clearFavorites {
