@@ -13,15 +13,24 @@ export default {
   getItinerariesByItineraryId(itineraryId) {
     return http.get(`itinerary/${itineraryId}/all`)
   },
-
-  getItineraryByUserAndItinerary(userId, itineraryId) {
-    return http.get(`/itinerary/${userId}/${itineraryId}/thingToDo`);
+  getAllItinerariesByUserId(userId) {
+    return http.get(`/itinerary/${userId}/all`)
   },
 
-  createItinerary(userId, itinerary) {
+    getItineraryByUserAndItinerary(userId, itineraryId) {
+      return http.get(`/itinerary/${userId}/${itineraryId}/thingToDo`);
+    },
+
+  saveItineraryInfo(userId, itinerary) {
     return http.post(`/itinerary/${userId}/create`, itinerary)
+  },
+  saveItineraryDestinations(userId, itineraryId, arrayOfLandmarkIds){
+    return http.post(`/itinerary/${userId}/${itineraryId}/`, arrayOfLandmarkIds)
   },
   deleteItinerary(userId, itineraryId) {
     return http.post(`/itinerary/${userId}/${itineraryId}`)
+  },
+  getAllItineraryActivities(userId, itineraryId) {
+    return http.get(`/itinerary/${userId}/${itineraryId}/thingToDo`)
   }
-  }
+}
