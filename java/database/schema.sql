@@ -46,10 +46,8 @@ CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
 CREATE TABLE itinerary_landmark (
-itinerary_id serial,
-landmark_id int NOT NULL,
-sequence_number int NOT NULL,
-CONSTRAINT PK_itinerary_landmark PRIMARY KEY (itinerary_id)
+itinerary_id int NOT NULL,
+landmark_id int NOT NULL
 );
 
 CREATE TABLE itinerary (
@@ -104,9 +102,6 @@ VALUES ('Itinerary 2', '2023-02-01', '10:00:00');
 
 INSERT INTO itinerary (itinerary_title, itinerary_date, starting_time)
 VALUES ('Itinerary 3', '2023-03-01', '11:00:00');
-
-SELECT * FROM itinerary
-
 
 INSERT INTO landmark (landmark_img_url, landmark_description, landmark_name, landmark_type, landmark_latitude, landmark_longitude, Monday_open, Monday_close, Tuesday_open, Tuesday_close, Wednesday_open, Wednesday_close, Thursday_open, Thursday_close, Friday_open, Friday_close, Saturday_open, Saturday_close, Sunday_open, Sunday_close, kid_friendly, admission, restaurant_type, is_outdoor, landmark_rating)
 VALUES ('https://lh3.googleusercontent.com/p/AF1QipOAG5J0JPXL-NQhuby1GehcPdXAhQ2vGAQe7HaK=s680-w680-h510','The Cleveland Museum of Art is an art museum in Cleveland, Ohio, located in the Wade Park District, in the University Circle neighborhood on the citys east side.', 'The Cleveland Museum of Art', 'Museum', 41.508143000791016, -81.61199376059822,NULL,NULL,'10:00:00','17:00:00','10:00:00','21:00:00','10:00:00','17:00:00','10:00:00','21:00:00','10:00:00','17:00:00','10:00:00','17:00:00', 'true','true','','false', 4.9);

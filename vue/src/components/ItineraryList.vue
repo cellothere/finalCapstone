@@ -5,6 +5,7 @@
                 <h2>Title: </h2>
                 <input type="text" id='titleInput' v-model='title' v-on:change='updateTitle()'>
             </div>
+            <button type="submit"> submit </button>
             <div class='date-time'>
                 <h4>Date: </h4>
                 <input type="date" id='dateInput' v-model='date' v-on:change='updateDate()'>
@@ -16,6 +17,7 @@
             </div>
         </div>
         <itinerary-card v-for="destination in destinations" v-bind:key="destination.id" v-bind:id="destination.id" />
+        
     </div>
 </template>
 
@@ -31,6 +33,7 @@ export default {
     data () {
         return {
             destinations: [],
+            Title: "",
             startingTime: '00:00',
             date: ''
         }

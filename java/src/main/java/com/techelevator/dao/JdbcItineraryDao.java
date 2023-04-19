@@ -2,11 +2,14 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Itinerary;
 import com.techelevator.dao.ItineraryDao;
+import com.techelevator.model.ItineraryLandmark;
 import com.techelevator.model.ThingToDoDto;
 import com.techelevator.model.User;
+import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
 
@@ -39,7 +42,7 @@ public class JdbcItineraryDao implements ItineraryDao {
     }
 
     @Override
-    public List<ThingToDoDto> getAllItineraryActivitiesByUserAndItineraryId(int userId, int itineraryId){
+    public List<ThingToDoDto> getAllItineraryActivitiesByUserAndItineraryId(int userId, int itineraryId) {
 
         JdbcClevelandSpotsDao jdbcClevelandSpotsDao = new JdbcClevelandSpotsDao(jdbcTemplate);
 
@@ -57,11 +60,15 @@ public class JdbcItineraryDao implements ItineraryDao {
     }
 
     @Override
-    public void addThingToDoToItinerary(int itineraryId, int landmarkId, int sequenceId){
+    public void addThingToDoToItinerary(int itineraryId, int landmarkId) {
 
-        String sql = "INSERT INTO itinerary_landmark (itinerary_id, landmark_id, sequence_number) VALUES (?, ?, ?) RETURNING landmark_id";
+        String sql = "INSERT INTO itinerary_landmark (itinerary_id, landmark_id) VALUES (?, ?) RETURNING landmark_id";
 
-        Integer landmark = jdbcTemplate.queryForObject(sql, Integer.class, itineraryId, landmarkId, sequenceId);
+        Integer landmark = jdbcTemplate.queryForObject(sql, Integer.class, itineraryId, landmarkId);
+
+        if (landmark == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The landmark could not be found");
+        }
 
     }
 
@@ -82,7 +89,7 @@ public class JdbcItineraryDao implements ItineraryDao {
     }
 
     @Override
-    public List<Itinerary> getAllItinerariesByUserId(int userId){
+    public List<Itinerary> getAllItinerariesByUserId(int userId) {
 
         List<Itinerary> itineraries = new ArrayList<>();
         String sql = "select * from itinerary JOIN itinerary_user ON itinerary_user.itinerary_id = itinerary.itinerary_id where user_id = ?";
@@ -97,9 +104,10 @@ public class JdbcItineraryDao implements ItineraryDao {
         return itineraries;
 
     }
-//    TODO proper itinerary ID not updating
+
+    //    TODO proper itinerary ID not updating
     @Override
-    public boolean create(Itinerary itinerary, int userId) {
+    public Integer create(Itinerary itinerary, int userId) {
         String sql = "INSERT into itinerary (itinerary_title, itinerary_date, starting_time) VALUES (?, ?, ?) RETURNING itinerary_id;";
 //                "JOIN itinerary_user ON itinerary_user.itinerary_id = itinerary_user.itinerary_id;" +
         Integer returningItineraryId = jdbcTemplate.queryForObject(sql, Integer.class, itinerary.getItineraryTitle(), itinerary.getItineraryDate(), itinerary.getStartingTime());
@@ -108,22 +116,22 @@ public class JdbcItineraryDao implements ItineraryDao {
 
         jdbcTemplate.update(sql2, returningItineraryId, userId);
 
-        if(returningItineraryId != 0) {
-            return true;
+        if (returningItineraryId == 0) {
+            return 0;
         } else {
-            return false;
+            return returningItineraryId;
         }
     }
 
 
     @Override
-    public void delete(int id){
+    public void delete(int id) {
         String sql = "DELETE from itinerary WHERE itinerary_id = ?";
         jdbcTemplate.update(sql, id);
     }
 
     @Override
-    public void deleteByUserAndItineraryId(int userId, int itineraryId){
+    public void deleteByUserAndItineraryId(int userId, int itineraryId) {
 
         String sql = "DELETE FROM itinerary USING itinerary_user WHERE itinerary_user.itinerary_id = itinerary.itinerary_id AND itinerary_user.user_id = ? AND itinerary_user.itinerary_id = ?;";
 
@@ -132,7 +140,7 @@ public class JdbcItineraryDao implements ItineraryDao {
 
 
     @Override
-    public Itinerary getItineraryByUserIdAndItineraryId(int itineraryId, int userId){
+    public Itinerary getItineraryByUserIdAndItineraryId(int itineraryId, int userId) {
 
         Itinerary itinerary = null;
 
@@ -148,6 +156,13 @@ public class JdbcItineraryDao implements ItineraryDao {
 
     }
 
+//    public void createItineraryLandmark(int itineraryId, int landmarkId, int sequenceNumber) {
+//
+//        String sql = "INSERT into itinerary_landmark (itinerary_id, landmark_id, sequence_number) VALUES (?, ?, ?)";
+//
+//        jdbcTemplate.update(sql, itineraryId, landmarkId, sequenceNumber);
+//    }
+
 
     private Itinerary mapRowToItinerary(SqlRowSet rs) {
         Itinerary itinerary = new Itinerary();
@@ -155,10 +170,13 @@ public class JdbcItineraryDao implements ItineraryDao {
         itinerary.setItineraryTitle(rs.getString("itinerary_title"));
         itinerary.setItineraryDate(rs.getDate("itinerary_date"));
         itinerary.setStartingTime(rs.getTime("starting_time"));
-
         return itinerary;
     }
 
-
-
+    private ItineraryLandmark mapRowToItineraryLandmark(SqlRowSet rs) {
+        ItineraryLandmark itineraryLandmark = new ItineraryLandmark();
+        itineraryLandmark.setItineraryId(rs.getInt("itinerary_id"));
+        itineraryLandmark.setLandmarkId(rs.getInt("landmark_id"));
+        return itineraryLandmark;
+    }
 }

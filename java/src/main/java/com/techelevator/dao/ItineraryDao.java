@@ -10,7 +10,7 @@ public interface ItineraryDao {
 
     List<Itinerary> getAllItineraries();
 
-    boolean create(Itinerary itinerary, int userId);
+    Integer create(Itinerary itinerary, int userId);
 
     void delete(int Id);
 
@@ -22,7 +22,7 @@ public interface ItineraryDao {
 
     Itinerary getItineraryByItineraryId(int itineraryId);
 
-    void addThingToDoToItinerary(int itineraryId, int landmarkId, int sequenceId);
+    void addThingToDoToItinerary(int itineraryId, int landmarkId);
 
     Itinerary getItineraryByUserIdAndItineraryId(int itineraryId, int userId);
 

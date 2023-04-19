@@ -4,8 +4,10 @@
         <br>
         <br>
         <itinerary-list />
+
         <favorites-side-bar />
     </div>
+    
 </template>
 
 <script>
@@ -15,7 +17,9 @@ import favoritesSideBar from '../components/FavoritesSideBar.vue'
 export default {
     components: { 
         itineraryList,
+        // favoritesSideBar
         favoritesSideBar
+
     },
 
 }
