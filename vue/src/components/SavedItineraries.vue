@@ -8,6 +8,7 @@
     <router-view />
 
   <div>
+    
     <h2>Itineraries</h2>
     <ul>
       <li v-for="itinerary in itineraries" :key="itinerary.itinerary_id">
