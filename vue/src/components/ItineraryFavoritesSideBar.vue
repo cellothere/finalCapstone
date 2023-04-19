@@ -1,27 +1,16 @@
 <template>
   <div class="favorites-sidebar">
     <h2>My Favorites</h2>
-    <button
-      id='clearFavorites'
-      v-on:click='clearFavorites()'
-      class="tag">
-      Clear Favorites
-    </button>
-    <button
-      id='buildItinerary'
-      v-on:click='buildItinerary()'
-      class="tag">
-      Build Itinerary
-    </button>
-    <sidebar-favorites-list id="sidebarFavs"/>
+    <itinerary-favorites-side-bar-list id="sidebarFavs"/>
   </div>
 </template>
 
 <script>
-import SidebarFavoritesList from './SidebarFavoritesList.vue';
+import itineraryFavoritesSideBarList from '../components/ItineraryFavoritesSideBarList.vue'
+
 export default {
-  components: { SidebarFavoritesList },
-  name: "FavoritesSideBar",
+  components: { itineraryFavoritesSideBarList },
+  name: "ItineraryFavoritesSideBar",
   data() {
     return {
       favorites: [],
