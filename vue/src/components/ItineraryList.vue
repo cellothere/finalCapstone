@@ -41,6 +41,7 @@ export default {
         return {
             destinations: [],
             itineraries: [],
+            itineraryInfo: [],
             title: "",
             startingTime: '00:00',
             date: ''
@@ -53,17 +54,20 @@ export default {
       let itineraryId = 22;
         itineraryService.getAllItineraryActivities(userId, itineraryId)
                 .then(response => {
-                console.log(response.data)
+
                 this.destinations = response.data;
         })
         .catch(error => {
           console.log(error);
         });
 
-      itineraryService.getAllItinerariesByUserId(userId)
+      itineraryService.getItineraryByUserAndItinerary(userId, itineraryId)
         .then(response => {
           console.log(response.data)
-          this.itineraries = response.data;
+          this.itineraryInfo = response.data;
+          this.title = this.itineraryInfo.itineraryTitle
+          this.startingTime = this.itineraryInfo.startingTime
+          this.date = this.itineraryInfo.itineraryDate
         })
         .catch(error => {
           console.log(error);
@@ -107,6 +111,9 @@ export default {
         },
         resetDestinationList() {
             this.$store.state.currentItineraryDestinations = [];
+            this.title = "";
+            this.date = "";
+            this.startingTime = "";
         },
         deleteItinerary() {
             itineraryService.deleteItinerary(this.$route.params.userId, this.$route.params.itineraryId);

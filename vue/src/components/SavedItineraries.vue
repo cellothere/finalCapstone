@@ -4,10 +4,9 @@
     </div>
     <br>
     <br>
-    <div class="itinerary-container" v-for="itinerary in itineraries" :key="itinerary.itinerary_id" v-on:click="goToItinerary(itinerary.itinerary_id)">
-      <h2 class="itinerary-title">{{ itinerary.itineraryTitle }}</h2>
-      <p class="itinerary-date">{{ itinerary.itineraryDate }} - {{ itinerary.startingTime }}</p>
-    </div>
+    <h1> Saved Itineraries </h1>
+    <saved-itinerary v-for="itinerary in itineraries" :key="itinerary.itineraryId" v-bind:id="itinerary.id"/>
+
   </div>
 </template>
 
@@ -21,15 +20,10 @@ export default {
       itineraries: [],
       destinations: [],
       showButton: true,
-      
     }
   },
   methods: {
 
-    goToItinerary(itineraryId){
-      let userId = this.$store.state.user.id
-      this.$router.push({ name: 'build itinerary', params: { userId: userId, itineraryId: itineraryId}})
-    }
   },
   created() {
    
@@ -46,12 +40,25 @@ export default {
 }
 </script>
 
+
+
+
 <style>
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
 #route {
   margin-top: 4%;
   font-size: 18px;
 }
 
+saved-itinerary {
+  z-index: 999;
+}
+
+h1 {
+  margin-left: 15%;
+}
 #adding {
   background-image: url(../../assets/CleTOursArUs.jpg) ;
   background-attachment:scroll;
@@ -60,16 +67,18 @@ export default {
   background-size: cover;
   height: 100vh;
   width: 100vw;
+  font-family: 'Poppins';
 }
 
 .itinerary-container {
   border: 1px solid #ccc;
   margin-bottom: 20px;
   padding: 10px;
-  width: 40%;
+  width: 35%;
   background-color: rgb(230, 230, 230);
   border-radius: 10px;
-  margin-left: 1%;
+  margin-left: 4%;
+  text-align: center;
 }
 
 .itinerary-title {
