@@ -60,17 +60,19 @@ public class JdbcItineraryDao implements ItineraryDao {
     }
 
     @Override
-    public void addThingToDoToItinerary(int itineraryId, int landmarkId) {
+    public void addThingToDoToItinerary(int itineraryId, int[] destinationIds) {
 
         String sql = "INSERT INTO itinerary_landmark (itinerary_id, landmark_id) VALUES (?, ?) RETURNING landmark_id";
 
-        Integer landmark = jdbcTemplate.queryForObject(sql, Integer.class, itineraryId, landmarkId);
+        Integer landmarkId = 0;
 
-        if (landmark == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The landmark could not be found");
+        for (int i = 0; i < destinationIds.length; i++) {
+            landmarkId = jdbcTemplate.queryForObject(sql, Integer.class, itineraryId, destinationIds[i]);
+            if (landmarkId == null) {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The landmark could not be found");
         }
-
     }
+}
 
     @Override
     public Itinerary getItineraryByItineraryId(int itineraryId) {

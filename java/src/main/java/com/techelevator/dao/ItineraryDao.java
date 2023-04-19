@@ -22,7 +22,7 @@ public interface ItineraryDao {
 
     Itinerary getItineraryByItineraryId(int itineraryId);
 
-    void addThingToDoToItinerary(int itineraryId, int landmarkId);
+    void addThingToDoToItinerary(int itineraryId, int[] destinationIds);
 
     Itinerary getItineraryByUserIdAndItineraryId(int itineraryId, int userId);
 
