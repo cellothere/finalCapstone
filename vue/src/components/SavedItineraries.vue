@@ -4,7 +4,7 @@
     </div>
     <br>
     <br>
-    <div class="itinerary-container" v-for="itinerary in itineraries" :key="itinerary.itinerary_id">
+    <div class="itinerary-container" v-for="itinerary in itineraries" :key="itinerary.itinerary_id" v-on:click="goToItinerary(itinerary.itinerary_id)">
       <h2 class="itinerary-title">{{ itinerary.itineraryTitle }}</h2>
       <p class="itinerary-date">{{ itinerary.itineraryDate }} - {{ itinerary.startingTime }}</p>
     </div>
@@ -23,6 +23,13 @@ export default {
       showButton: true,
       selectedItineraryId: 22,
       
+    }
+  },
+  methods: {
+
+    goToItinerary(itineraryId){
+      let userId = this.$store.state.user.id
+      this.$router.push({ name: 'build itinerary', params: { userId: userId, itineraryId: itineraryId}})
     }
   },
   created() {
