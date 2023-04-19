@@ -18,8 +18,11 @@ export default {
     return http.get(`/itinerary/${userId}/${itineraryId}/thingToDo`);
   },
 
-  createItinerary(userId, itinerary) {
+  saveItineraryInfo(userId, itinerary) {
     return http.post(`/itinerary/${userId}/create`, itinerary)
+  },
+  saveItineraryDestinations(userId, itineraryId, arrayOfLandmarkIds){
+    return http.post(`/itinerary/${userId}/${itineraryId}/`, arrayOfLandmarkIds)
   },
   deleteItinerary(userId, itineraryId) {
     return http.post(`/itinerary/${userId}/${itineraryId}`)

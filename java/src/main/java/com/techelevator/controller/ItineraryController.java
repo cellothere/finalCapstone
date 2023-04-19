@@ -7,6 +7,7 @@ import com.techelevator.model.ThingToDoDto;
 import com.techelevator.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -64,7 +65,7 @@ public class ItineraryController {
 //    public void create(@PathVariable int userId, @PathVariable int itineraryId, @PathVariable int landmarkId) {
 //        itineraryDao.addThingToDoToItinerary(itineraryId, landmarkId);
 //    }
-
+    
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/itinerary/{userId}/{itineraryId}", method = RequestMethod.POST)
     public void saveItineraryDestinationIds(@PathVariable int userId, @PathVariable int itineraryId, @RequestBody int[] destinationIds){
