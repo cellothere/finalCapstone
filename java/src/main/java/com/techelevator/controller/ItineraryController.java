@@ -59,11 +59,19 @@ public class ItineraryController {
         return itineraryDao.getItineraryByUserIdAndItineraryId(userId, itineraryId);
     }
 
+//    @ResponseStatus(HttpStatus.CREATED)
+//    @RequestMapping(path = "/itinerary/{userId}/{itineraryId}/{landmarkId}", method = RequestMethod.POST)
+//    public void create(@PathVariable int userId, @PathVariable int itineraryId, @PathVariable int landmarkId) {
+//        itineraryDao.addThingToDoToItinerary(itineraryId, landmarkId);
+//    }
+
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/itinerary/{userId}/{itineraryId}/{landmarkId}", method = RequestMethod.POST)
-    public void create(@PathVariable int userId, @PathVariable int itineraryId, @PathVariable int landmarkId) {
-        itineraryDao.addThingToDoToItinerary(itineraryId, landmarkId);
+    @RequestMapping(path = "/itinerary/{userId}/{itineraryId}", method = RequestMethod.POST)
+    public void saveItineraryDestinationIds(@PathVariable int userId, @PathVariable int itineraryId, @RequestBody int[] destinationIds){
+        itineraryDao.addThingToDoToItinerary(itineraryId, destinationIds);
     }
+
+
     @RequestMapping(path = "itinerary/{userId}/{itineraryId}/thingToDo", method = RequestMethod.GET)
     public List<ThingToDoDto> getAllActivitiesByUserIdAndItineraryId(@PathVariable int userId, @PathVariable int itineraryId) {
         return itineraryDao.getAllItineraryActivitiesByUserAndItineraryId(userId, itineraryId);
