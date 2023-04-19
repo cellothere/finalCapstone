@@ -6,15 +6,16 @@
             v-on:click='flip()'>
             <div class='card-front-itinerary'>
                 <img class="thumbnail-itinerary" :src="destination.imageUrl" />
+                <button class='stop-counter'>Stop <i class='stop-number'>#{{ index + 1 }}</i></button>
                 <div class='info-itinerary'>
                     <h2>{{ destination.name }}</h2>
-                    <i>M {{ convertTime(destination.mondayOpen) }} - {{ convertTime(destination.mondayClose) }}</i>
+                    <!-- <i>M {{ convertTime(destination.mondayOpen) }} - {{ convertTime(destination.mondayClose) }}</i>
                     <i>Tu {{ convertTime(destination.tuesdayOpen) }} - {{ convertTime(destination.tuesdayClose) }}</i>
                     <i>W {{ convertTime(destination.wednesdayOpen) }} - {{ convertTime(destination.wednesdayClose) }}</i>
                     <i>Th {{ convertTime(destination.thursdayOpen) }} - {{ convertTime(destination.thursdayClose) }}</i>
                     <i>F {{ convertTime(destination.fridayOpen) }} - {{ convertTime(destination.fridayClose) }}</i>
                     <i>Sa {{ convertTime(destination.saturdayOpen) }} - {{ convertTime(destination.saturdayClose) }}</i>
-                    <i>Su {{ convertTime(destination.sundayOpen) }} - {{ convertTime(destination.sundayClose) }}</i>
+                    <i>Su {{ convertTime(destination.sundayOpen) }} - {{ convertTime(destination.sundayClose) }}</i> -->
                 </div>
             </div>
             <div class='card-back-itinerary'>
@@ -44,7 +45,8 @@ import destinationsService from '../services/DestinationsService';
 export default {
     props: [
       'id',
-      'time'
+      'time',
+      'index'
       ],
     data() {
         return {
@@ -210,6 +212,29 @@ h3 {
 
 i {
     font-size: small;
+}
+
+.stop-counter {
+    font-family: Poppins;
+    font-weight: bold;
+    font-size: medium;
+    border: solid;
+    color: white;
+    background-color: purple;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 13px;
+    margin-left: -1px;
+    margin-bottom: 10px;
+    border-radius: 100px;
+    position: absolute;
+    right: 90%;
+}
+
+.stop-number {
+    font-size:xx-large;
 }
 
 
