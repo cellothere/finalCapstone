@@ -5,7 +5,6 @@
                 <h2>Title: </h2>
                 <input type="text" id='titleInput' v-model='title' v-on:change='updateTitle()'>
             </div>
-            <button type="submit"> submit </button>
             <div class='date-time'>
                 <h4>Date: </h4>
                 <input type="date" id='dateInput' v-model='date' v-on:change='updateDate()'>
@@ -16,19 +15,19 @@
                 <h2 v-on:click='getDirections()'>Get Directions</h2>
             </div>
         </div>
-        <itinerary-card v-for="destination in destinations" v-bind:key="destination.id" v-bind:id="destination.id" />
+        <!-- <itinerary-card v-for="destination in destinations" v-bind:key="destination.id" v-bind:id="destination.id" /> -->
         
     </div>
 </template>
 
 <script>
-import itineraryCard from '../components/ItineraryCard.vue'
+// import itineraryCard from '../components/ItineraryCard.vue'
 // import itineraryService from '../services/ItineraryService.js'
 // import destinationsService from '../services/DestinationsService'
 
 export default {
     components: {
-        itineraryCard,
+        // itineraryCard,
     },
     data () {
         return {
