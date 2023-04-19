@@ -13,6 +13,7 @@
             </div>
             <div class='get-directions'>
                 <h2 v-on:click='getDirections()'>Get Directions</h2>
+                <h2 v-on:click='share()'>Share</h2>
             </div>
         </div>
         <itinerary-card v-for="destination in destinations" v-bind:key="destination.id" v-bind:id="destination.id" />
@@ -65,6 +66,24 @@ export default {
                 directionsURL = directionsURL + d.latitude + ',' + d.longitude + '/';
             });
             window.open(directionsURL, '_blank');
+        },
+        share() {
+            if (!window.getSelection) {
+                alert('Please copy the URL from the location bar.');
+                return;
+            }
+            const dummy = document.createElement('p');
+            dummy.textContent = window.location.href;
+            document.body.appendChild(dummy);
+            const range = document.createRange();
+            range.setStartBefore(dummy);
+            range.setEndAfter(dummy);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            alert('Link copied to clipboard.');
         }
     },
 }
@@ -128,8 +147,11 @@ export default {
 }
 
 .get-directions {
+    display: flex;
     margin: -30px;
     cursor: pointer;
+    width: 100%;
+    justify-content: space-evenly;
 }
 
 </style>
