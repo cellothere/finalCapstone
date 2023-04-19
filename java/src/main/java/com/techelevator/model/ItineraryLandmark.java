@@ -11,16 +11,13 @@ public class ItineraryLandmark {
     public int itineraryId;
     @JsonProperty
     public int landmarkId;
-    @JsonProperty
-    public int sequenceNumber;
 
     public ItineraryLandmark() {}
 
 
-    public ItineraryLandmark(int itineraryId, int landmarkId, int sequenceNumber) {
+    public ItineraryLandmark(int itineraryId, int landmarkId) {
         this.itineraryId = itineraryId;
         this.landmarkId = landmarkId;
-        this.sequenceNumber = sequenceNumber;
     }
 
     public int getItineraryId() {
@@ -39,11 +36,4 @@ public class ItineraryLandmark {
         this.landmarkId = landmarkId;
     }
 
-    public int getSequenceNumber() {
-        return sequenceNumber;
-    }
-
-    public void setSequenceNumber(int sequenceNumber) {
-        this.sequenceNumber = sequenceNumber;
-    }
 }

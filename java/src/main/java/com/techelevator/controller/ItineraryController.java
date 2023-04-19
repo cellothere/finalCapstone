@@ -60,9 +60,9 @@ public class ItineraryController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/itinerary/{userId}/{itineraryId}/{landmarkId}/{sequenceId}", method = RequestMethod.POST)
-    public void create(@PathVariable int userId, @PathVariable int itineraryId, @PathVariable int landmarkId, @PathVariable int sequenceId) {
-        itineraryDao.addThingToDoToItinerary(itineraryId, landmarkId, sequenceId);
+    @RequestMapping(path = "/itinerary/{userId}/{itineraryId}/{landmarkId}", method = RequestMethod.POST)
+    public void create(@PathVariable int userId, @PathVariable int itineraryId, @PathVariable int landmarkId) {
+        itineraryDao.addThingToDoToItinerary(itineraryId, landmarkId);
     }
     @RequestMapping(path = "itinerary/{userId}/{itineraryId}/thingToDo", method = RequestMethod.GET)
     public List<ThingToDoDto> getAllActivitiesByUserIdAndItineraryId(@PathVariable int userId, @PathVariable int itineraryId) {
