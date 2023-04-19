@@ -156,6 +156,15 @@ public class JdbcItineraryDao implements ItineraryDao {
 
     }
 
+    @Override
+    public void updateItineraryTitle(String title, int itineraryId) {
+
+        String sql = "UPDATE itinerary SET itinerary_title = '?' WHERE itinerary_id = ?;";
+
+        Integer results = jdbcTemplate.update(sql, title, itineraryId);
+
+    }
+
 //    public void createItineraryLandmark(int itineraryId, int landmarkId, int sequenceNumber) {
 //
 //        String sql = "INSERT into itinerary_landmark (itinerary_id, landmark_id, sequence_number) VALUES (?, ?, ?)";

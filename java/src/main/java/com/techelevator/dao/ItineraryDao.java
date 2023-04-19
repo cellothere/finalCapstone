@@ -26,5 +26,7 @@ public interface ItineraryDao {
 
     Itinerary getItineraryByUserIdAndItineraryId(int itineraryId, int userId);
 
+    void updateItineraryTitle(String title, int itineraryId);
+
 
 }
