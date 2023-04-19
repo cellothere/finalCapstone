@@ -13,6 +13,7 @@
             </div>
             <div class='get-directions'>
                 <h2 v-on:click='getDirections()'>Get Directions</h2>
+                <h2 v-on:click='share()'>Share</h2>
             </div>
             <div class='itinerary-buttons'>
                 <button class='tag' id='save' v-on:click='saveItinerary()'>Save</button>
@@ -162,8 +163,11 @@ export default {
 }
 
 .get-directions {
+    display: flex;
     margin: -30px;
     cursor: pointer;
+    justify-content: space-evenly;
+    width: 100%;
 }
 
 #save {
