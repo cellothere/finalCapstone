@@ -6,16 +6,17 @@
             v-on:click='flip()'>
             <div class='card-front-itinerary'>
                 <img class="thumbnail-itinerary" :src="destination.imageUrl" />
-                <button class='stop-counter'>Stop <i class='stop-number'>#{{ index + 1 }}</i></button>
+                <button class='badge'>Stop <i class='badge-number'>#{{ index + 1 }}</i></button>
+                <button class='badge' id='distance-badge' v-show='(index > 0)'><i class='badge-number'>{{ distanceCalc(destination) }}</i> mi</button>
                 <div class='info-itinerary'>
                     <h2>{{ destination.name }}</h2>
-                    <!-- <i>M {{ convertTime(destination.mondayOpen) }} - {{ convertTime(destination.mondayClose) }}</i>
+                    <i>M {{ convertTime(destination.mondayOpen) }} - {{ convertTime(destination.mondayClose) }}</i>
                     <i>Tu {{ convertTime(destination.tuesdayOpen) }} - {{ convertTime(destination.tuesdayClose) }}</i>
                     <i>W {{ convertTime(destination.wednesdayOpen) }} - {{ convertTime(destination.wednesdayClose) }}</i>
                     <i>Th {{ convertTime(destination.thursdayOpen) }} - {{ convertTime(destination.thursdayClose) }}</i>
                     <i>F {{ convertTime(destination.fridayOpen) }} - {{ convertTime(destination.fridayClose) }}</i>
                     <i>Sa {{ convertTime(destination.saturdayOpen) }} - {{ convertTime(destination.saturdayClose) }}</i>
-                    <i>Su {{ convertTime(destination.sundayOpen) }} - {{ convertTime(destination.sundayClose) }}</i> -->
+                    <i>Su {{ convertTime(destination.sundayOpen) }} - {{ convertTime(destination.sundayClose) }}</i>
                 </div>
             </div>
             <div class='card-back-itinerary'>
@@ -53,14 +54,15 @@ export default {
             flipped: false,
             selected: false,
             destination: {},
-            isChecked: false
+            isChecked: false,
+            distance: 0,
+            hoursCounter: 0
         }
     },
     computed: {
         roundedRating() {
             return Math.round(this.destination.landmarkRating);
         },
-
     },
     methods: {
         flip () {
@@ -78,46 +80,78 @@ export default {
         handleClick() {
             this.flip;
         },
-    toggleFavorite(destination) {
-        this.$store.commit('TOGGLE_FAVORITE', destination);
-    },
-    convertTime(str) {
-        let result = ''
-        // Get Hours
-        var h1 = Number(str[0] - '0');
-        var h2 = Number(str[1] - '0');
-        var hh = h1 * 10 + h2;
-        // Finding out the Meridien of time
-        // ie. AM or PM   
-        var Meridien;
-        if (hh < 12) { Meridien = "AM";}
-        else Meridien = "PM";
-        hh %= 12;
-        // Handle 00 and 12 case separately
-        if (hh == 0) {
-            result = result + "12";
-            // Printing minutes and seconds
-            for (var i = 2; i < 2; ++i) {
-            result = result + str[i];
-            }
-        }
-        else {
-            result = result + hh;
-            // Printing minutes and seconds
-            for (var j = 2; j < 2; ++j) {
-            result = result + str[j];
-            }
-        }
-        // After time is printed
-        // cout Meridien
-        result = result + Meridien;
-        return result;
+        toggleFavorite(destination) {
+            this.$store.commit('TOGGLE_FAVORITE', destination);
         },
+        convertTime(str) {
+            if (str == null) {
+                if (this.hoursCounter%2===0) {
+                    this.hoursCounter++
+                    return 'closed';
+                }
+                else return '';
+            }
+            else {
+                let result = ''
+                // Get Hours
+                var h1 = Number(str[0] - '0');
+                var h2 = Number(str[1] - '0');
+                var hh = h1 * 10 + h2;
+                // Finding out the Meridien of time
+                // ie. AM or PM   
+                var Meridien;
+                if (hh < 12) { Meridien = "AM";}
+                else Meridien = "PM";
+                hh %= 12;
+                // Handle 00 and 12 case separately
+                if (hh == 0) {
+                    result = result + "12";
+                    // Printing minutes and seconds
+                    for (var i = 2; i < 2; ++i) {
+                    result = result + str[i];
+                    }
+                }
+                else {
+                    result = result + hh;
+                    // Printing minutes and seconds
+                    for (var j = 2; j < 2; ++j) {
+                    result = result + str[j];
+                    }
+                }
+                // After time is printed
+                // cout Meridien
+                result = result + Meridien;
+                return result;
+            }
+        },
+        getDistance(lat1, lon1, lat2, lon2) {
+            var R = 6371; // Radius of the earth in km
+            var dLat = this.deg2rad(lat2-lat1);  // deg2rad below
+            var dLon = this.deg2rad(lon2-lon1); 
+            var a = 
+                Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) * 
+                Math.sin(dLon/2) * Math.sin(dLon/2)
+            ; 
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+            var d = R * c; // Distance in km
+            return (d*0.621371).toFixed(1); //Distance in mi to one decimal place
+        },
+        deg2rad(deg) {
+            return deg * (Math.PI/180)
+        },
+        distanceCalc(d) {
+            let result = this.getDistance(d.latitude, d.longitude, this.$store.state.currentLatitude, this.$store.state.currentLongitude);
+            this.$store.state.currentLatitude = d.latitude;
+            this.$store.state.currentLongitude = d.longitude;
+            return result;
+        }
     },
     created() {
         destinationsService.getDestinationById(this.id).then(response => {
             this.destination = response.data;
         });
+        // this.distance = this.distanceCalc(this.destination);
     },
     watch: {
     isChecked(newValue) {
@@ -233,9 +267,34 @@ i {
     right: 90%;
 }
 
-.stop-number {
+.badge {
+    font-family: Poppins;
+    font-weight: bold;
+    font-size: medium;
+    border: solid;
+    color: white;
+    background-color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 13px;
+    margin-left: -1px;
+    margin-bottom: 10px;
+    border-radius: 100px;
+    position: absolute;
+    right: 90%;
+    min-width: 100px;
+}
+
+.badge-number {
     font-size:xx-large;
 }
 
+#distance-badge {
+    right: 37%;
+    top: -10%;
+    background-color: gray;
+}
 
 </style>

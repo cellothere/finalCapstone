@@ -3,8 +3,7 @@
     <div id="nav" v-if="$store.state.token != ''">
       <div id="explore">
         <router-link v-bind:to="{ name: 'explore' }" id="exploreButton">Explore</router-link>&nbsp;|&nbsp;
-        <router-link v-bind:to="{ name: 'build itinerary'}" id="buildItineraryButton">Build Your Itinerary</router-link>&nbsp;|&nbsp;
-        <router-link v-bind:to="{ name: 'saved itinerary'}" id="savedItineraryButton">Saved Itineraries</router-link>&nbsp;|&nbsp;
+        <router-link v-bind:to="{ name: 'saved itinerary'}" id="savedItineraryButton">Itineraries</router-link>&nbsp;|&nbsp;
         <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''" id="logoutButton">Logout</router-link>
         
       </div>
