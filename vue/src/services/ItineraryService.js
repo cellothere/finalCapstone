@@ -5,22 +5,18 @@ const http = axios.create({
 });
 
 export default {
-
   getAllItineraries() {
       return http.get('/itinerary');
   },
-  
   getItinerariesByItineraryId(itineraryId) {
     return http.get(`itinerary/${itineraryId}/all`)
   },
   getAllItinerariesByUserId(userId) {
     return http.get(`/itinerary/${userId}/all`)
   },
-
     getItineraryByUserAndItinerary(userId, itineraryId) {
       return http.get(`/itinerary/${userId}/${itineraryId}`);
     },
-
   saveItineraryInfo(userId, itinerary) {
     return http.post(`/itinerary/${userId}/create`, itinerary)
   },
