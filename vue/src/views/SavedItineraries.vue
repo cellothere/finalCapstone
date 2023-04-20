@@ -9,7 +9,7 @@
     <div class="itinerary-container" v-for="itinerary in itineraries" :key="itinerary.itineraryId" v-on:click="goToItinerary(itinerary.itineraryId)">
       <div class="itinerary-header">
         <h2 class="itinerary-title"><i id="element" class="fas fa-map-pin"></i> {{ itinerary.itineraryTitle }}</h2>
-        <p class="itinerary-date"><i class="far fa-calendar-alt"></i> {{ formatDate(itinerary.itineraryDate) }} - {{ formatTime(itinerary.startingTime) }}</p>
+        <p class="itinerary-date"><i class="far fa-calendar-alt"></i> {{ formatDate(itinerary.itineraryDate) }}</p>
       </div>
     </div>
     <div class="itinerary-container add-container" v-on:click="goToAddItinerary()">
