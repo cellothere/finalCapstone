@@ -12,7 +12,7 @@
                     <h2>{{ destination.name }}</h2>
                     <i>M {{ convertTime(destination.mondayOpen) }} - {{ convertTime(destination.mondayClose) }}</i>
                     <i>Tu {{ convertTime(destination.tuesdayOpen) }} - {{ convertTime(destination.tuesdayClose) }}</i>
-                    <i>W {{ convertTime(destination.wednesdayOpe) }} - {{ convertTime(destination.wednesdayClose) }}</i>
+                    <i>W {{ convertTime(destination.wednesdayOpen) }} - {{ convertTime(destination.wednesdayClose) }}</i>
                     <i>Th {{ convertTime(destination.thursdayOpen) }} - {{ convertTime(destination.thursdayClose) }}</i>
                     <i>F {{ convertTime(destination.fridayOpen) }} - {{ convertTime(destination.fridayClose) }}</i>
                     <i>Sa {{ convertTime(destination.saturdayOpen) }} - {{ convertTime(destination.saturdayClose) }}</i>

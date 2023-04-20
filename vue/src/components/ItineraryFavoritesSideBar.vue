@@ -3,7 +3,7 @@
     <h2>My Favorites</h2>
     <itinerary-favorites-side-bar-list id="sidebarFavs"/>
     <button
-      id='buildItinerary'
+      id='backToExplore'
       v-on:click='backToExplore()'
       class="tag">
       Back to Explore
@@ -54,15 +54,7 @@ export default {
   height: 10px;
 }
 
-#clearFavorites {
-    background-color: brown;
-    position: fixed;
-    margin-top: 800px; /* push the button to the bottom of the div */
-    margin-left: 20px;
-    z-index: 999;
-}
-
-#buildItinerary {
+#backToExplore {
     background-color: green;
     position: fixed;
     margin-top: 800px; /* push the button to the bottom of the div */
@@ -70,12 +62,7 @@ export default {
     z-index: 999;
 }
 
-#clearFavorites:hover {
-  background: #0090FF;
-  color: black;
-}
-
-#buildItinerary:hover {
+#backToExplore:hover {
   background: #0090FF;
   color: black;
 }
