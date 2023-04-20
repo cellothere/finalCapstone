@@ -3,26 +3,26 @@
         <div class='itinerary-params'>
             <div class='title-itinerary'>
                 <h2>Title: </h2>
-                <input type="text" id='titleInput' v-model='title' v-on:change='updateTitle()'>
+                <input type="text" id='titleInput' v-model='title'>
             </div>
             <div class='date-time'>
                 <h4>Date: </h4>
                 <input type="date" id='dateInput' v-model='date' v-on:change='updateDate()'>
-                <h4>Starting time: </h4>
-                <input id='timeInput' type="time" v-model="startingTime" v-on:change='updateStartingTime()'>
+                <!-- <h4>Starting time: </h4>
+                <input id='timeInput' type="time" v-model="startingTime" v-on:change='updateStartingTime()'> -->
             </div>
             <div class='get-directions'>
                 <h2 v-on:click='getDirections()'>Get Directions</h2>
                 <h2 v-on:click='share()'>Share</h2>
             </div>
             <div class='itinerary-buttons'>
-                <button class='tag' id='save' v-on:click='saveItinerary()'>Save</button>
+                <button class='tag' id='save' v-on:click='updateItinerary()'>Save</button>
                 <button class='tag' id='reset-itinerary' v-on:click='resetDestinationList()'>Clear</button>
                 <button class='tag' id='delete' v-on:click='deleteItinerary()'>Delete</button>
             </div>
         </div>
         <itinerary-card 
-            v-for="(destination, index) in destinations" 
+            v-for="(destination, index) in $store.state.currentItineraryDestinations" 
             v-bind:key="destination.id" 
             v-bind:id="destination.id"
             v-bind:index='index' />
@@ -44,17 +44,17 @@ export default {
             itineraryInfo: [],
             title: "",
             startingTime: '00:00',
-            date: ''
+            date: '',
         }
     },
     created() {
-    //   let userId = this.$store.state.user.id
+
       let itineraryId = this.$route.params.itineraryId
       let userId = this.$store.state.user.id
-    //   let itineraryId = 33;
         itineraryService.getAllItineraryActivities(userId, itineraryId)
                 .then(response => {
                 this.destinations = response.data;
+                this.$store.state.currentItineraryDestinations = this.destinations
         })
         .catch(error => {
           console.log(error);
@@ -121,13 +121,35 @@ export default {
                 this.$router.push('/saveditineraries');
             });
         },
+      updateItinerary() {
+        let userId = this.$store.state.user.id
+        let itineraryObject = { 
+          "itineraryTitle": this.title,
+          "itineraryDate": this.date,
+          "startingTime": this.startingTime
+          
+         }
+        itineraryService.updateItineraryInfo(userId, this.$route.params.itineraryId, itineraryObject)
+        .then(response => {
+            if(response.status === 200) {
+                this.$router.push('/savedItineraries')
+            }
+        })
+      },
+
+
+
         saveItinerary() {
-            itineraryService.saveItineraryInfo(this.$route.params.userId, this.$store.state.currentItineraryInfo);
-            itineraryService.saveItineraryDestinations(
-                this.$route.params.userId, this.$route.params.itineraryId, this.$store.state.currentItineraryDestinations);
+            // if (itineraryService.checkItineraryIds(this.$route.params.itineraryId)) {
+            //     return null;
+            // } else {
+            // itineraryService.saveItineraryInfo(this.$store.state.user.id, this.defaultItinerary)
+
+            // itineraryService.getItineraryByUserAndItinerary(this.$store.state.user.id, itineraryId)
         }
-    },
+    }
 }
+
 </script>
 
 <style>

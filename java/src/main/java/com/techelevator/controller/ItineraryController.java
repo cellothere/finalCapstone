@@ -78,8 +78,23 @@ public class ItineraryController {
         return itineraryDao.getAllItineraryActivitiesByUserAndItineraryId(userId, itineraryId);
     }
 
+    @RequestMapping(path = "itinerary/checkId/{userId}", method = RequestMethod.GET)
+    public boolean checkAllItineraryIds(@PathVariable int userId){
+        return itineraryDao.checkAllItineraryIds(userId);
+    }
+
+    @RequestMapping(path = "itinerary/{userId}/{itineraryId}/update", method = RequestMethod.PUT)
+    public void updateItinerary(@PathVariable int userId, @PathVariable int itineraryId, @RequestBody Itinerary itinerary) {
+        itineraryDao.updateItinerary(userId, itineraryId, itinerary);
+    }
+}
+
+
+
+
+
 //    post POJO
 
 
 
-}
+
