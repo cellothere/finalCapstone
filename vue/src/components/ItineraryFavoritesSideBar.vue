@@ -2,6 +2,12 @@
   <div class="favorites-sidebar">
     <h2>My Favorites</h2>
     <itinerary-favorites-side-bar-list id="sidebarFavs"/>
+    <button
+      id='buildItinerary'
+      v-on:click='backToExplore()'
+      class="tag">
+      Back to Explore
+    </button>
   </div>
 </template>
 
@@ -21,8 +27,8 @@ export default {
       this.$store.commit('CLEAR_FAVORITES');
       location.reload();
     },
-    buildItinerary() {
-      this.$router.push({ name: 'build itinerary' } );
+    backToExplore() {
+      this.$router.push({ name: 'explore' } );
     }
   }
 };
@@ -59,7 +65,7 @@ export default {
 #buildItinerary {
     background-color: green;
     position: fixed;
-    margin-top: 750px; /* push the button to the bottom of the div */
+    margin-top: 800px; /* push the button to the bottom of the div */
     margin-left: 20px;
     z-index: 999;
 }
