@@ -73,7 +73,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: left;
-  flex-wrap: wrap;
+  overflow: auto;
 }
 
 #route {
@@ -84,7 +84,7 @@ export default {
 }
 
 h1 {
-  margin-left: 12%
+  margin-left: 13%
 }
 /* .itinerary-container {
   border: 1px solid #ccc;
@@ -111,16 +111,17 @@ h1 {
   color: #999;
 }
 .itinerary-container {
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   margin-bottom: 20px;
   padding: 10px;
   width: 80%;
   max-width: 600px;
-  background-color: white;
+  background-color: #5f9cff;
   border-radius: 10px;
   text-align: center;
   margin-left: 3%;
   transition: transform 0.2s ease-in-out;
+
 }
 
 .itinerary-container:hover {
@@ -152,7 +153,7 @@ h1 {
   margin-top: 0;
   margin-bottom: 0;
   font-size: 16px;
-  color: #999;
+  color: black;
   display: flex;
   align-items: center;
 }
