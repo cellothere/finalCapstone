@@ -7,7 +7,7 @@
             <div class='card-front-itinerary'>
                 <img class="thumbnail-itinerary" :src="destination.imageUrl" />
                 <button class='badge'>Stop <i class='badge-number'>#{{ index + 1 }}</i></button>
-                <button class='badge' id='distance-badge' v-show='(index > 0)'><i class='badge-number'>{{ distanceCalc(destination) }}</i> mi</button>
+                <button class='badge' id='distance-badge' v-show='(index > 0)'><i class='badge-number'>{{ distance }}</i> mi</button>
                 <div class='info-itinerary'>
                     <h2>{{ destination.name }}</h2>
                     <i>M {{ convertTime(destination.mondayOpen) }} - {{ convertTime(destination.mondayClose) }}</i>
@@ -150,8 +150,8 @@ export default {
     created() {
         destinationsService.getDestinationById(this.id).then(response => {
             this.destination = response.data;
+            this.distance = this.distanceCalc(this.destination);
         });
-        // this.distance = this.distanceCalc(this.destination);
     },
     watch: {
     isChecked(newValue) {
