@@ -16,7 +16,7 @@
                 <h2 v-on:click='share()'>Share</h2>
             </div>
             <div class='itinerary-buttons'>
-                <button class='tag' id='save' v-on:click='updateItinerary()'>Save</button>
+                <button class='tag' id='save' v-on:click='updateItinerary(), addDestinationsToItinerary()'>Save</button>
                 <button class='tag' id='reset-itinerary' v-on:click='resetDestinationList()'>Clear</button>
                 <button class='tag' id='delete' v-on:click='deleteItinerary()'>Delete</button>
             </div>
@@ -136,19 +136,35 @@ export default {
             }
         })
       },
+      addDestinationsToItinerary() {
+          let userId = this.$store.state.user.id
 
-
-
-        saveItinerary() {
-            // if (itineraryService.checkItineraryIds(this.$route.params.itineraryId)) {
-            //     return null;
-            // } else {
-            // itineraryService.saveItineraryInfo(this.$store.state.user.id, this.defaultItinerary)
-
-            // itineraryService.getItineraryByUserAndItinerary(this.$store.state.user.id, itineraryId)
+        itineraryService.saveItineraryDestinations(userId, this.$route.params.itineraryId, this.destinationIdsArray)
+        .then(response => {
+            if(response.status === 200) {
+                this.$router.push('/savedItineraries')
+            }
+        })
+      }
+      },
+    computed: {
+        
+        destinationIdsArray() {
+            let result = [];
+            this.$store.state.currentItineraryDestinations.forEach(x => {
+                result.push(x.id)
+            
+            })
+            return result;
         }
+
+
+
     }
-}
+
+
+
+    }
 
 </script>
 
