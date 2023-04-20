@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Explore from '../views/Explore.vue'
 import Itinerary from '../views/Itinerary.vue'
-import SavedItineraries from '../components/SavedItineraries.vue'
+import SavedItineraries from '../views/SavedItineraries.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
@@ -57,7 +57,7 @@ const router = new Router({
     },
     {
 
-      path: "/itinerary/:userId/:itineraryId/all",
+      path: "/itinerary",
       name: "build itinerary",
       component: Itinerary,
       meta: {

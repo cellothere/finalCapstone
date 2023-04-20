@@ -28,7 +28,7 @@ export default {
     return http.post(`/itinerary/${userId}/${itineraryId}/`, arrayOfLandmarkIds)
   },
   deleteItinerary(userId, itineraryId) {
-    return http.post(`/itinerary/${userId}/${itineraryId}`)
+    return http.delete(`/itinerary/${userId}/${itineraryId}`)
   },
   getAllItineraryActivities(userId, itineraryId) {
     return http.get(`/itinerary/${userId}/${itineraryId}/thingToDo`)

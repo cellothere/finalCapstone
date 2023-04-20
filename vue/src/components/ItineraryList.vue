@@ -49,12 +49,11 @@ export default {
     },
     created() {
     //   let userId = this.$store.state.user.id
-    //   let itineraryId = this.$route.params.itineraryId
+      let itineraryId = this.$route.params.itineraryId
       let userId = this.$store.state.user.id
-      let itineraryId = 22;
+    //   let itineraryId = 33;
         itineraryService.getAllItineraryActivities(userId, itineraryId)
                 .then(response => {
-
                 this.destinations = response.data;
         })
         .catch(error => {
@@ -116,7 +115,11 @@ export default {
             this.startingTime = "";
         },
         deleteItinerary() {
-            itineraryService.deleteItinerary(this.$route.params.userId, this.$route.params.itineraryId);
+            itineraryService.deleteItinerary(this.$store.state.user.id, this.$route.params.itineraryId);
+            this.$nextTick(() => {
+                itineraryService.getItineraryByUserAndItinerary(this.$store.state.user.id, this.$route.params.itineraryId);
+                this.$router.push('/saveditineraries');
+            });
         },
         saveItinerary() {
             itineraryService.saveItineraryInfo(this.$route.params.userId, this.$store.state.currentItineraryInfo);
