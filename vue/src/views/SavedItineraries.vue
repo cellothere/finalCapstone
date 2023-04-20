@@ -1,0 +1,163 @@
+<template>
+  <div id="adding">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <div id="route">
+    </div>
+    <br>
+    <br>
+    <h1>Saved Itineraries</h1>
+    <div class="itinerary-container" v-for="itinerary in itineraries" :key="itinerary.itineraryId" v-on:click="goToItinerary(itinerary.itineraryId)">
+      <div class="itinerary-header">
+        <h2 class="itinerary-title"><i class="fas fa-map-marker-alt"></i> {{ itinerary.itineraryTitle }}</h2>
+        <p class="itinerary-date"><i class="far fa-calendar-alt"></i> {{ formatDate(itinerary.itineraryDate) }} - {{ formatTime(itinerary.startingTime) }}</p>
+      </div>
+    </div>
+    <div class="itinerary-container add-container" v-on:click="goToAddItinerary()">
+      <h2 class="add-container-text"><i class="fas fa-plus"></i> Create a new itinerary</h2>
+    </div>
+  </div>
+</template>
+
+<script>
+import ItineraryService from '../services/ItineraryService.js';
+
+export default {
+  name: 'saved-itinerary',
+  data() {
+    return {
+      itineraries: [],
+      destinations: [],
+      showButton: true,
+    }
+  },
+  methods: {
+    goToItinerary(itineraryId) {
+      let userId = this.$store.state.user.id
+      this.$router.push({ name: 'build itinerary', params: { userId: userId, itineraryId: itineraryId}})
+    },
+      goToAddItinerary() {
+    // let userId = this.$store.state.user.id
+    this.$router.push('/itinerary')
+  },
+    formatDate(date) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return new Date(date).toLocaleDateString('en-US', options);
+    },
+    formatTime(time) {
+    const [hour, minute] = time.split(':');
+    return `${hour}:${minute}`;
+  }
+  },
+  created() {
+    let userId = this.$store.state.user.id
+    ItineraryService.getAllItinerariesByUserId(userId)
+      .then(response => {
+        console.log(response.data)
+        this.itineraries = response.data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+}
+</script>
+
+<style>
+#adding {
+  background-image: url(../../assets/CleTOursArUs.jpg) ;
+  background-attachment: scroll;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  flex-wrap: wrap;
+}
+
+#route {
+  margin-top: 3%;
+  font-size: 18px;
+  color: white;
+  text-align: center;
+}
+
+h1 {
+  margin-left: 12%
+}
+/* .itinerary-container {
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 80%;
+  max-width: 600px;
+  background-color: white;
+  border-radius: 10px;
+  text-align: center;
+  margin-left: 3%;
+} */
+
+.itinerary-title {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 24px;
+}
+
+.itinerary-date {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 16px;
+  color: #999;
+}
+.itinerary-container {
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 80%;
+  max-width: 600px;
+  background-color: white;
+  border-radius: 10px;
+  text-align: center;
+  margin-left: 3%;
+  transition: transform 0.2s ease-in-out;
+}
+
+.itinerary-container:hover {
+  background-color: #eee;
+  cursor: pointer;
+  transform: translateY(-3px);
+}
+
+.itinerary-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.itinerary-title {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.itinerary-title i {
+  margin-right: 10px;
+}
+
+.itinerary-date {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 16px;
+  color: #999;
+  display: flex;
+  align-items: center;
+}
+
+.itinerary-date i {
+  margin-right: 10px;
+}
+</style>

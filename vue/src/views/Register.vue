@@ -87,6 +87,7 @@ export default {
   margin-bottom: 1rem;
   font-family: Poppins;
   position: relative;
+  text-align: right;
 }
 
 label {

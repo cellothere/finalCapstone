@@ -42,8 +42,8 @@
 }
 
 #clevelandLogo {
-  height: 4.5rem;
-  width: 5rem;
+  height: 5.5rem;
+  width: 5.5rem;
   position: sticky;
   right: 48%;
 }
@@ -143,6 +143,14 @@
     display: none;
   }
 }
+
+a:visited {
+  color: black;
+}
+a {
+  color: black
+}
+
   
 </style>
 
