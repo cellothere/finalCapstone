@@ -166,13 +166,30 @@ public class JdbcItineraryDao implements ItineraryDao {
         Integer results = jdbcTemplate.update(sql, title, itineraryId);
 
     }
+    @Override
+    public boolean checkAllItineraryIds(int userId){
 
-//    public void createItineraryLandmark(int itineraryId, int landmarkId, int sequenceNumber) {
-//
-//        String sql = "INSERT into itinerary_landmark (itinerary_id, landmark_id, sequence_number) VALUES (?, ?, ?)";
-//
-//        jdbcTemplate.update(sql, itineraryId, landmarkId, sequenceNumber);
-//    }
+        String sql = "select itinerary_id FROM itinerary WHERE itinerary_id = ?";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+
+        if (results.next()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    }
+
+    @Override
+    public void updateItinerary(int userId, int itineraryId, Itinerary itinerary){
+
+        String sql = "UPDATE itinerary SET itinerary_title = ?, itinerary_date = ?, starting_time = ? WHERE itinerary_id = ?;";
+
+        jdbcTemplate.update(sql, itinerary.getItineraryTitle(), itinerary.getItineraryDate(), itinerary.getStartingTime(), itineraryId);
+    }
+
 
 
     private Itinerary mapRowToItinerary(SqlRowSet rs) {

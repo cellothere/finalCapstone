@@ -28,5 +28,7 @@ public interface ItineraryDao {
 
     void updateItineraryTitle(String title, int itineraryId);
 
+    boolean checkAllItineraryIds(int userId);
 
+    void updateItinerary(int userId, int itineraryId, Itinerary itinerary);
 }

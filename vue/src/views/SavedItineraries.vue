@@ -28,6 +28,12 @@ export default {
       itineraries: [],
       destinations: [],
       showButton: true,
+
+      defaultItinerary: {
+        itineraryTitle: " ",
+        itineraryDate: "2023-01-01",
+        startingTime: "10:00:00"
+}
     }
   },
   methods: {
@@ -37,16 +43,45 @@ export default {
     },
       goToAddItinerary() {
     // let userId = this.$store.state.user.id
-    this.$router.push('/itinerary')
+        let itineraryId = ItineraryService.saveItineraryInfo(this.$store.state.user.id, this.defaultItinerary);
+        this.$router.push(`/itinerary/${itineraryId}`)
+
+        ItineraryService.saveItineraryInfo(this.$store.state.user.id, this.defaultItinerary)
+        .then(response => {
+          let itineraryId = response.data;
+          this.goToItinerary(itineraryId)
+        })
+
+        
+// itineraryService.getAllItineraryActivities(userId, itineraryId)
+//                 .then(response => {
+//                 this.destinations = response.data;
+//                 this.$store.state.currentItineraryDestinations = this.destinations
+//         })
+//         .catch(error => {
+//           console.log(error);
+//         });
+
+
+        // saveItinerary() {
+        //     if (itineraryService.checkItineraryIds(this.$route.params.itineraryId)) {
+        //         return null;
+        //     } else {
+        //     let itineraryId = itineraryService.saveItineraryInfo(this.$store.state.user.id, this.$store.state.currentItineraryInfo);
+            
+        //     itineraryService.saveItineraryDestinations(
+        //         this.$store.state.user.id, itineraryId, this.$store.state.currentItineraryDestinations);
+        //     }
+        // }
   },
     formatDate(date) {
       const options = { year: 'numeric', month: 'long', day: 'numeric' };
       return new Date(date).toLocaleDateString('en-US', options);
     },
-    formatTime(time) {
-    const [hour, minute] = time.split(':');
-    return `${hour}:${minute}`;
-  }
+  //   formatTime(time) {
+  //   const [hour, minute] = time.split(':');
+  //   return `${hour}:${minute}`;
+  // }
   },
   created() {
     let userId = this.$store.state.user.id

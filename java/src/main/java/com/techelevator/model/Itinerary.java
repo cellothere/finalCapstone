@@ -43,6 +43,12 @@ public class Itinerary {
         this.startingTime = startingTime;
     }
 
+    public Itinerary(String itineraryTitle, Date itineraryDate, Time startingTime) {
+        this.itineraryTitle = itineraryTitle;
+        this.itineraryDate = itineraryDate;
+        this.startingTime = startingTime;
+    }
+
     public int getItineraryId() {
         return itineraryId;
     }

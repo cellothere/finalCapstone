@@ -44,6 +44,8 @@ public class FavoritesController {
         public boolean createThingToDO(@RequestBody ThingToDoDto thingToDoDto, @PathVariable int userId){
             return favoritesDao.create(thingToDoDto, userId);
         }
+
+
         @RequestMapping(path = "favorites/{userId}/{favoriteName}/delete", method = RequestMethod.POST)
         public void deleteFavorites() {
 
