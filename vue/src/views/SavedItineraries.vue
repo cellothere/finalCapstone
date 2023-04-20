@@ -8,8 +8,8 @@
     <h1>Saved Itineraries</h1>
     <div class="itinerary-container" v-for="itinerary in itineraries" :key="itinerary.itineraryId" v-on:click="goToItinerary(itinerary.itineraryId)">
       <div class="itinerary-header">
-        <h2 class="itinerary-title"><i class="fas fa-map-marker-alt"></i> {{ itinerary.itineraryTitle }}</h2>
-        <p class="itinerary-date"><i class="far fa-calendar-alt"></i> {{ (itinerary.itineraryDate) }}</p>
+        <h2 class="itinerary-title"><i id="element" class="fas fa-map-pin"></i> {{ itinerary.itineraryTitle }}</h2>
+        <p class="itinerary-date"><i class="far fa-calendar-alt"></i> {{ formatDate(itinerary.itineraryDate) }} - {{ formatTime(itinerary.startingTime) }}</p>
       </div>
     </div>
     <div class="itinerary-container add-container" v-on:click="goToAddItinerary()">
@@ -109,6 +109,7 @@ export default {
   flex-direction: column;
   align-items: left;
   overflow: auto;
+  
 }
 
 #route {
@@ -150,7 +151,7 @@ h1 {
   margin-bottom: 20px;
   padding: 10px;
   width: 80%;
-  max-width: 600px;
+  max-width: 560px;
   background-color: #5f9cff;
   border-radius: 10px;
   text-align: center;
@@ -195,5 +196,10 @@ h1 {
 
 .itinerary-date i {
   margin-right: 10px;
+}
+#element {
+    color: rgba(226, 43, 43, 0.74);
+    text-shadow: 1px 1px 1px #ccc;
+    font-size: .90em;
 }
 </style>
