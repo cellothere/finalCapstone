@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import ItineraryService from'../services/ItineraryService';
 import SidebarFavoritesList from './SidebarFavoritesList.vue';
 export default {
   components: { SidebarFavoritesList },
@@ -25,6 +26,12 @@ export default {
   data() {
     return {
       favorites: [],
+
+        defaultItinerary: {
+        itineraryTitle: " ",
+        itineraryDate: "2023-01-01",
+        startingTime: "10:00:00"
+}
     };
   },
   methods: {
@@ -32,8 +39,20 @@ export default {
       this.$store.commit('CLEAR_FAVORITES');
       location.reload();
     },
+        goToItinerary(itineraryId) {
+      let userId = this.$store.state.user.id
+      this.$router.push({ name: 'build itinerary', params: { userId: userId, itineraryId: itineraryId}})
+    },
     buildItinerary() {
-      this.$router.push({ name: 'build itinerary' } );
+    // let userId = this.$store.state.user.id
+        let itineraryId = ItineraryService.saveItineraryInfo(this.$store.state.user.id, this.defaultItinerary);
+        this.$router.push(`/itinerary/${itineraryId}`)
+
+        ItineraryService.saveItineraryInfo(this.$store.state.user.id, this.defaultItinerary)
+        .then(response => {
+          let itineraryId = response.data;
+          this.goToItinerary(itineraryId)
+        })
     }
   }
 };
