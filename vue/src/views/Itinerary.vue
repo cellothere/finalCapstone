@@ -5,7 +5,6 @@
         <br>
         <itinerary-list />
         <itinerary-favorites-side-bar />
-        
     </div>
     
 </template>
@@ -18,7 +17,6 @@ export default {
     components: { 
         itineraryList,
         itineraryFavoritesSideBar
-
     },
 
 }
@@ -29,5 +27,12 @@ export default {
         display: flex;
         flex-direction: column;
         align-items: center;
+        background-image: url(../../assets/clevelandOpacityFifty.jpg);
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        min-width: 100vw;
+        min-height: 100vh;
     }
 </style>
