@@ -6,7 +6,7 @@
     <br>
     <br>
     <h1>Saved Itineraries</h1>
-    <div class="itinerary-container" v-for="itinerary in itineraries" :key="itinerary.itineraryId" v-on:click="goToItinerary(itinerary.itineraryId)">
+    <div class="itinerary-container"  v-for="itinerary in itineraries" :key="itinerary.itineraryId" v-on:click="goToItinerary(itinerary.itineraryId)">
       <div class="itinerary-header">
         <h2 class="itinerary-title"><i id="element" class="fas fa-map-pin"></i> {{ itinerary.itineraryTitle }}</h2>
         <p class="itinerary-date"><i class="far fa-calendar-alt"></i> {{ formatDate(itinerary.itineraryDate) }}</p>
@@ -83,17 +83,16 @@ export default {
   //   return `${hour}:${minute}`;
   // }
   },
-  created() {
-    let userId = this.$store.state.user.id
-    ItineraryService.getAllItinerariesByUserId(userId)
-      .then(response => {
-        console.log(response.data)
-        this.itineraries = response.data;
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
+created() {
+  let userId = this.$store.state.user.id
+  ItineraryService.getAllItinerariesByUserId(userId)
+    .then(response => {
+      this.itineraries = response.data.filter(itinerary => itinerary.itineraryTitle && itinerary.itineraryTitle.trim() !== '');
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
 }
 </script>
 

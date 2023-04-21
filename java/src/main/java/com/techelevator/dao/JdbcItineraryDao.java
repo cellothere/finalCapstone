@@ -110,9 +110,9 @@ public class JdbcItineraryDao implements ItineraryDao {
     //    TODO proper itinerary ID not updating
     @Override
     public Integer create(Itinerary itinerary, int userId) {
-        String sql = "INSERT into itinerary (itinerary_title, itinerary_date, starting_time) VALUES (?, ?, ?) RETURNING itinerary_id;";
+        String sql = "INSERT into itinerary (itinerary_title, itinerary_date) VALUES (?, ?) RETURNING itinerary_id;";
 //                "JOIN itinerary_user ON itinerary_user.itinerary_id = itinerary_user.itinerary_id;" +
-        Integer returningItineraryId = jdbcTemplate.queryForObject(sql, Integer.class, itinerary.getItineraryTitle(), itinerary.getItineraryDate(), itinerary.getStartingTime());
+        Integer returningItineraryId = jdbcTemplate.queryForObject(sql, Integer.class, itinerary.getItineraryTitle(), itinerary.getItineraryDate());
 
         String sql2 = "INSERT INTO itinerary_user (itinerary_id, user_id) VALUES (?, ?);";
 
@@ -185,9 +185,9 @@ public class JdbcItineraryDao implements ItineraryDao {
     @Override
     public void updateItinerary(int userId, int itineraryId, Itinerary itinerary){
 
-        String sql = "UPDATE itinerary SET itinerary_title = ?, itinerary_date = ?, starting_time = ? WHERE itinerary_id = ?;";
+        String sql = "UPDATE itinerary SET itinerary_title = ?, itinerary_date = ? WHERE itinerary_id = ?;";
 
-        jdbcTemplate.update(sql, itinerary.getItineraryTitle(), itinerary.getItineraryDate(), itinerary.getStartingTime(), itineraryId);
+        jdbcTemplate.update(sql, itinerary.getItineraryTitle(), itinerary.getItineraryDate(), itineraryId);
     }
 
 
@@ -197,7 +197,6 @@ public class JdbcItineraryDao implements ItineraryDao {
         itinerary.setItineraryId(rs.getInt("itinerary_id"));
         itinerary.setItineraryTitle(rs.getString("itinerary_title"));
         itinerary.setItineraryDate(rs.getDate("itinerary_date"));
-        itinerary.setStartingTime(rs.getTime("starting_time"));
         return itinerary;
     }
 

@@ -30,7 +30,6 @@ export default {
         defaultItinerary: {
         itineraryTitle: " ",
         itineraryDate: "2023-01-01",
-        startingTime: "10:00:00"
 }
     };
   },

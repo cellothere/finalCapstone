@@ -50,6 +50,11 @@ itinerary_id int NOT NULL,
 landmark_id int NOT NULL
 );
 
+CREATE TABLE favorites_user (
+favorites_id int NOT NULL,
+user_id int NOT NULL
+);
+
 CREATE TABLE itinerary (
 itinerary_id serial,
 itinerary_title varchar (1000) NOT NULL,
@@ -92,7 +97,7 @@ is_outdoor boolean NOT NULL,
 landmark_rating numeric (6,2),
 CONSTRAINT PK_favorites_id PRIMARY KEY (favorites_id)
 );
-COMMIT;
+
 
 INSERT INTO itinerary (itinerary_title, itinerary_date, starting_time)
 VALUES ('Itinerary 1', '2023-01-01', '9:00:00');

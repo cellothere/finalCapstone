@@ -21,12 +21,12 @@
                 <button class='tag' id='delete' v-on:click='deleteItinerary()'>Delete</button>
             </div>
         </div>
-        <itinerary-card 
-            v-for="(destination, index) in $store.state.currentItineraryDestinations" 
-            v-bind:key="destination.id" 
-            v-bind:id="destination.id"
-            v-bind:index='index' />
-    </div>
+    <itinerary-card 
+      v-for="(destination, index) in uniqueDestinations" 
+      v-bind:key="destination.id" 
+      v-bind:id="destination.id"
+      v-bind:index='index' />
+  </div>
 </template>
 
 <script>
@@ -42,8 +42,8 @@ export default {
             destinations: [],
             itineraries: [],
             itineraryInfo: [],
+            destinationIds: this.destinationIdsArray,
             title: "",
-            startingTime: '00:00',
             date: '',
         }
     },
@@ -65,7 +65,6 @@ export default {
           console.log(response.data)
           this.itineraryInfo = response.data;
           this.title = this.itineraryInfo.itineraryTitle
-          this.startingTime = this.itineraryInfo.startingTime
           this.date = this.itineraryInfo.itineraryDate
         })
         .catch(error => {
@@ -74,9 +73,6 @@ export default {
     },
 
     methods: {
-        updateStartingTime() {
-            this.$store.state.currentItinerary.startingTime = this.startingTime;
-        },
         updateTitle() {
             this.$store.state.currentItinerary.title = this.title;
         },
@@ -112,7 +108,6 @@ export default {
             this.$store.state.currentItineraryDestinations = [];
             this.title = "";
             this.date = "";
-            this.startingTime = "";
         },
         deleteItinerary() {
             itineraryService.deleteItinerary(this.$store.state.user.id, this.$route.params.itineraryId);
@@ -126,7 +121,6 @@ export default {
         let itineraryObject = { 
           "itineraryTitle": this.title,
           "itineraryDate": this.date,
-          "startingTime": this.startingTime
           
          }
         itineraryService.updateItineraryInfo(userId, this.$route.params.itineraryId, itineraryObject)
@@ -156,13 +150,17 @@ export default {
             
             })
             return result;
-        }
+        },
+            uniqueDestinations() {
+      return this.$store.state.currentItineraryDestinations.filter((destination, index, self) => {
+        return index === self.findIndex((d) => d.id === destination.id)
+      })
 
 
 
     }
 
-
+    }
 
     }
 

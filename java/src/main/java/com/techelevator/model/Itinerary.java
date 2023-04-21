@@ -11,7 +11,6 @@ public class Itinerary {
     private int itineraryId;
     private String itineraryTitle;
     private Date itineraryDate;
-    private Time startingTime;
     private List<ThingToDoDto> itineraryItems;
 
 
@@ -28,25 +27,22 @@ public class Itinerary {
         this.itineraryId = itineraryId;
     }
 
-    public Itinerary(int itineraryId, String itineraryTitle, Date itineraryDate, Time startingTime, List<ThingToDoDto> itineraryItems) {
+    public Itinerary(int itineraryId, String itineraryTitle, Date itineraryDate, List<ThingToDoDto> itineraryItems) {
         this.itineraryId = itineraryId;
         this.itineraryTitle = itineraryTitle;
         this.itineraryDate = itineraryDate;
-        this.startingTime = startingTime;
         this.itineraryItems = itineraryItems;
     }
 
-    public Itinerary(int itineraryId, String itineraryTitle, Date itineraryDate, Time startingTime) {
+    public Itinerary(int itineraryId, String itineraryTitle, Date itineraryDate) {
         this.itineraryId = itineraryId;
         this.itineraryTitle = itineraryTitle;
         this.itineraryDate = itineraryDate;
-        this.startingTime = startingTime;
     }
 
-    public Itinerary(String itineraryTitle, Date itineraryDate, Time startingTime) {
+    public Itinerary(String itineraryTitle, Date itineraryDate) {
         this.itineraryTitle = itineraryTitle;
         this.itineraryDate = itineraryDate;
-        this.startingTime = startingTime;
     }
 
     public int getItineraryId() {
@@ -73,13 +69,6 @@ public class Itinerary {
         this.itineraryDate = itineraryDate;
     }
 
-    public Time getStartingTime() {
-        return startingTime;
-    }
-
-    public void setStartingTime(Time startingTime) {
-        this.startingTime = startingTime;
-    }
 
     public List<ThingToDoDto> getItineraryItems() {
         return itineraryItems;
